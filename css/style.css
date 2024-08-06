@@ -1,0 +1,443 @@
+/* base公用样式 */
+/* 初始化样式，通用样式 */
+/* start */
+/* 去掉页面所有标签的内填充外边距 */
+* {
+    /* 定义元素边框与元素内容之间的空间，即上下左右的内边距 */
+    padding: 0;
+    margin: 0;
+    /* css3新增样式 */
+    box-sizing: border-box;
+}
+
+/* 去掉列表符号 */
+li {
+    list-style: none;
+}
+
+/* 去掉img底部的缝隙 */
+img {
+    vertical-align: bottom;
+}
+
+/* 类是可以被定义的，比如，我们可以定义一个浮动类，这样，我们就可以在任意位置使用这个类了。 */
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+/* ::after (:after) CSS伪元素 ::after 用来创建一个伪元素，作为已选中元素的最后一个子元素。 
+通常会配合 content 属性来为该元素添加装饰内容。 这个虚拟元素默认是行内元素 */
+.clear::after {
+    clear: both;
+    display: block;
+    content: "";
+}
+
+/* 设置整个页面整个字体相关样式 */
+body {
+    font-size: 14px;
+    /* 设置行高为1.5倍 */
+    line-height: 1.5;
+    /* 设置页面最小宽度 */
+    min-width: 1280px;
+    font-family: 'zk';
+    min-width: 100dvw;
+    min-height: 100dvh;
+    max-width: 100dvw;
+    max-height: 100dvh;
+    cursor: url("../res/normal.cur"),auto;
+    /* background: url(https://bingw.jasonzeng.dev/?index=random); */
+    background: url(https://bingw.jasonzeng.dev/?index=1);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* 超链接的美化 */
+a {
+    /* 去掉超链接下划线 */
+    text-decoration: none;
+    /* 设置a标签的字体颜色继承父类元素 */
+    /* inherit就是继承父类 */
+    color: inherit;
+}
+
+@font-face {
+    font-family: 'zk';
+    src: url('../font-family/zk.ttf');
+}
+
+html {
+    /* 平滑滚动 */
+    scroll-behavior: smooth;
+    font-size: 0.8vw;
+    font-family: 'zk';
+}
+
+@font-face {
+    font-family: 'Aurebesh';
+    src: url('../font-family/Aurebesh.ttf');
+}
+
+
+
+/* end */
+
+.mainBox {
+    width: 100dvw;
+    height: 100dvh;
+    /* width: 100%;
+    height: 100%; */
+    min-width: 100dvw;
+    min-height: 100dvh;
+    max-width: 100dvw;
+    max-height: 100dvh;
+    position: relative;
+}
+
+.mainBox .head {
+    width: 36rem;
+    height: 4rem;
+    background-color: rgba(255, 255, 255, .7);
+    backdrop-filter: blur(6px);
+    position: fixed;
+    top: 4rem;
+    left: 82%;
+    transform: translate(-50%, -50%);
+    border-radius: 2rem;
+}
+
+.mainBox .head ul {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    align-items: center;
+
+}
+
+.mainBox .head ul li {
+    width: fit-content;
+    height: 2rem;
+    text-align: center;
+    line-height: 2rem;
+    color: black;
+    padding: 0 1rem 0 1rem;
+    border-radius: 1rem;
+    font-size: 1rem;
+}
+
+.mainBox .head ul li.active {
+    background-color: #bee7e9;
+    font-weight: bold;
+    color: orange;
+}
+
+.mainBox .head ul li:hover {
+    background-color: #bee7e9;
+    font-weight: bold;
+    color: orange;
+}
+
+.mainBox .title {
+    position: fixed;
+    top: 4rem;
+    left: 14rem;
+    transform: translate(-50%, -50%);
+    font-size: 1rem;
+    font-family: 'Aurebesh';
+    font-size: 3rem;
+    filter: grayscale(1) contrast(999) invert(1);
+    /* cursor: default; */
+}
+
+.mainBox .main {
+    width: 100%;
+    height: 100%;
+    min-width: 100dvw;
+    min-height: 100dvh;
+    max-width: 100dvw;
+    max-height: 100dvh;
+    /* background: url(https://bingw.jasonzeng.dev/?index=random); */
+    background: url(https://bingw.jasonzeng.dev/?index=1);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mainBox .main .textBox {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0 auto;
+}
+
+.mainBox .main .textBox .text {
+    color: white;
+    font-family: sans-serif;
+    font-size: 5rem;
+    /* cursor: default; */
+    white-space: nowrap;
+}
+
+.mainBox .main .textBox:hover .text::before {
+    content: attr(data-text);
+    position: absolute;
+    text-shadow: 2px 0 red;
+    left: -2px;
+    clip-path: inset(0 0 0 0);
+    animation: ani2 2s infinite linear alternate-reverse;
+}
+
+.mainBox .main .textBox:hover .text::after {
+    content: attr(data-text);
+    position: absolute;
+    text-shadow: -2px 0 blue;
+    left: 2px;
+    clip-path: inset(0 0 0 0);
+    animation: ani1 2s infinite linear alternate-reverse;
+}
+
+@keyframes ani1 {
+    0% {
+        clip-path: inset(15px 0 70px 0);
+    }
+
+    5% {
+        clip-path: inset(80px 0 5px 0);
+    }
+
+    10% {
+        clip-path: inset(50px 0 50px 0);
+    }
+
+    15% {
+        clip-path: inset(30px 0 20px 0);
+    }
+
+    20% {
+        clip-path: inset(60px 0 60px 0);
+    }
+
+    25% {
+        clip-path: inset(20px 0 30px 0);
+    }
+
+    30% {
+        clip-path: inset(70px 0 10px 0);
+    }
+
+    35% {
+        clip-path: inset(40px 0 40px 0);
+    }
+
+    40% {
+        clip-path: inset(90px 0 0px 0);
+    }
+
+    45% {
+        clip-path: inset(10px 0 80px 0);
+    }
+
+    50% {
+        clip-path: inset(60px 0 20px 0);
+    }
+
+    55% {
+        clip-path: inset(30px 0 50px 0);
+    }
+
+    60% {
+        clip-path: inset(80px 0 10px 0);
+    }
+
+    65% {
+        clip-path: inset(20px 0 70px 0);
+    }
+
+    70% {
+        clip-path: inset(50px 0 40px 0);
+    }
+
+    75% {
+        clip-path: inset(90px 0 20px 0);
+    }
+
+    80% {
+        clip-path: inset(10px 0 30px 0);
+    }
+
+    85% {
+        clip-path: inset(40px 0 10px 0);
+    }
+
+    90% {
+        clip-path: inset(70px 0 60px 0);
+    }
+
+    95% {
+        clip-path: inset(30px 0 80px 0);
+    }
+
+    100% {
+        clip-path: inset(60px 0 50px 0);
+    }
+}
+
+@keyframes ani2 {
+    0% {
+        clip-path: inset(60px 0 30px 0);
+    }
+
+    5% {
+        clip-path: inset(30px 0 70px 0);
+    }
+
+    10% {
+        clip-path: inset(80px 0 10px 0);
+    }
+
+    15% {
+        clip-path: inset(40px 0 50px 0);
+    }
+
+    20% {
+        clip-path: inset(20px 0 90px 0);
+    }
+
+    25% {
+        clip-path: inset(70px 0 20px 0);
+    }
+
+    30% {
+        clip-path: inset(50px 0 80px 0);
+    }
+
+    35% {
+        clip-path: inset(90px 0 10px 0);
+    }
+
+    40% {
+        clip-path: inset(10px 0 30px 0);
+    }
+
+    45% {
+        clip-path: inset(60px 0 70px 0);
+    }
+
+    50% {
+        clip-path: inset(20px 0 40px 0);
+    }
+
+    55% {
+        clip-path: inset(80px 0 50px 0);
+    }
+
+    60% {
+        clip-path: inset(30px 0 90px 0);
+    }
+
+    65% {
+        clip-path: inset(70px 0 20px 0);
+    }
+
+    70% {
+        clip-path: inset(50px 0 80px 0);
+    }
+
+    75% {
+        clip-path: inset(90px 0 40px 0);
+    }
+
+    80% {
+        clip-path: inset(20px 0 10px 0);
+    }
+
+    85% {
+        clip-path: inset(60px 0 70px 0);
+    }
+
+    90% {
+        clip-path: inset(30px 0 90px 0);
+    }
+
+    95% {
+        clip-path: inset(70px 0 30px 0);
+    }
+
+    100% {
+        clip-path: inset(40px 0 10px 0);
+    }
+}
+
+.mainBox .main .typewriter {
+    width: 50rem;
+    height: 4rem;
+    background-color: rgba(255, 255, 255, .85);
+    backdrop-filter: blur(10px);
+    position: fixed;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 1rem;
+    text-align: center;
+    line-height: 4rem;
+    font-size: 2rem;
+    /* animation: tying 2s steps(22), blnk .5s step-end infinite alternate;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 3px solid; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mainBox .main .typewriter .typewriterText{
+    width: 70%;
+    text-align: center;
+    line-height: 2rem;
+    font-size: 2rem;
+    animation: tying 2s steps(22), blnk .5s step-end infinite alternate;
+        white-space: nowrap;
+        overflow: hidden;
+        border-right: 3px solid;
+}
+
+@keyframes tying {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 70%;
+    }
+}
+
+@keyframes blnk {
+    50% {
+        border-color: transparent;
+    }
+}
+
+
+
+.mainBox .content {
+    width: 100%;
+    height: 100%;
+    min-width: 100dvw;
+    min-height: 100dvh;
+    max-width: 100dvw;
+    max-height: 100dvh;
+    background-color: rgba(255, 255, 255, .85);
+    backdrop-filter: blur(10px);
+
+}
