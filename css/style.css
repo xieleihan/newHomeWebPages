@@ -83,7 +83,10 @@ html {
     src: url('../font-family/Aurebesh.ttf');
 }
 
-
+@font-face{
+    font-family: 'JetBrainsMonoBold';
+    src: url('../font-family/JetBrainsMono-Bold.ttf');
+}
 
 /* end */
 
@@ -130,6 +133,7 @@ html {
     padding: 0 1rem 0 1rem;
     border-radius: 1rem;
     font-size: 1rem;
+    font-family: 'JetBrainsMonoBold';
 }
 
 .mainBox .head ul li.active {
@@ -183,7 +187,7 @@ html {
 
 .mainBox .main .textBox .text {
     color: white;
-    font-family: sans-serif;
+    font-family: 'JetBrainsMonoBold';
     font-size: 5rem;
     /* cursor: default; */
     white-space: nowrap;
@@ -428,6 +432,46 @@ html {
     }
 }
 
+.mainBox .main .copyrightBox{
+    width: 30rem;
+    height: 2rem;
+    position: fixed;
+
+    bottom: 1rem;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.mainBox .main .copyrightBox .copyright{
+    color: white;
+    text-align: center;
+    line-height: 2rem;
+    width: 100%;
+    height: 100%;
+    font-size: 1rem;
+    font-family: 'JetBrainsMonoBold';
+}
+
+.mainBox .main .findMeBox{
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    transform: translate(-50%,-50%);
+    background: url("../images/avater.jpg");
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border: 2px solid white;
+    opacity: .5;
+    transition: all .5s;
+}
+
+.mainBox .main .findMeBox:hover{
+    border: 2px solid #bee7e9;
+    opacity: 1;
+}
 
 
 .mainBox .content {
@@ -439,5 +483,4 @@ html {
     max-height: 100dvh;
     background-color: rgba(255, 255, 255, .85);
     backdrop-filter: blur(10px);
-
 }
