@@ -134,6 +134,7 @@ html {
     border-radius: 1rem;
     font-size: 1rem;
     font-family: 'JetBrainsMonoBold';
+    cursor: url('../res/ayuda.cur'), auto;
 }
 
 .mainBox .head ul li.active {
@@ -538,15 +539,26 @@ html {
     top: 20%;
     left: 50%;
     transform: translate(-50%, -50%);
+    border: 3px dotted #9ca8b8;
+    border-radius: 50%;
 
 }
 
 .mainBox .content .info .infoBox .infoBoxLeft .avater img {
     width: 100%;
     height: 100%;
-    border: 3px dotted #9ca8b8;
     border-radius: 50%;
     padding: 2px;
+    
+}
+@keyframes rotate-border {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 .mainBox .content .info .infoBox .infoBoxLeft .title {
@@ -594,6 +606,7 @@ html {
     font-size: 1.4rem;
     transition: all .5s;
     border-radius: 1rem;
+    cursor: url('../res/ayuda.cur'), auto;
 }
 
 .mainBox .content .info .infoBox .infoBoxLeft .about ul li:nth-child(1) {
@@ -651,5 +664,119 @@ html {
     background-color: white;
     /* background-color: blueviolet; */
     border-left: 3px dotted #ccc;
-    padding-right: 1rem;
+    padding: 1rem;
+}
+
+.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxTop {
+    width: 100%;
+    height: 10%;
+    /* background-color: skyblue; */
+    position: relative;
+}
+
+.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxTop ul{
+    width: 100%;
+    height: 100%;
+    background-color: #ccc;
+    border-radius: 1.3rem 1.3rem 0 0;
+}
+
+.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxTop ul li{
+    width: calc(100% / 3);
+    height: 100%;
+    display: flex;
+    padding-left: 6rem;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 1.2rem;
+    font-weight: 100;
+    background-color: #ccc;
+    overflow: hidden;
+    border-radius: 1.3rem 1.3rem 0 0;
+    transition: all .5s;
+}
+
+.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxTop ul li.active{
+    background-color: #7b8b6f;
+}
+
+.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxTop .mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: calc(100% / 3);
+    height: 100%;
+    border-radius: 1.3rem 1.3rem 0 0;
+    background-color: transparent;
+    outline: 2px dotted white;
+    transition: all 1s;
+}
+
+.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom {
+    width: 100%;
+    height: 90%;
+    /* background-color: orange; */
+    border-radius: 0 0 1.3rem 1.3rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 300%;
+    height: 100%;
+    display: flex;
+    overflow: hidden;
+    flex-direction: row;
+    border-radius: 0 0 1.3rem 1.3rem;
+}
+
+.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .personalInfo{
+    width: 100%;
+    height: 100%;
+    border-radius: 0 0 1.3rem 1.3rem;
+    position: relative;
+    background-color: #7b8b6f;
+}
+
+.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .personalInfo .personalInfoTitle{
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 4rem;
+    white-space: nowrap;
+}
+
+.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .personalInfo .text{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.4rem;
+    width: 100%;
+    padding: 0 2rem 0 2rem;
+}
+
+.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .personalInfo .text .textP{
+    margin-bottom: 1rem;
+}
+
+.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .personalInfo .text .textP:last-child{
+    margin-bottom: 0;
+    font-style: italic;
+    margin-top: 3rem;
+}
+
+.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .programmingLanguage {
+    width: 100%;
+    height: 100%;
+    border-radius: 0 0 1.3rem 1.3rem;
+}
+.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .otherWebsites {
+    width: 100%;
+    height: 100%;
+    border-radius: 0 0 1.3rem 1.3rem;
 }
