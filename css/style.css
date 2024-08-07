@@ -49,7 +49,7 @@ body {
     min-height: 100dvh;
     max-width: 100dvw;
     max-height: 100dvh;
-    cursor: url("../res/normal.cur"),auto;
+    cursor: url("../res/normal.cur"), auto;
     /* background: url(https://bingw.jasonzeng.dev/?index=random); */
     background: url(https://bingw.jasonzeng.dev/?index=1);
     background-attachment: fixed;
@@ -83,7 +83,7 @@ html {
     src: url('../font-family/Aurebesh.ttf');
 }
 
-@font-face{
+@font-face {
     font-family: 'JetBrainsMonoBold';
     src: url('../font-family/JetBrainsMono-Bold.ttf');
 }
@@ -405,15 +405,15 @@ html {
     align-items: center;
 }
 
-.mainBox .main .typewriter .typewriterText{
+.mainBox .main .typewriter .typewriterText {
     width: 70%;
     text-align: center;
     line-height: 2rem;
     font-size: 2rem;
     animation: tying 2s steps(22), blnk .5s step-end infinite alternate;
-        white-space: nowrap;
-        overflow: hidden;
-        border-right: 3px solid;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 3px solid;
 }
 
 @keyframes tying {
@@ -432,7 +432,7 @@ html {
     }
 }
 
-.mainBox .main .copyrightBox{
+.mainBox .main .copyrightBox {
     width: 30rem;
     height: 2rem;
     position: fixed;
@@ -442,7 +442,7 @@ html {
     transform: translate(-50%, -50%);
 }
 
-.mainBox .main .copyrightBox .copyright{
+.mainBox .main .copyrightBox .copyright {
     color: white;
     text-align: center;
     line-height: 2rem;
@@ -452,11 +452,11 @@ html {
     font-family: 'JetBrainsMonoBold';
 }
 
-.mainBox .main .findMeBox{
+.mainBox .main .findMeBox {
     position: fixed;
     bottom: 1rem;
     right: 1rem;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     background: url("../images/avater.jpg");
     width: 3rem;
     height: 3rem;
@@ -468,7 +468,7 @@ html {
     transition: all .5s;
 }
 
-.mainBox .main .findMeBox:hover{
+.mainBox .main .findMeBox:hover {
     border: 2px solid #bee7e9;
     opacity: 1;
 }
@@ -481,6 +481,175 @@ html {
     min-height: 100dvh;
     max-width: 100dvw;
     max-height: 100dvh;
+    position: relative;
     background-color: rgba(255, 255, 255, .85);
     backdrop-filter: blur(10px);
+}
+
+.mainBox .content .broadcast {
+    width: fit-content;
+    position: fixed;
+    top: 3.5rem;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-size: 2rem;
+    font-family: 'JetbrainsMonoBold';
+    border: 3px dotted orange;
+    border-radius: 1rem;
+    padding: 1rem;
+}
+
+.mainBox .content .broadcast span {
+    font-family: 'zk';
+}
+
+.mainBox .content .info {
+    width: 80%;
+    height: 100%;
+    margin: 0 auto;
+    /* background-color: orange; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mainBox .content .info .infoBox {
+    width: 90rem;
+    height: 50rem;
+    background-color: white;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: row;
+}
+
+.mainBox .content .info .infoBox .infoBoxLeft {
+    width: 30%;
+    height: 100%;
+    background-color: white;
+    border-radius: 1rem 0 0 1rem;
+    position: relative;
+}
+
+.mainBox .content .info .infoBox .infoBoxLeft .avater {
+    width: 10rem;
+    height: 10rem;
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+}
+
+.mainBox .content .info .infoBox .infoBoxLeft .avater img {
+    width: 100%;
+    height: 100%;
+    border: 3px dotted #9ca8b8;
+    border-radius: 50%;
+    padding: 2px;
+}
+
+.mainBox .content .info .infoBox .infoBoxLeft .title {
+    position: absolute;
+    top: 38%;
+    color: white;
+    font-size: 3rem;
+    white-space: nowrap;
+    font-family: 'zk';
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.mainBox .content .info .infoBox .infoBoxLeft .smallInfo {
+    position: absolute;
+    top: 48%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 0.8rem;
+}
+
+.mainBox .content .info .infoBox .infoBoxLeft .about {
+    width: 70%;
+    height: 40%;
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.mainBox .content .info .infoBox .infoBoxLeft .about ul {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.mainBox .content .info .infoBox .infoBoxLeft .about ul li {
+    width: 70%;
+    height: 4rem;
+    text-align: center;
+    line-height: 4rem;
+    font-size: 1.4rem;
+    transition: all .5s;
+    border-radius: 1rem;
+}
+
+.mainBox .content .info .infoBox .infoBoxLeft .about ul li:nth-child(1) {
+    background-color: #1f2328;
+    color: white;
+    border: 3px dotted #1f2328;
+}
+
+.mainBox .content .info .infoBox .infoBoxLeft .about ul li:nth-child(1):hover {
+    border: 3px dotted #1f2328;
+    color: #1f2328;
+    background-color: white;
+}
+
+.mainBox .content .info .infoBox .infoBoxLeft .about ul li:nth-child(2) {
+    background-color: #13d36a;
+    border: 3px dotted #13d36a;
+}
+
+.mainBox .content .info .infoBox .infoBoxLeft .about ul li:nth-child(2):hover {
+    color: #13d36a;
+    background-color: white;
+    border: 3px dotted #13d36a;
+}
+
+.mainBox .content .info .infoBox .infoBoxLeft .about ul li:nth-child(3) {
+    background-image: linear-gradient(to right, #ea4536, #f9b900, #25a146, #337cf3);
+    border: 3px dotted white;
+}
+
+.mainBox .content .info .infoBox .infoBoxLeft .about ul li:nth-child(3):hover {
+    color: black;
+    background-image: none;
+    background-color: white;
+    border: 3px dotted black;
+}
+
+.mainBox .content .info .infoBox .infoBoxLeft .about ul li span {
+    margin-right: 1rem;
+    font-size: 1.4rem;
+}
+
+.mainBox .content .info .infoBox .infoBoxRight {
+    width: 70%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox {
+    width: 100%;
+    height: 90%;
+    background-color: white;
+    /* background-color: blueviolet; */
+    border-left: 3px dotted #ccc;
+    padding-right: 1rem;
 }
