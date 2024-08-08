@@ -137,5 +137,6 @@ $(".mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRight
     $(this).addClass("active").siblings().removeClass("active");
     // console.log($(this).index());
     $(".mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxTop .mask").css("left", $(this).index() * 33.33333 + "%");
+    $(".mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box").css("left", $(this).index() * -100 + "%");
 });
 // end

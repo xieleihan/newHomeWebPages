@@ -665,6 +665,7 @@ html {
     /* background-color: blueviolet; */
     border-left: 3px dotted #ccc;
     padding: 1rem;
+    
 }
 
 .mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxTop {
@@ -672,6 +673,9 @@ html {
     height: 10%;
     /* background-color: skyblue; */
     position: relative;
+    border: 3px solid #ccc;
+    border-bottom: 0;
+    border-radius: 1.3rem 1.3rem 0 0;
 }
 
 .mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxTop ul{
@@ -697,7 +701,7 @@ html {
 }
 
 .mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxTop ul li.active{
-    background-color: #7b8b6f;
+    background-color: white;
 }
 
 .mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxTop .mask {
@@ -719,6 +723,8 @@ html {
     border-radius: 0 0 1.3rem 1.3rem;
     position: relative;
     overflow: hidden;
+    border: 3px solid #ccc;
+    border-top: 0;
 }
 
 .mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box {
@@ -731,6 +737,7 @@ html {
     overflow: hidden;
     flex-direction: row;
     border-radius: 0 0 1.3rem 1.3rem;
+    transition: all .5s;
 }
 
 .mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .personalInfo{
@@ -738,7 +745,7 @@ html {
     height: 100%;
     border-radius: 0 0 1.3rem 1.3rem;
     position: relative;
-    background-color: #7b8b6f;
+    background-color: white;
 }
 
 .mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .personalInfo .personalInfoTitle{
@@ -748,6 +755,36 @@ html {
     transform: translate(-50%, -50%);
     font-size: 4rem;
     white-space: nowrap;
+    /* text-decoration: underline; */
+}
+
+.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .personalInfo .personalInfoTitle span{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+        /* 设置（背景图片）高度和宽度。（宽度，高度）*/
+        background-size: 0 1px;
+    
+        /* 设置背景图像的起始位置。 x, y*/
+        /* 控制线开始位置 */
+        /* 背景的开始位置 */
+        /* 0% 100% 从左到右 */
+        /* 100% 100% 从右到左*/
+        background-position: 50% 100%;
+        /* 表示从中间开始向两边 */
+    
+        /* 动画效果 all-全部变化，可以为background 4s-动画时间  ease-in-out-动画效果：慢快慢*/
+        transition: all .4s ease-in-out;
+    
+        /* linear-gradient 渐变效果*/
+        /* to right 从右侧开始渐变*/
+        /* to bottom right 从左上角到右下角的线性渐变: */
+        background-image: linear-gradient(to right, #888888, #878787, #888888);
+}
+
+.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .personalInfo .personalInfoTitle span:hover {
+    background-size: 100% 1px;
 }
 
 .mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .personalInfo .text{
@@ -767,14 +804,49 @@ html {
 .mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .personalInfo .text .textP:last-child{
     margin-bottom: 0;
     font-style: italic;
-    margin-top: 3rem;
+    margin-top: 6rem;
+    font-family: 'JetBrainsMonoBold';
+    font-size: 1rem;
 }
 
 .mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .programmingLanguage {
     width: 100%;
     height: 100%;
     border-radius: 0 0 1.3rem 1.3rem;
+    position: relative;
 }
+
+.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .programmingLanguage .programmingLanguageContent{
+    position: absolute;
+    z-index: 1;
+}
+
+.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .programmingLanguage .programmingLanguageTitle{
+    z-index: 2;
+    position: absolute;
+    font-size: 2rem;
+    top: 10%;
+    left: 10%;
+    width: 70%;
+}
+
+.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .programmingLanguage .programmingLanguageTitle:last-child{
+    top: 40%;
+}
+
+.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .programmingLanguage .programmingLanguageTitle .img{
+    margin-top: 1.4rem;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .programmingLanguage .programmingLanguageTitle .img .icoImg{
+    width: 3rem;
+    height: 3rem;
+}
+
 .mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .otherWebsites {
     width: 100%;
     height: 100%;
