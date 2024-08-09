@@ -1,95 +1,4 @@
-/* base公用样式 */
-/* 初始化样式，通用样式 */
-/* start */
-/* 去掉页面所有标签的内填充外边距 */
-* {
-    /* 定义元素边框与元素内容之间的空间，即上下左右的内边距 */
-    padding: 0;
-    margin: 0;
-    /* css3新增样式 */
-    box-sizing: border-box;
-}
-
-/* 去掉列表符号 */
-li {
-    list-style: none;
-}
-
-/* 去掉img底部的缝隙 */
-img {
-    vertical-align: bottom;
-}
-
-/* 类是可以被定义的，比如，我们可以定义一个浮动类，这样，我们就可以在任意位置使用这个类了。 */
-.fl {
-    float: left;
-}
-
-.fr {
-    float: right;
-}
-
-/* ::after (:after) CSS伪元素 ::after 用来创建一个伪元素，作为已选中元素的最后一个子元素。 
-通常会配合 content 属性来为该元素添加装饰内容。 这个虚拟元素默认是行内元素 */
-.clear::after {
-    clear: both;
-    display: block;
-    content: "";
-}
-
-/* 设置整个页面整个字体相关样式 */
-body {
-    font-size: 14px;
-    /* 设置行高为1.5倍 */
-    line-height: 1.5;
-    /* 设置页面最小宽度 */
-    min-width: 1280px;
-    font-family: 'zk';
-    min-width: 100dvw;
-    min-height: 100dvh;
-    max-width: 100dvw;
-    max-height: 100dvh;
-    cursor: url("../res/normal.cur"), auto;
-    /* background: url(https://bingw.jasonzeng.dev/?index=random); */
-    background: url(https://bingw.jasonzeng.dev/?index=1);
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-/* 超链接的美化 */
-a {
-    /* 去掉超链接下划线 */
-    text-decoration: none;
-    /* 设置a标签的字体颜色继承父类元素 */
-    /* inherit就是继承父类 */
-    color: inherit;
-}
-
-@font-face {
-    font-family: 'zk';
-    src: url('../font-family/zk.ttf');
-}
-
-html {
-    /* 平滑滚动 */
-    scroll-behavior: smooth;
-    font-size: 0.8vw;
-    font-family: 'zk';
-}
-
-@font-face {
-    font-family: 'Aurebesh';
-    src: url('../font-family/Aurebesh.ttf');
-}
-
-@font-face {
-    font-family: 'JetBrainsMonoBold';
-    src: url('../font-family/JetBrainsMono-Bold.ttf');
-}
-
-/* end */
-
+/* Copyright© 2024 By SouthAki All Rights Reserved. */
 .mainBox {
     width: 100dvw;
     height: 100dvh;
@@ -758,33 +667,58 @@ html {
     /* text-decoration: underline; */
 }
 
-.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .personalInfo .personalInfoTitle span{
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-repeat: no-repeat;
+/* .mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .personalInfo .personalInfoTitle span{
+    /* position: absolute; */
+    /* width: 100%; */
+    /* height: 100%; */
+    /* background-repeat: no-repeat; */
         /* 设置（背景图片）高度和宽度。（宽度，高度）*/
-        background-size: 0 1px;
+        /* background-size: 0 1px; */
     
         /* 设置背景图像的起始位置。 x, y*/
         /* 控制线开始位置 */
         /* 背景的开始位置 */
         /* 0% 100% 从左到右 */
         /* 100% 100% 从右到左*/
-        background-position: 50% 100%;
+        /* background-position: 50% 100%; */
         /* 表示从中间开始向两边 */
     
         /* 动画效果 all-全部变化，可以为background 4s-动画时间  ease-in-out-动画效果：慢快慢*/
-        transition: all .4s ease-in-out;
+        /* transition: all .4s ease-in-out; */
     
         /* linear-gradient 渐变效果*/
         /* to right 从右侧开始渐变*/
         /* to bottom right 从左上角到右下角的线性渐变: */
-        background-image: linear-gradient(to right, #888888, #878787, #888888);
+        /* background-image: linear-gradient(to right, #888888, #878787, #888888); */
+/* } */ 
+
+/* .mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .personalInfo .personalInfoTitle span:hover {
+    background-size: 100% 1px;
+} */
+
+.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .personalInfo .personalInfoTitle span {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: 50% 100%;
+    background-image: linear-gradient(to right, #888888, #878787, #888888);
+    background-size: 0 1px;
+    animation: animateBackground 2s infinite ease-in-out;
 }
 
-.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .personalInfo .personalInfoTitle span:hover {
-    background-size: 100% 1px;
+@keyframes animateBackground {
+    0% {
+        background-size: 0 1px;
+    }
+
+    50% {
+        background-size: 100% 1px;
+    }
+
+    100% {
+        background-size: 0 1px;
+    }
 }
 
 .mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .personalInfo .text{
@@ -812,13 +746,19 @@ html {
 .mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .programmingLanguage {
     width: 100%;
     height: 100%;
+    overflow: scroll;
+    overflow-x: hidden;
     border-radius: 0 0 1.3rem 1.3rem;
     position: relative;
 }
 
 .mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .programmingLanguage .programmingLanguageContent{
     position: absolute;
+    overflow: scroll;
+    overflow-x: hidden;
+    height: 200%;
     z-index: 1;
+    width: 100%;
 }
 
 .mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .programmingLanguage .programmingLanguageTitle{
@@ -830,8 +770,12 @@ html {
     width: 70%;
 }
 
-.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .programmingLanguage .programmingLanguageTitle:last-child{
+.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .programmingLanguage .programmingLanguageTitle:nth-child(3){
     top: 40%;
+}
+
+.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .programmingLanguage .programmingLanguageTitle:nth-child(5) {
+    top: 110%;
 }
 
 .mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .programmingLanguage .programmingLanguageTitle .img{
@@ -840,6 +784,70 @@ html {
     display: flex;
     justify-content: flex-start;
     flex-wrap: wrap;
+}
+
+.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .programmingLanguage .programmingLanguageWarn{
+    position: absolute;
+    top: 90%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    height: 6rem;
+    width: 2rem;
+}
+
+.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .programmingLanguage .programmingLanguageWarn .down-type {
+    width: 26px;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .programmingLanguage .programmingLanguageWarn .down-type img {
+    /* 去掉图片边框用 */
+    display: block;
+}
+
+.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .programmingLanguage .programmingLanguageWarn .down-type .down-type-1 {
+    animation: arrow 1.5s infinite 0s;
+}
+
+.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .programmingLanguage .programmingLanguageWarn .down-type .down-type-2 {
+    animation: arrow 1.5s infinite 0.5s;
+}
+
+.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .programmingLanguage .programmingLanguageWarn .down-type .down-type-3 {
+    animation: arrow 1.5s infinite 1s;
+}
+
+@keyframes arrow {
+
+    /* 这里写的是对时间产生比例进行效果输出 */
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .programmingLanguage .programmingLanguageTitle .imgGithubBox {
+    margin-top: 1.4rem;
+    width: 50rem;
+    height: 28rem;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .programmingLanguage .programmingLanguageTitle .imgGithubBox .githubImg{
+    width: 100%;
+    height: 100%;
 }
 
 .mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .programmingLanguage .programmingLanguageTitle .img .icoImg{
@@ -851,4 +859,124 @@ html {
     width: 100%;
     height: 100%;
     border-radius: 0 0 1.3rem 1.3rem;
+    overflow: hidden;
+}
+
+.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .otherWebsites .otherWebsitesBox{
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .otherWebsites .otherWebsitesTitle{
+    position: absolute;
+    top: 10%;
+    left: 35%;
+    transform: translate(-50%, -50%);
+    font-size: 1.4rem;
+}
+
+.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .otherWebsites .itemBox{
+    width: 100%;
+    /* background-color: skyblue; */
+    height: 80%;
+    position: absolute;
+    top: 20%;
+    overflow-y: scroll;
+    /* overscroll-behavior: contain; */
+}
+
+.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .otherWebsites .itemBox ul{
+    width: 100%;
+    display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        /* overflow-y: scroll; */
+}
+
+.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .otherWebsites .itemBox ul a{
+    width: 14rem;
+    height: 10rem;
+    margin: 2rem 3rem 2rem 3rem;
+    cursor: url("../res/ayuda.cur"),auto;
+}
+
+/* .mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .otherWebsites .itemBox ul a:nth-child(3n){
+    margin-right: 0;
+} */
+
+.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .otherWebsites .itemBox ul a li{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    
+}
+
+.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .otherWebsites .itemBox ul a li .mask:hover{
+    background-color: rgba(0, 0, 0, 0);
+    z-index: 0;
+}
+
+.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .otherWebsites .itemBox ul a li .mask{
+    width: 14rem;
+    height: 10rem;
+    z-index: 3;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.4);
+    color: white;
+    top: 0;
+    left: 0;
+    border-radius: 2rem;
+    transition: all .5s;
+}
+
+.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .otherWebsites .itemBox ul a li img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 2rem;
+    z-index: -1;
+}
+
+.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .otherWebsites .itemBox ul a li .liitemTitle{
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    text-align: center;
+    height: 1.4rem;
+    line-height: 1.4rem;
+    padding: 0.2rem 0 0.2rem 0;
+    position: absolute;
+    top: 30%;
+    left: -50%;
+    font-size: 1.4rem;
+    transform: translate(-50%,-50%);
+    transition: all .5s;
+}
+
+.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .otherWebsites .itemBox ul a li:hover .liitemTitle{
+    left: 50%;
+}
+
+.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .otherWebsites .itemBox ul a li .liitemInfo{
+    width: 100%;
+    /* background-color: skyblue; */
+    background-color: rgba(0, 0, 0, 0.2);
+    color: white;
+    text-align: center;
+    height: 1rem;
+    line-height: 1rem;
+    font-size: 1rem;
+    position: absolute;
+    top: 50%;
+    right: -150%;
+    transform: translate(-50%,-50%);
+    transition: all .5s;
+}
+
+.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .otherWebsites .itemBox ul a li:hover .liitemInfo{
+    right: -50%;
 }

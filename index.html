@@ -5,8 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SouthAki的实验室 - My Sun Little</title>
+    <!-- iconfont字体样式 -->
     <link rel="stylesheet" href="./css/iconfont.css">
+    <!-- 公用样式 -->
+    <link rel="stylesheet" href="./css/base.css">
+    <!-- 业务样式表 -->
     <link rel="stylesheet" href="./css/style.css">
+    <!-- 平滑滚动css样式 -->
     <link rel="stylesheet" href="./css/lenis.css">
     <link rel="icon" type="image/x-icon" href="./images/peacock_flat.ico">
     <link rel="apple-touch-icon" href="./images/peacock_flat.ico">
@@ -46,7 +51,7 @@
         <div class="content">
             <div class="broadcast">Broadcast:<span>🚀你好你好你好,前往我的世界中.🚀</span></div>
             <div class="info">
-                <div class="infoBox">
+                <div class="infoBox" id="canvasRelative">
                     <div class="infoBoxLeft">
                         <div class="avater">
                             <img src="./images/rockavater.jpg" alt="">
@@ -87,7 +92,7 @@
                                         </div>
                                     </div>
                                     <div class="programmingLanguage">
-                                        <canvas class="programmingLanguageContent"></canvas>
+                                        <canvas data-lenis-prevent class="programmingLanguageContent"></canvas>
                                         <div class="programmingLanguageTitle">Use Language:
                                             <div class="img">
                                                 <img src="https://fastly.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" class="icoImg" alt="Java logo" />
@@ -159,8 +164,127 @@
                                                 <img src="https://fastly.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" class="icoImg" alt="git logo" />
                                             </div>
                                         </div>
+                                        <div class="programmingLanguageWarn">
+                                            <!-- css3的下移 -->
+                                            <!-- start -->
+                                            <div class="down-type fr">
+                                                <img src="./images/arrow.png" alt="" class="down-type-1" />
+                                                <img src="./images/arrow.png" alt="" class="down-type-2" />
+                                                <img src="./images/arrow.png" alt="" class="down-type-3" />
+                                            </div>
+                                            <!-- end -->
+                                        </div>
+                                        <div class="programmingLanguageTitle">Github Commit:
+                                            <div class="imgGithubBox">
+                                                <img class="githubImg" src="https://raw.githubusercontent.com/xieleihan/xieleihan/main/profile-3d-contrib/profile-gitblock.svg" alt="">
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="otherWebsites">其他网站</div>
+                                    <div class="otherWebsites">
+                                        <div class="otherWebsitesBox">
+                                            <div class="otherWebsitesTitle">Other Websites:<span>下面是我做过的项目喵~,移到图片上试试喵</span></div>
+                                            <div data-lenis-prevent class="itemBox">
+                                                <ul>
+                                                    <a href="#">
+                                                        <li>
+                                                            <img src="./images/bg1.webp" alt="">
+                                                            <div class="liitemTitle">111</div>
+                                                            <div class="liitemInfo">222</div>
+                                                            <div class="mask"></div>
+                                                        </li>
+                                                    </a>
+                                                    <a href="#">
+                                                        <li>
+                                                            <img src="./images/bg2.webp" alt="">
+                                                            <div class="liitemTitle">111</div>
+                                                            <div class="liitemInfo">222</div>
+                                                            <div class="mask"></div>
+                                                        </li>
+                                                    </a>
+                                                    <a href="#">
+                                                        <li>
+                                                            <img src="./images/bg3.webp" alt="">
+                                                            <div class="liitemTitle">111</div>
+                                                            <div class="liitemInfo">222</div>
+                                                            <div class="mask"></div>
+                                                        </li>
+                                                    </a>
+                                                    <a href="#">
+                                                        <li>
+                                                            <img src="./images/bg4.webp" alt="">
+                                                            <div class="liitemTitle">111</div>
+                                                            <div class="liitemInfo">222</div>
+                                                            <div class="mask"></div>
+                                                        </li>
+                                                    </a>
+                                                    <a href="#">
+                                                        <li>
+                                                            <div class="mask"></div>
+                                                            <img src="./images/bg5.webp" alt="">
+                                                            <div class="liitemTitle">111</div>
+                                                            <div class="liitemInfo">222</div>
+                                                        </li>
+                                                    </a>
+                                                    <a href="#">
+                                                        <li>
+                                                            <img src="./images/bg6.webp" alt="">
+                                                            <div class="liitemTitle">111</div>
+                                                            <div class="liitemInfo">222</div>
+                                                            <div class="mask"></div>
+                                                        </li>
+                                                    </a>
+                                                    <a href="#">
+                                                        <li>
+                                                            <img src="./images/bg7.webp" alt="">
+                                                            <div class="liitemTitle">111</div>
+                                                            <div class="liitemInfo">222</div>
+                                                            <div class="mask"></div>
+                                                        </li>
+                                                    </a>
+                                                    <a href="#">
+                                                        <li>
+                                                            <img src="./images/bg2.webp" alt="">
+                                                            <div class="liitemTitle">111</div>
+                                                            <div class="liitemInfo">222</div>
+                                                            <div class="mask"></div>
+                                                        </li>
+                                                    </a>
+                                                    <a href="#">
+                                                        <li>
+                                                            <img src="./images/bg3.webp" alt="">
+                                                            <div class="liitemTitle">111</div>
+                                                            <div class="liitemInfo">222</div>
+                                                            <div class="mask"></div>
+                                                        </li>
+                                                    </a>
+                                                    <a href="#">
+                                                        <li>
+                                                            <img src="./images/bg4.webp" alt="">
+                                                            <div class="liitemTitle">111</div>
+                                                            <div class="liitemInfo">222</div>
+                                                            <div class="mask"></div>
+                                                        </li>
+                                                    </a>
+                                                    <a href="#">
+                                                        <li>
+                                                            <img src="./images/bg5.webp" alt="">
+                                                            <div class="liitemTitle">111</div>
+                                                            <div class="liitemInfo">222</div>
+                                                            <div class="mask"></div>
+                                                        </li>
+                                                    </a>
+                                                    <a href="#">
+                                                        <li>
+                                                            <img src="./images/bg6.webp" alt="">
+                                                            <div class="liitemTitle">111</div>
+                                                            <div class="liitemInfo">222</div>
+                                                            <div class="mask"></div>
+                                                        </li>
+                                                    </a>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -174,6 +298,14 @@
 <script src="./js/jquery-3.7.1.js"></script>
 <!-- 引入lenis平滑滚动文件 -->
 <script src="./js/lenis.min.js"></script>
+<script>
+    const lenis = new Lenis();
+    function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+</script>
 <!-- 字体的js文件 -->
 <script src="./js/iconfont.js"></script>
 <!-- 瀑布流canvas.js文件 -->

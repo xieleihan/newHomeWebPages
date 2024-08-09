@@ -132,8 +132,9 @@ else {
 // end
 
 // 业务代码
-// start
+// 个人信息卡的切换 start
 $(".mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxTop ul li").click(function () {
+    // clearInterval(intervalId1);
     $(this).addClass("active").siblings().removeClass("active");
     // console.log($(this).index());
     $(".mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxTop .mask").css("left", $(this).index() * 33.33333 + "%");
