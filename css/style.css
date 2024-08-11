@@ -458,8 +458,9 @@
     height: 100%;
     border-radius: 50%;
     padding: 2px;
-    
+
 }
+
 @keyframes rotate-border {
     from {
         transform: rotate(0deg);
@@ -564,7 +565,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    
+
 }
 
 .mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox {
@@ -574,7 +575,7 @@
     /* background-color: blueviolet; */
     border-left: 3px dotted #ccc;
     padding: 1rem;
-    
+
 }
 
 .mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxTop {
@@ -587,14 +588,14 @@
     border-radius: 1.3rem 1.3rem 0 0;
 }
 
-.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxTop ul{
+.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxTop ul {
     width: 100%;
     height: 100%;
     background-color: #ccc;
     border-radius: 1.3rem 1.3rem 0 0;
 }
 
-.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxTop ul li{
+.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxTop ul li {
     width: calc(100% / 3);
     height: 100%;
     display: flex;
@@ -609,7 +610,7 @@
     transition: all .5s;
 }
 
-.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxTop ul li.active{
+.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxTop ul li.active {
     background-color: white;
 }
 
@@ -649,7 +650,7 @@
     transition: all .5s;
 }
 
-.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .personalInfo{
+.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .personalInfo {
     width: 100%;
     height: 100%;
     border-radius: 0 0 1.3rem 1.3rem;
@@ -657,7 +658,7 @@
     background-color: white;
 }
 
-.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .personalInfo .personalInfoTitle{
+.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .personalInfo .personalInfoTitle {
     position: absolute;
     top: 10%;
     left: 50%;
@@ -669,28 +670,28 @@
 
 /* .mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .personalInfo .personalInfoTitle span{
     /* position: absolute; */
-    /* width: 100%; */
-    /* height: 100%; */
-    /* background-repeat: no-repeat; */
-        /* 设置（背景图片）高度和宽度。（宽度，高度）*/
-        /* background-size: 0 1px; */
-    
-        /* 设置背景图像的起始位置。 x, y*/
-        /* 控制线开始位置 */
-        /* 背景的开始位置 */
-        /* 0% 100% 从左到右 */
-        /* 100% 100% 从右到左*/
-        /* background-position: 50% 100%; */
-        /* 表示从中间开始向两边 */
-    
-        /* 动画效果 all-全部变化，可以为background 4s-动画时间  ease-in-out-动画效果：慢快慢*/
-        /* transition: all .4s ease-in-out; */
-    
-        /* linear-gradient 渐变效果*/
-        /* to right 从右侧开始渐变*/
-        /* to bottom right 从左上角到右下角的线性渐变: */
-        /* background-image: linear-gradient(to right, #888888, #878787, #888888); */
-/* } */ 
+/* width: 100%; */
+/* height: 100%; */
+/* background-repeat: no-repeat; */
+/* 设置（背景图片）高度和宽度。（宽度，高度）*/
+/* background-size: 0 1px; */
+
+/* 设置背景图像的起始位置。 x, y*/
+/* 控制线开始位置 */
+/* 背景的开始位置 */
+/* 0% 100% 从左到右 */
+/* 100% 100% 从右到左*/
+/* background-position: 50% 100%; */
+/* 表示从中间开始向两边 */
+
+/* 动画效果 all-全部变化，可以为background 4s-动画时间  ease-in-out-动画效果：慢快慢*/
+/* transition: all .4s ease-in-out; */
+
+/* linear-gradient 渐变效果*/
+/* to right 从右侧开始渐变*/
+/* to bottom right 从左上角到右下角的线性渐变: */
+/* background-image: linear-gradient(to right, #888888, #878787, #888888); */
+/* } */
 
 /* .mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .personalInfo .personalInfoTitle span:hover {
     background-size: 100% 1px;
@@ -721,7 +722,7 @@
     }
 }
 
-.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .personalInfo .text{
+.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .personalInfo .text {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -731,11 +732,11 @@
     padding: 0 2rem 0 2rem;
 }
 
-.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .personalInfo .text .textP{
+.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .personalInfo .text .textP {
     margin-bottom: 1rem;
 }
 
-.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .personalInfo .text .textP:last-child{
+.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .personalInfo .text .textP:last-child {
     margin-bottom: 0;
     font-style: italic;
     margin-top: 6rem;
@@ -752,7 +753,7 @@
     position: relative;
 }
 
-.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .programmingLanguage .programmingLanguageContent{
+.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .programmingLanguage .programmingLanguageContent {
     position: absolute;
     overflow: scroll;
     overflow-x: hidden;
@@ -761,7 +762,7 @@
     width: 100%;
 }
 
-.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .programmingLanguage .programmingLanguageTitle{
+.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .programmingLanguage .programmingLanguageTitle {
     z-index: 2;
     position: absolute;
     font-size: 2rem;
@@ -770,7 +771,7 @@
     width: 70%;
 }
 
-.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .programmingLanguage .programmingLanguageTitle:nth-child(3){
+.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .programmingLanguage .programmingLanguageTitle:nth-child(3) {
     top: 40%;
 }
 
@@ -778,7 +779,7 @@
     top: 110%;
 }
 
-.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .programmingLanguage .programmingLanguageTitle .img{
+.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .programmingLanguage .programmingLanguageTitle .img {
     margin-top: 1.4rem;
     width: 100%;
     display: flex;
@@ -786,7 +787,7 @@
     flex-wrap: wrap;
 }
 
-.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .programmingLanguage .programmingLanguageWarn{
+.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .programmingLanguage .programmingLanguageWarn {
     position: absolute;
     top: 90%;
     left: 50%;
@@ -845,12 +846,12 @@
     justify-content: flex-start;
 }
 
-.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .programmingLanguage .programmingLanguageTitle .imgGithubBox .githubImg{
+.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .programmingLanguage .programmingLanguageTitle .imgGithubBox .githubImg {
     width: 100%;
     height: 100%;
 }
 
-.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .programmingLanguage .programmingLanguageTitle .img .icoImg{
+.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .programmingLanguage .programmingLanguageTitle .img .icoImg {
     width: 3rem;
     height: 3rem;
 }
@@ -862,13 +863,13 @@
     overflow: hidden;
 }
 
-.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .otherWebsites .otherWebsitesBox{
+.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .otherWebsites .otherWebsitesBox {
     width: 100%;
     height: 100%;
     position: relative;
 }
 
-.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .otherWebsites .otherWebsitesTitle{
+.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .otherWebsites .otherWebsitesTitle {
     position: absolute;
     top: 10%;
     left: 35%;
@@ -876,7 +877,7 @@
     font-size: 1.4rem;
 }
 
-.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .otherWebsites .itemBox{
+.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .otherWebsites .itemBox {
     width: 100%;
     /* background-color: skyblue; */
     height: 80%;
@@ -886,40 +887,40 @@
     /* overscroll-behavior: contain; */
 }
 
-.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .otherWebsites .itemBox ul{
+.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .otherWebsites .itemBox ul {
     width: 100%;
     display: flex;
-        justify-content: flex-start;
-        align-items: flex-start;
-        flex-wrap: wrap;
-        /* overflow-y: scroll; */
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    /* overflow-y: scroll; */
 }
 
-.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .otherWebsites .itemBox ul a{
+.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .otherWebsites .itemBox ul a {
     width: 14rem;
     height: 10rem;
     margin: 2rem 3rem 2rem 3rem;
-    cursor: url("../res/ayuda.cur"),auto;
+    cursor: url("../res/ayuda.cur"), auto;
 }
 
 /* .mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .otherWebsites .itemBox ul a:nth-child(3n){
     margin-right: 0;
 } */
 
-.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .otherWebsites .itemBox ul a li{
+.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .otherWebsites .itemBox ul a li {
     width: 100%;
     height: 100%;
     position: relative;
     overflow: hidden;
-    
+
 }
 
-.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .otherWebsites .itemBox ul a li .mask:hover{
+.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .otherWebsites .itemBox ul a li .mask:hover {
     background-color: rgba(0, 0, 0, 0);
     z-index: 0;
 }
 
-.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .otherWebsites .itemBox ul a li .mask{
+.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .otherWebsites .itemBox ul a li .mask {
     width: 14rem;
     height: 10rem;
     z-index: 3;
@@ -932,7 +933,7 @@
     transition: all .5s;
 }
 
-.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .otherWebsites .itemBox ul a li img{
+.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .otherWebsites .itemBox ul a li img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -941,7 +942,7 @@
     z-index: -1;
 }
 
-.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .otherWebsites .itemBox ul a li .liitemTitle{
+.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .otherWebsites .itemBox ul a li .liitemTitle {
     width: 100%;
     background-color: rgba(0, 0, 0, 0.6);
     color: white;
@@ -953,15 +954,15 @@
     top: 30%;
     left: -50%;
     font-size: 1.4rem;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     transition: all .5s;
 }
 
-.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .otherWebsites .itemBox ul a li:hover .liitemTitle{
+.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .otherWebsites .itemBox ul a li:hover .liitemTitle {
     left: 50%;
 }
 
-.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .otherWebsites .itemBox ul a li .liitemInfo{
+.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .otherWebsites .itemBox ul a li .liitemInfo {
     width: 100%;
     /* background-color: skyblue; */
     background-color: rgba(0, 0, 0, 0.2);
@@ -973,10 +974,79 @@
     position: absolute;
     top: 50%;
     right: -150%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     transition: all .5s;
 }
 
-.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .otherWebsites .itemBox ul a li:hover .liitemInfo{
+.mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box .otherWebsites .itemBox ul a li:hover .liitemInfo {
     right: -50%;
+}
+
+.mainBox .likeThings {
+    width: 100%;
+    height: 100%;
+    min-width: 100dvw;
+    min-height: 100dvh;
+    max-width: 100dvw;
+    max-height: 100dvh;
+    background-color: #1f2328;
+
+    position: relative;
+}
+
+.mainBox .likeThings .likeThingsBox {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: white;
+}
+
+.mainBox .likeThings .likeThingsBox .likeContent {
+    width: 0;
+    height: 100%;
+    background-color: #1f2328;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: all 5s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+    overflow: hidden;
+}
+
+.mainBox .likeThings .likeThingsBox .likeContent .contentBox {
+    width: 100%;
+    height: 100%;
+
+}
+
+.mainBox .likeThings .likeThingsBox .likeContent .contentBox ul {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+    justify-items: center;
+    position: relative;
+
+}
+
+.mainBox .likeThings .likeThingsBox .likeContent .contentBox ul .pointer {
+    position: absolute;
+    --l: 2rem;
+    --t: 0.08rem;
+    --g: 1rem;
+    --s: 15rem;
+    --x: 0px;
+    --y: 0px;
+    left: calc(var(--x) - var(--g));
+    top: calc(var(--y) - var(--g));
+    width: calc(var(--s) + var(--g) * 2);
+    height: calc(var(--s) + var(--g) * 2);
+    border: var(--t) solid #fff;
+    transition: all 0.8s;
+    -webkit-mask: conic-gradient(at var(--l) var(--l), transparent 75%, blue 75% 100%) 0 0 / calc(100% - var(--l)) calc(100% - var(--l)) repeat;
+    mask: conic-gradient(at var(--l) var(--l), transparent 75%, blue 75% 100%) 0 0 / calc(100% - var(--l)) calc(100% - var(--l)) repeat;
+    display: none;
 }

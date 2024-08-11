@@ -141,3 +141,52 @@ $(".mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRight
     $(".mainBox .content .info .infoBox .infoBoxRight .infoBoxRightBox .infoBoxRightBoxBottom .box").css("left", $(this).index() * -100 + "%");
 });
 // end
+
+// likeContent的业务逻辑
+// start
+var isThrottled = false;
+var likeContent = $(".mainBox .main").outerHeight() + $(".mainBox .content").outerHeight() - $(".mainBox .content").outerHeight() / 2;
+// console.log(likeContent);
+$(window).on('scroll', function () {
+    var topKm = 0;
+    if (!isThrottled) {
+        isThrottled = true;
+
+        // 延迟执行的逻辑
+        setTimeout(function () {
+            topKm = $(window).scrollTop();
+            // console.log(topKm);
+            isThrottled = false; // 重置节流状态
+            // console.log(likeContent - 3);
+            if (topKm > likeContent - 3) {
+                $(".mainBox .likeThings .likeThingsBox .likeContent").css("width", "100%");
+            } else {
+                $(".mainBox .likeThings .likeThingsBox .likeContent").css("width", "0%"); $(".mainBox .likeThings .likeThingsBox .likeContent .contentBox ul .pointer").css('display', 'none');
+            }
+        }, 200);
+
+    }
+
+});
+// $(".mainBox .likeThings .likeThingsBox .likeContent")
+// end
+// 生成随机图片
+// start
+$(".mainBox .likeThings .likeThingsBox .likeContent .contentBox ul li").each(function () {
+    var randomUrl = "https://picsum.photos/200?" + Math.random();
+    $(this).css({
+        "width": "15rem",
+        "height": "15rem",
+        "background-image": "url('" + randomUrl + "')",
+        "background-size": "cover",
+        "background-repeat": "no-repeat"
+    });
+});
+// end
+$(".mainBox .likeThings .likeThingsBox .likeContent .contentBox ul li").on("mouseover", function () {
+    var offsetTop = $(this).position().top;
+    var offsetLeft = $(this).position().left;
+    $(".mainBox .likeThings .likeThingsBox .likeContent .contentBox ul .pointer").css('display', 'block');
+    $(".mainBox .likeThings .likeThingsBox .likeContent .contentBox ul .pointer").css('--x', offsetLeft + "px");
+    $(".mainBox .likeThings .likeThingsBox .likeContent .contentBox ul .pointer").css('--y', offsetTop + "px");
+})
