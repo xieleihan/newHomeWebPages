@@ -160,8 +160,12 @@ $(window).on('scroll', function () {
             // console.log(likeContent - 3);
             if (topKm > likeContent - 3) {
                 $(".mainBox .likeThings .likeThingsBox .likeContent").css("width", "100%");
+                // $(".mainBox .likeThings .likeThingsBox .likeContent .contentBox ul .pointer").css('--x', 209.87998962402344 + "px");
+                // $(".mainBox .likeThings .likeThingsBox .likeContent .contentBox ul .pointer").css('--y', 0 + "px");
+                // $(".mainBox .likeThings .likeThingsBox .likeContent").css("width", "0%"); $(".mainBox .likeThings .likeThingsBox .likeContent .contentBox ul .pointer").css('display', 'none');
             } else {
                 $(".mainBox .likeThings .likeThingsBox .likeContent").css("width", "0%"); $(".mainBox .likeThings .likeThingsBox .likeContent .contentBox ul .pointer").css('display', 'none');
+
             }
         }, 200);
 
