@@ -2,6 +2,7 @@ import { configureStore } from '@reduxjs/toolkit'
 
 // 创建store
 const store = configureStore({
+    reducer:{}
 })
 
 // 定义RootState和AppDispatch类型
