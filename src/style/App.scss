@@ -8,4 +8,16 @@
     align-items: center;
     background: url(../assets/images/bg.gif) no-repeat center center;
     background-size: cover;
+    .operate{
+        border-radius: $radius;
+        background-color: rgba($color: #000000, $alpha: .05);
+        @media (max-width: 768px){
+            height: 40%;
+            width: 80%;
+        }
+        @media (min-width: 768px){
+            width: 50%;
+            aspect-ratio: 16/9;
+        }
+    }
 }
