@@ -1,0 +1,75 @@
+@import './base.scss';
+
+.home-layout{
+    width: 100dvw;
+    min-height: 100dvh;
+    position: relative;
+    font-family: 'zk';
+    .header{
+        width: 100%;
+        height: 1rem;
+        padding: 0 1rem;
+        display: flex;
+        align-items: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        justify-content: space-between;
+        background-color: $headerBgColor;
+        .left{
+            height: 70%;
+            display: flex;
+            align-items: center;
+            .avater{
+                aspect-ratio: 1/1;
+                height: 100%;
+            }
+            .title{
+                height: 100%;
+                line-height: .7rem;
+                color: white;
+                margin-left: .2rem;
+                font-size: .3rem;
+                white-space: nowrap;
+            }
+        }
+        .right{
+            height: 100%;
+            display: flex;
+            justify-content: flex-end;
+            .nav{
+                background-color: transparent;
+                
+                height: 100%;
+                .ant-menu-item{
+                    color: white;
+                    height: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-family: 'zk';
+                    .ant-menu-title-content{
+                        height: 70%;
+                        display: flex;
+                        align-items: center;
+                        
+                    }
+                }
+            }
+        }
+        // 电脑端
+        @media (min-width: 768px){
+            height: .5rem;
+            .left{
+                .title{
+                    font-size: .2rem;
+                    line-height: .35rem;
+                }
+            }
+            .right{
+                width: 4rem;
+            }
+        }
+    }
+    
+}

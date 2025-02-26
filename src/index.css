@@ -39,9 +39,10 @@ img {
 
 /* 设置整个页面整个字体相关样式 */
 body {
-  font-family: "PingFang SC", "Microsoft YaHei", "Arial", "Helvetica", "sans-serif";
+  font-family: "zk", "PingFang SC", "Microsoft YaHei", "Arial", "Helvetica", "sans-serif";
   /* 设置行高为1.5倍 */
   line-height: 1.5;
+  cursor: url("./assets/cursor/normal.cur"), auto;
 }
 
 /* 超链接的美化 */
@@ -57,6 +58,11 @@ html {
   /* 平滑滚动 */
   scroll-behavior: smooth;
   font-size: 0.3rem;
+}
+
+@font-face {
+  font-family: 'zk';
+  src: url('./assets/font-family/zk.woff2') format('woff2');
 }
 
 /* end */
