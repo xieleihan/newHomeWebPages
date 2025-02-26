@@ -2,8 +2,8 @@ export const en = {
     translation: {
         // 起始页
         startPages: {
-            title: 'weclcome',
-
+            title: 'Welcome to my homepage',
+            enter: 'Enter'
         }
     }
 }
