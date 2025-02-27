@@ -8,6 +8,7 @@ import { useState } from 'react';
 import Settings from '../../../assets/icon/setting.svg';
 import Sider from '../../../assets/icon/sider.svg';
 import Translate from '../../../assets/icon/translate.svg';
+import avater from '../../../assets/images/avater.png';
 
 interface HomeheaderComProps {
     styles: {
@@ -51,7 +52,7 @@ function HomeheaderCom({styles}: HomeheaderComProps) {
         <>
             <Header className={styles.header}>
                 <div className={styles.left}>
-                    <img className={styles.avater} loading="lazy" src="https://avatars.githubusercontent.com/u/57227318?v=4" alt="avater" />
+                    <img className={styles.avater} loading="lazy" src={avater} alt="avater" />
                     <h1 className={styles.title}>南秋SouthAki的个人主页</h1>
                 </div>
                 <nav className={styles.right}>

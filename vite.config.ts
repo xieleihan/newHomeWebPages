@@ -1,17 +1,38 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import compression from 'vite-plugin-compression';
+import { viteVConsole } from 'vite-plugin-vconsole';
+import * as path from 'path'
+import { visualizer } from 'rollup-plugin-visualizer'
 
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [
+    // React 插件
     react(),
+    // Gzip 压缩插件
     compression({
       verbose: true,
       disable: false,
       threshold: 10240,// 压缩阈值，小于这个值的文件将不会被压缩（单位为字节）这里就是大于 10kb 才压缩
       algorithm: 'gzip', // 压缩算法
       ext: '.gz' // 压缩后缀名
+    }),
+    // VConsole 插件
+    viteVConsole({
+      entry: path.resolve('src/main.tsx'), // 或者可以使用这个配置: [path.resolve('src/main.ts')]
+      enabled: true, // 可自行结合 mode 和 command 进行判断
+      config: {
+        maxLogNumber: 1000,
+        theme: 'dark'
+      }
+    }),
+    // 可视化分析插件
+    visualizer({
+      filename: './dist/stats.html',
+      open: true,
+      gzipSize: true,
+      brotliSize: true
     })
   ],
   css: {
