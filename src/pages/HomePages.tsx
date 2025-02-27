@@ -2,7 +2,7 @@
 import { Layout } from 'antd';
 
 // 导入样式
-import '../style/HomePages.scss';
+import styles from '../style/HomePages.module.scss';
 
 // 导入组件
 import HomeheaderCom from '../components/Modules/home/HomeheaderCom';
@@ -13,13 +13,16 @@ function HomePages() {
 
     return (
         <>
-            <Layout className='home-layout'>
+            <Layout className={styles.home_layout}>
                 {/* 顶部栏 */}
-                <HomeheaderCom />
+                {/* @ts-expect-error: HomeheaderCom does not have type definitions */}
+                <HomeheaderCom styles={styles} />
                 {/* 内容区 */}
-                {/* <HomecontentCom /> */}
+                {/* @ts-expect-error: : HomecontentCom does not have type definitions */}
+                <HomecontentCom styles={styles} />
                 {/* 底部栏 */}
-                {/* <HomefooterCom /> */}
+                { /* @ts-expect-error: HomefooterCom does not have type definitions */}
+                <HomefooterCom styles={styles} />
             </Layout>
         </>
     );

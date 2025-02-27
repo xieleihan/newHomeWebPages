@@ -1,0 +1,13 @@
+@import '../base.module.scss';
+
+.SignatureCom{
+    width: 100%;
+    height: 100dvh;
+    background: url(../../assets/icon/homebg.svg);
+    display: flex;
+
+    // 电脑端
+    @media (min-width: 768px) {
+        flex-direction: column;
+    }
+}

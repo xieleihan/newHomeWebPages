@@ -1,12 +1,16 @@
 // 导入Antd
 import { Layout } from 'antd';
 
-function HomefooterCom() {
+interface HomefooterComProps {
+    styles: { footer: string };
+}
+
+function HomefooterCom({ styles }: HomefooterComProps) {
     const { Footer } = Layout;
 
     return (
         <>
-            <Footer className='footer'>Header</Footer>
+            <Footer className={styles.footer}>Header</Footer>
         </>
     );
 }

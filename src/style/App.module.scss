@@ -1,4 +1,4 @@
-@import './base.scss';
+@import './base.module.scss';
 
 .app {
     width: 100dvw;
@@ -20,7 +20,7 @@
             width: .5rem;
             height: .5rem;
             @media (max-width: 768px) {
-                right: .5rem;
+                right: 1rem;
                 top: .5rem;
             }
             @media (min-width: 768px) {
@@ -77,6 +77,7 @@
             transform: translateX(-50%);
             cursor: default;
             white-space: nowrap;
+            font-size: .3rem;
         }
     }
 

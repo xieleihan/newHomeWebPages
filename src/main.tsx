@@ -15,6 +15,16 @@ import Router from './router/index';
 import store from './store/index';
 import { Provider } from 'react-redux';
 
+// 导入Lenis
+import 'lenis/dist/lenis.css'
+import Lenis from 'lenis';
+const lenis = new Lenis();
+function raf(time: DOMHighResTimeStamp) {
+  lenis.raf(time);
+  requestAnimationFrame(raf);
+}
+requestAnimationFrame(raf);
+
 // 导入ts
 import './utils/console.js';
 

@@ -1,5 +1,5 @@
 // 导入样式
-import './style/App.scss';
+import styles from './style/App.module.scss';
 
 // 引入i18n
 import './lang/index';
@@ -20,6 +20,7 @@ import { Outlet, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
 function App() {
+
   // 创建React变量
   const [isStartPages, setIsStartPages] = useState(true);
 
@@ -54,19 +55,19 @@ function App() {
 
   return (
     <>
-      <div className="app">
+      <div className={styles.app}>
         {
           isStartPages ? (
             <>
-              <div className="start">
-                <div className="translate">
+              <div className={styles.start}>
+                <div className={styles.translate}>
                   <Dropdown menu={{ items }}>
                     <img onClick={(e) => { e.preventDefault() }} src={translate} alt="" />
                   </Dropdown>
                 </div>
-                <div className="operate">
-                  <img className='logo' src={Logo} alt="" />
-                  <p className='title'>
+                <div className={styles.operate}>
+                  <img className={styles.logo} src={Logo} alt="" />
+                  <p className={styles.title}>
                     {t('startPages.title')}
                   </p>
                   <Button
@@ -79,7 +80,7 @@ function App() {
                     {t('startPages.enter')}
                   </Button>
                 </div>
-                <footer className='footer'>
+                <footer className={styles.footer}>
                   Copyright© 2025 SouthAki,All rights reserved.
                 </footer>
               </div>

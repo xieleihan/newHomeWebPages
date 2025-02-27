@@ -1,35 +1,95 @@
 // 导入Antd
 import { Layout } from 'antd';
 
+// 导入React
+import { useState } from 'react';
+
 // 导入图片
 import Settings from '../../../assets/icon/setting.svg';
 import Sider from '../../../assets/icon/sider.svg';
 import Translate from '../../../assets/icon/translate.svg';
 
-function HomeheaderCom() {
+interface HomeheaderComProps {
+    styles: {
+        header: string;
+        left: string;
+        avater: string;
+        title: string;
+        right: string;
+        nav: string;
+        item: string;
+        operateBox: string;
+        icon: string;
+        popup: string;
+        popupItem: string;
+    };
+}
+
+function HomeheaderCom({styles}: HomeheaderComProps) {
+    // 创建React变量
+    const [visible, setVisible] = useState(false); // 控制弹出菜单的显示隐藏
+
     const { Header } = Layout;
+
+    // 菜单元素
+    const menuItem = [
+        {
+            key: 'home',
+            name: '首页'
+        },
+        {
+            key: 'project',
+            name: '项目'
+        },
+        {
+            key: 'about',
+            name: '关于'
+        }
+    ]
 
     return (
         <>
-            <Header className='header'>
-                <div className="left">
-                    <img className='avater' loading="lazy" src="https://avatars.githubusercontent.com/u/57227318?v=4" alt="avater" />
-                    <h1 className='title'>南秋SouthAki的个人主页</h1>
+            <Header className={styles.header}>
+                <div className={styles.left}>
+                    <img className={styles.avater} loading="lazy" src="https://avatars.githubusercontent.com/u/57227318?v=4" alt="avater" />
+                    <h1 className={styles.title}>南秋SouthAki的个人主页</h1>
                 </div>
-                <nav className="right">
-                    <ul className='nav'>
-                        <li className='item'>首页</li>
-                        <li className='item'>项目</li>
-                        <li className='item'>关于</li>
+                <nav className={styles.right}>
+                    <ul className={styles.nav}>
+                        {
+                            menuItem.map((item,index) => {
+                                return (
+                                    <li key={index} className={styles.item}>
+                                        <span>{item.name}</span>
+                                    </li>
+                                )
+                            })
+                        }
                     </ul>
-                    <div className="operateBox">
-                        <img loading="lazy" className='icon' src={Sider} alt="侧边栏" />
-                        <img loading="lazy" className='icon' src={Settings} alt="设置" />
-                        <img loading="lazy" className='icon' src={Translate} alt="翻译" />
+                    <div className={styles.operateBox}>
+                        <img onClick={() => {
+                            setVisible(!visible);
+                        }} loading="lazy" className={styles.icon} src={Sider} alt="侧边栏" />
+                        <img loading="lazy" className={styles.icon} src={Settings} alt="设置" />
+                        <img loading="lazy" className={styles.icon} src={Translate} alt="翻译" />
                     </div>
                 </nav>
 
-                <div className="popup"></div>
+                <ul className={styles.popup} style={visible?{
+                    transform: 'scaleY(1)',
+                    opacity: 1
+                } : {
+                    transform: 'scaleY(0)',
+                    opacity: 0
+                }}>
+                    {
+                        menuItem.map((item,index) => {
+                            return (
+                                <li key={index} className={styles.popupItem}>{item.name}</li>
+                            )
+                        })
+                    }
+                </ul>
             </Header>
         </>
     );

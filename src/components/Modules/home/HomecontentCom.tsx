@@ -2,14 +2,22 @@
 import { Layout } from 'antd';
 
 // 导入组件
-import PersonalProfile from './Modules/PersonalProfile';
+import SignatureCom from './Modules/SignatureCom';
+import PersonalProfile from './Modules/PersonalProfile'; // 个人资料
 
-function HomecontentCom() {
+interface HomecontentComProps {
+    styles: { content: string };
+}
+
+function HomecontentCom({ styles }: HomecontentComProps) {
     const { Content } = Layout;
 
     return (
         <>
-            <Content className='content'>
+            <Content className={styles.content}>
+                {/* 个人签名 */}
+                <SignatureCom />
+                {/* 个人资料 */}
                 <PersonalProfile />
             </Content>
         </>
