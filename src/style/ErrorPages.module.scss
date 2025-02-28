@@ -1,0 +1,21 @@
+@import './base.module.scss';
+
+.errorPages{
+    width: 100dvw;
+    height: 100dvh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    .errorImg{
+        width: 80%;
+        aspect-ratio: 1/1;
+    }
+    .errorWord{
+        font-size: .8rem;
+    }
+    .errorDesc{
+        font-size: .8rem;
+        
+    }
+}

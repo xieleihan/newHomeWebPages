@@ -5,20 +5,33 @@ import { lazy, Suspense } from 'react';
 import { Spin } from 'antd';
 
 // 导入视图
-import App from '../App'; // 主视图
+const App = lazy(()=>import('../App')) // 主视图
 const Home = lazy(() => import('../pages/HomePages')); // 主页
+const ErrorPages = lazy(() => import('../pages/ErrorPages')); // 错误页
 
 // 路由配置
 const routes = [
     {
         path: '/',
-        element: <App />,
+        element: (
+            <Suspense fallback={<Spin />}>
+                <App />
+            </Suspense>
+        ),
     },
     {
         path: '/home',
         element: (
             <Suspense fallback={<Spin />}>
                 <Home />
+            </Suspense>
+        ),
+    },
+    {
+        path: '*',
+        element: (
+            <Suspense fallback={<Spin />}>
+                <ErrorPages />
             </Suspense>
         ),
     }

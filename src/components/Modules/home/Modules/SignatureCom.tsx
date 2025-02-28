@@ -10,6 +10,8 @@ import { useEffect } from 'react';
 
 // 导入图片
 import avater from '../../../../assets/images/avater.png';
+import arrow from '../../../../assets/icon/arrow.png';
+import telegramIcon from '../../../../assets/icon/telegram.svg';
 
 function SignatureCom() {
     useEffect(() => {
@@ -25,6 +27,7 @@ function SignatureCom() {
     return (
         <>
             <section className={styles.SignatureCom}>
+                {/* 左边文字 */}
                 <div className={styles.topLeft}>
                     <p className={styles.welcome}>
                         你好,我是<span className={styles.linear}>SouthAki</span>
@@ -38,8 +41,22 @@ function SignatureCom() {
                         期待与你相遇!
                     </p>
                 </div>
+
+                {/* 右边头像 */}
                 <div className={styles.bottomRight}>
                     <img className={styles.avater} src={avater} alt="个人头像" loading='lazy' />
+                </div>
+
+                {/* 下拉箭头 */}
+                <div className={styles.arrowBox}>
+                    <img loading='lazy' className={styles.arrow} src={arrow} alt="箭头" />
+                    <img loading='lazy' className={styles.arrow} src={arrow} alt="箭头" />
+                    <img loading='lazy' className={styles.arrow} src={arrow} alt="箭头" />
+                </div>
+
+                {/* 右下角联系我 */}
+                <div className={styles.contactMe}>
+                    <img className={styles.contactIcon} src={telegramIcon} alt="联系我" loading='lazy' />
                 </div>
             </section>
         </>

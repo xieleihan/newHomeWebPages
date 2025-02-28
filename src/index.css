@@ -66,4 +66,12 @@ html {
   src: url('./assets/font-family/zk.woff2') format('woff2');
 }
 
+#root{
+  width: 100dvw;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 /* end */

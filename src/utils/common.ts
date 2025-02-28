@@ -35,7 +35,7 @@ function parseTime(time: string | number | Date, cFormat: string = '{y}-{m}-{d} 
         a: date.getDay()
     };
 
-    const time_str = cFormat.replace(/{([ymdhisa])+}/g, (result, key) => {
+    const time_str = cFormat.replace(/{([ymdhisa])+}/g, (key) => {
         const value = formatObj[key as keyof typeof formatObj];
         // Note: getDay() returns 0 on Sunday
         if (key === 'a') {
@@ -50,7 +50,7 @@ function parseTime(time: string | number | Date, cFormat: string = '{y}-{m}-{d} 
 }
 
 // 解析日期
-function parseDate(time: string | number | Date, sp: string = '-'): string {
+function parseDate(time: string | number | Date): string {
     const date = new Date(time);
     return date.getFullYear().toString();
 }
@@ -195,4 +195,5 @@ export {
     judgeHostCountry,
     throttleFun,
     debounceFun,
+    parseDate
 }
