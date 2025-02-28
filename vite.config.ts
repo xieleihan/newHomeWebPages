@@ -2,8 +2,10 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import compression from 'vite-plugin-compression';
 import { viteVConsole } from 'vite-plugin-vconsole';
-import * as path from 'path'
-import { visualizer } from 'rollup-plugin-visualizer'
+import * as path from 'path';
+import { visualizer } from 'rollup-plugin-visualizer';
+import { VitePWA } from 'vite-plugin-pwa';
+import ViteRestart from 'vite-plugin-restart';
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -33,6 +35,19 @@ export default defineConfig({
       open: true,
       gzipSize: true,
       brotliSize: true
+    }),
+    // PWA 插件
+    VitePWA({
+      registerType: 'autoUpdate',
+      devOptions: {
+        enabled: true,
+      },
+    }),
+    // 自动重启插件
+    ViteRestart({
+      restart: [
+        'vite.config.ts',
+      ]
     })
   ],
   css: {
