@@ -1,7 +1,7 @@
 @import '../base.module.scss';
 
 .SignatureCom {
-    width: 100%;
+    width: 100dvw;
     height: 100dvh;
     background: url(../../assets/icon/homebg.svg);
     display: flex;
@@ -14,6 +14,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        width: 50dvw;
 
         .welcome {
             font-size: .75rem;
@@ -81,6 +82,17 @@
         .contactIcon{
             width: 85%;
             aspect-ratio: 1/1;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+        &::before{
+            content: '';
+            width: 85%;
+            height: 85%;
+            position: absolute;
+            border-radius: 50%;
+            animation: beforeScale 2s infinite;
+            pointer-events: none;
         }
     }
 
@@ -169,5 +181,18 @@
 
     100% {
         opacity: 1;
+    }
+}
+
+// before动画缩放
+@keyframes beforeScale {
+    0% {
+        transform: scale(1);
+        border: .01rem solid $googleBlue;
+    }
+
+    100% {
+        transform: scale(1.5);
+        border: .001rem solid transparent;
     }
 }

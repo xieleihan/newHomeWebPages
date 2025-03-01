@@ -13,7 +13,11 @@ import avater from '../../../../assets/images/avater.png';
 import arrow from '../../../../assets/icon/arrow.png';
 import telegramIcon from '../../../../assets/icon/telegram.svg';
 
+// 导入Antd Design组件
+import {Popover} from 'antd';
+
 function SignatureCom() {
+    // 生命周期创建
     useEffect(() => {
         // 创建Typewriter实例
         new Typewriter('#typewriter', {
@@ -21,8 +25,12 @@ function SignatureCom() {
             strings: ['写写代码', '发个呆', '看看小说', '做个好梦','','前往新世界伊始'],
             autoStart: true,
         });
-    },[])
-
+    }, [])
+    
+    // 创建一个Popover元素
+    const popoverContent = (
+        <span>点击联系我</span>
+    )
 
     return (
         <>
@@ -30,7 +38,7 @@ function SignatureCom() {
                 {/* 左边文字 */}
                 <div className={styles.topLeft}>
                     <p className={styles.welcome}>
-                        你好,我是<span className={styles.linear}>SouthAki</span>
+                        你好,我是<span className={styles.linear}>南秋SouthAki</span>
                         <br />
                         一个前端工程师
                         <br />
@@ -56,7 +64,9 @@ function SignatureCom() {
 
                 {/* 右下角联系我 */}
                 <div className={styles.contactMe}>
-                    <img className={styles.contactIcon} src={telegramIcon} alt="联系我" loading='lazy' />
+                    <Popover content={popoverContent} placement="top">
+                        <img className={styles.contactIcon} src={telegramIcon} alt="联系我" loading='lazy' />
+                    </Popover>
                 </div>
             </section>
         </>
