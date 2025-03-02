@@ -7,6 +7,16 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    position: relative;
+    font-family: 'zk';
+
+    .navbar{
+        width: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+    }
+
     .errorImg{
         width: 80%;
         aspect-ratio: 1/1;
@@ -16,6 +26,20 @@
     }
     .errorDesc{
         font-size: .8rem;
-        
+        margin-bottom: .3rem;
+    }
+
+    // 电脑端
+    @media (min-width: 768px) {
+        .errorImg{
+            width: 30%;
+        }
+        .errorWord{
+            font-size: .2rem;
+        }
+        .errorDesc{
+            font-size: .2rem;
+            margin-bottom: .01rem;
+        }
     }
 }

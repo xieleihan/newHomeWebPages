@@ -42,7 +42,7 @@ body {
   font-family: "zk", "PingFang SC", "Microsoft YaHei", "Arial", "Helvetica", "sans-serif";
   /* 设置行高为1.5倍 */
   line-height: 1.5;
-  max-width: 100dvw;
+  width: 100dvw;
   cursor: url("./assets/cursor/normal.cur"), auto;
 }
 
@@ -59,6 +59,7 @@ html {
   /* 平滑滚动 */
   scroll-behavior: smooth;
   font-size: 0.3rem;
+  width: 100dvw;
 }
 
 @font-face {
