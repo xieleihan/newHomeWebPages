@@ -1,0 +1,30 @@
+@import './base.module.scss';
+
+.contact{
+    width: 100dvw;
+    height: 100dvh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+
+    // 兼容
+    @media (min-width:640px) {
+        background: url(https://picsum.photos/640/480.webp);
+    }
+    @media (max-width:1280px) and (min-width:640px) {
+        background: url(https://picsum.photos/1280/720.webp);
+    }
+    @media (max-width:1920px) and (min-width:1280px) {
+        background: url(https://picsum.photos/1920/1080.webp);
+    }
+    @media (max-width:2560px) and (min-width:1920px) {
+        background: url(https://picsum.photos/2560/1440.webp);
+    }
+    @media (max-width:3840px) and (min-width:2560px) {
+        background: url(https://picsum.photos/3840/2160.webp);
+    }
+}

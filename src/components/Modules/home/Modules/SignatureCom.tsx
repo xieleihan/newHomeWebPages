@@ -14,7 +14,10 @@ import arrow from '../../../../assets/icon/arrow.png';
 import telegramIcon from '../../../../assets/icon/telegram.svg';
 
 // 导入Antd Design组件
-import {Popover} from 'antd';
+import { Popover } from 'antd';
+
+// 导入React Router
+import { useNavigate } from 'react-router-dom';
 
 function SignatureCom() {
     // 生命周期创建
@@ -33,6 +36,9 @@ function SignatureCom() {
             <span>点击联系我</span>
         </>
     )
+
+    // 创建一个路由导航
+    const navigate = useNavigate();
 
     return (
         <>
@@ -67,7 +73,9 @@ function SignatureCom() {
                 {/* 右下角联系我 */}
                 <div className={styles.contactMe}>
                     <Popover content={popoverContent} placement="top">
-                        <img className={styles.contactIcon} src={telegramIcon} alt="联系我" loading='lazy' />
+                        <img onClick={() => {
+                            navigate('/contact');
+                        }} className={styles.contactIcon} src={telegramIcon} alt="联系我" loading='lazy' />
                     </Popover>
                 </div>
             </section>

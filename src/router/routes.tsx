@@ -8,6 +8,7 @@ import { Spin } from 'antd';
 const App = lazy(()=>import('../App')) // 主视图
 const Home = lazy(() => import('../pages/HomePages')); // 主页
 const ErrorPages = lazy(() => import('../pages/ErrorPages')); // 错误页
+const ContactPages = lazy(() => import('../pages/ContactPages')); // 联系页
 
 // 路由配置
 const routes = [
@@ -24,6 +25,14 @@ const routes = [
         element: (
             <Suspense fallback={<Spin />}>
                 <Home />
+            </Suspense>
+        ),
+    },
+    {
+        path: '/contact',
+        element: (
+            <Suspense fallback={<Spin />}>
+                <ContactPages />
             </Suspense>
         ),
     },
