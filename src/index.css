@@ -60,6 +60,9 @@ html {
   scroll-behavior: smooth;
   font-size: 0.3rem;
   width: 100dvw;
+  &::-webkit-scrollbar{
+    display: none;
+  }
 }
 
 @font-face {

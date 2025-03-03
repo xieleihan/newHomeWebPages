@@ -11,9 +11,16 @@
     background-size: cover;
     background-position: center;
 
+    .container{
+        width: 70%;
+        height: 60%;
+        background-color: rgba($color: #fff, $alpha: .8);
+        border-radius: $radius;
+    }
+
     // 兼容
-    @media (min-width:640px) {
-        background: url(https://picsum.photos/640/480.webp);
+    @media (max-width:640px) {
+        background: url(https://picsum.photos/1280/720.webp) no-repeat;
     }
     @media (max-width:1280px) and (min-width:640px) {
         background: url(https://picsum.photos/1280/720.webp);

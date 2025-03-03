@@ -10,7 +10,11 @@ function ContactPages() {
     return (
         <>
             <ReturnlastpagesBtnicon />
-            <div className={styles.contact}></div>
+            <div className={styles.contact}>
+                <div className={styles.container}>
+                    
+                </div>
+            </div>
         </>
     );
 }

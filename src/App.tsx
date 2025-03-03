@@ -17,12 +17,22 @@ import translate from './assets/icon/translate.svg';
 import { Outlet, useNavigate } from 'react-router-dom';
 
 // 导入React
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+
+// 导入请求
+import { getUserIp } from "./api/request";
+
+// 使用React Redux
+import { useDispatch } from 'react-redux';
+import { AppDispatch } from './store/index';
+import { setIpInfo, setAddressInfo } from './store/generalStore.ts';
 
 function App() {
-
   // 创建React变量
   const [isStartPages, setIsStartPages] = useState(true);
+
+  // 初始化Redux
+  const dispatch = useDispatch<AppDispatch>();
 
   // 创建i18n变量
   const { t, i18n } = useTranslation();
@@ -52,6 +62,23 @@ function App() {
       }
     }
   ];
+
+  // 生命周期创建
+  useEffect(() => {
+    // 获取用户IP地址
+    getUserIp({}).then(async res => {
+      let str = JSON.stringify(res);
+      let obj = JSON.parse(str);
+      let address = obj.adcode.o
+      console.warn('当前用户访问的IP地址信息:', obj.ipinfo.text);
+      console.warn('当前用户位置信息:', address);
+      // 更新Redux
+      dispatch(setIpInfo(obj.ipinfo.text));
+      dispatch(setAddressInfo(address));
+    }).catch(err => {
+      console.log('获取用户IP地址失败:', err);
+    });
+  }, [])
 
   return (
     <>

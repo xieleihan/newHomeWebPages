@@ -1,8 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit'
+// 导入generalStore.ts文件
+import generalStore from './generalStore.ts'
 
 // 创建store
 const store = configureStore({
-    reducer:{}
+    reducer: {
+        general: generalStore,
+    }
 })
 
 // 定义RootState和AppDispatch类型
