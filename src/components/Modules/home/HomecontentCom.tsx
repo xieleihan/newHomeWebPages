@@ -1,9 +1,12 @@
+// 导入React
+import { lazy, Suspense } from 'react';
+
 // 导入Antd
-import { Layout } from 'antd';
+import { Layout, Spin } from 'antd';
 
 // 导入组件
-import SignatureCom from './Modules/SignatureCom';
-import PersonalProfile from './Modules/PersonalProfile'; // 个人资料
+const SignatureCom = lazy(() => import('./Modules/SignatureCom'));
+const PersonalProfile = lazy(() => import('./Modules/PersonalProfile')); // 个人资料
 
 interface HomecontentComProps {
     styles: { content: string };
@@ -16,9 +19,13 @@ function HomecontentCom({ styles }: HomecontentComProps) {
         <>
             <Content className={styles.content}>
                 {/* 个人签名 */}
-                <SignatureCom />
+                <Suspense fallback={<Spin />}>
+                    <SignatureCom />
+                </Suspense>
                 {/* 个人资料 */}
-                <PersonalProfile />
+                <Suspense fallback={<Spin />}>
+                    <PersonalProfile />
+                </Suspense>
             </Content>
         </>
     );

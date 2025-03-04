@@ -27,8 +27,19 @@ function ErrorPages() {
     useEffect(() => {
         // 判断用户系统
         setUserAgent(judgeUserAgent());
-        // 获取用户宽度
-        setUserAgentWidth(window.innerWidth);
+
+        // 定义窗口大小更新函数
+        const handleResize = () => {
+            setUserAgentWidth(window.innerWidth);
+        };
+
+        // 监听窗口变化
+        window.addEventListener("resize", handleResize);
+
+        // 组件卸载时移除监听器，防止内存泄漏
+        return () => {
+            window.removeEventListener("resize", handleResize);
+        };
     }, []);
 
     // 初始化导航

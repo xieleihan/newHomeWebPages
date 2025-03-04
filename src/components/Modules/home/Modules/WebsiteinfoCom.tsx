@@ -6,24 +6,95 @@ import react from '../../../../assets/icon/react.svg';
 import sass from '../../../../assets/icon/Sass.svg';
 import typescript from '../../../../assets/icon/typescript.svg';
 import antd from '../../../../assets/icon/antd.svg';
+import wechat from '../../../../assets/icon/WeChat.svg';
+import facebook from '../../../../assets/icon/Facebook.svg';
+import github from '../../../../assets/icon/GitHub.svg';
+import twiiter from '../../../../assets/icon/twiiter_login.svg';
 
 function WebsiteinfoCom() {
     // 创建图片数组
-    const imgArr = [react, sass, typescript, antd];
+    // 技术栈的图片
+    const imgArr = [
+        {
+            icon: react,
+            url: 'https://react.docschina.org/',
+            color: 'white',
+        },
+        {
+            icon: sass,
+            url: 'https://www.sass.com',
+            color: 'white',
+        },
+        {
+            icon: typescript,
+            url: 'https://www.typescriptlang.org/',
+            color: '#5577c5'
+        },
+        {
+            icon: antd,
+            url: 'https://ant.design/index-cn',
+            color: 'white'
+        }
+    ];
+    // 站外联系的图片
+    const websiteoutImgArr = [
+        {
+            icon: facebook,
+            url: 'https://www.facebook.com/',
+            color: '#3e4c6f',
+        },
+        {
+            icon: twiiter,
+            url: 'https://twitter.com/',
+            color: '#6792d3'
+        },
+        {
+            icon: wechat,
+            url: 'https://wx.qq.com/',
+            color: '#76ba6d'
+        },
+        {
+            icon: github,
+            url: 'https://github.com',
+            color: '#000000'
+        }
+    ];
 
     return (
         <>
             <div className={styles.websiteInfoCom}>
                 <div className={styles.container}>
-                    <p>技术栈:</p>
-                    {
-                        imgArr.map((item, index) => {
-                            return (
-                                <img key={index} src={item} alt="技术栈图标" />
-                            );
-                        })
-                    }
-                    <p>站外联系:</p>
+                    <div className={styles.top}>
+                        <p className={styles.title}>技术栈:</p>
+                        {
+                            imgArr.map((item, index) => {
+                                return (
+                                    <a style={{ backgroundColor: item.color }} className={styles.aLink} key={index} href={item.url} target="_blank" rel="noreferrer">
+                                        <div className={styles.imgBox}>
+                                            <img className={styles.icon} src={item.icon} alt="技术栈图标" />
+                                        </div>
+                                    </a>
+                                );
+                            })
+                        }
+                    </div>
+
+                    <div className={styles.bottom}>
+                        <p className={styles.title}>站外联系:</p>
+                        {
+                            websiteoutImgArr.map((item, index) => {
+                                return (
+                                    <a style={{ backgroundColor: item.color }} className={styles.aLink} key={index} href
+                                        ={item.url} target="_blank" rel="noreferrer">
+                                        <div  className={styles.imgBox}>
+                                            <img className={styles.icon} src={item.icon} alt="站外联系图标" />
+                                        </div>
+                                    </a>
+                                );
+                            }
+                            )
+                        }
+                    </div>
                 </div>
             </div>
         </>
