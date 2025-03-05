@@ -2,7 +2,7 @@
 import styles from '../../../../style/home/PersonalProfile.module.scss';
 
 // 导入React
-import { useEffect, useRef } from "react";
+import { useEffect, useRef,useState } from "react";
 
 // 导入waterCode
 import waterCode from "../../../../utils/waterCode";
@@ -11,10 +11,24 @@ import waterCode from "../../../../utils/waterCode";
 import avater from "../../../../assets/images/avater.png";
 
 // 导入Antd design组件
-import {Button} from "antd";
+import { Button, ButtonProps } from "antd";
+import { GithubOutlined, AntDesignOutlined, WechatOutlined } from "@ant-design/icons";
+
+// 导入JSON
+import technologyStack from "../../../../assets/json/technologyStack.json";
 
 function PersonalProfile() {
+    // 读取canvas
     const canvasRef = useRef<HTMLCanvasElement | null>(null);
+
+    // 创建React变量
+    const [buttonSize, setButtonSize] = useState(getButtonSize());
+
+    function getButtonSize(): ButtonProps['size'] {
+        if (window.innerWidth < 500) return 'small';
+        if (window.innerWidth < 800) return 'middle';
+        return 'large';
+    }
 
     // 创建生命周期
     useEffect(() => {
@@ -28,6 +42,12 @@ function PersonalProfile() {
             const ctx = canvas.getContext("2d");
             if (ctx) ctx.clearRect(0, 0, canvas.width, canvas.height);
         };
+    }, []);
+
+    useEffect(() => {
+        const handleResize = () => setButtonSize(getButtonSize());
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
     }, []);
 
     return (
@@ -52,13 +72,51 @@ function PersonalProfile() {
                         </div>
                         {/* 按钮区域 */}
                         <div className={styles.btnBox}>
-                            <Button>Github</Button>
-                            <Button>Blog</Button>
-                            <Button>WeChat</Button>
+                            <Button color="default" variant="solid" size={buttonSize}><GithubOutlined />Github</Button>
+                            <Button color="primary" variant="solid" size={buttonSize}><AntDesignOutlined />Blog</Button>
+                            <Button color="cyan" variant="solid" size={buttonSize}><WechatOutlined />WeChat</Button>
                         </div>
                     </div>
                     <div className={styles.rightBottom}>
+                        <p>技术栈:</p>
+                        <div className={styles.technologyStackBox}>
+                            <div className={styles.technologyStackBoxContainer}>
+                                {
+                                    technologyStack.data.map((item, index) => {
 
+                                        const icon1 = `/src/assets/icon/svg/${item.label1.fileName}.svg`;
+                                        const icon2 = `/src/assets/icon/svg/${item.label2.fileName}.svg`;
+
+                                        return (
+                                            <>
+                                                <div key={index} className={styles.technologyStackItem}>
+                                                    {icon1 && <img className={styles.icon} src={icon1} alt={item.label1.fileName} />}
+                                                    {icon2 && <img className={styles.icon} src={icon2} alt={item.label2.fileName} />}
+                                                </div>
+                                            </>
+                                        );
+                                    }
+                                    )
+                                }
+                                {
+                                    technologyStack.data.map((item, index) => {
+
+                                        const icon1 = `/src/assets/icon/svg/${item.label1.fileName}.svg`;
+                                        const icon2 = `/src/assets/icon/svg/${item.label2.fileName}.svg`;
+
+                                        return (
+                                            <>
+                                                <div key={index} className={styles.technologyStackItem}>
+                                                    {icon1 && <img className={styles.icon} src={icon1} alt={item.label1.fileName} />}
+                                                    {icon2 && <img className={styles.icon} src={icon2} alt={item.label2.fileName} />}
+                                                </div>
+                                            </>
+                                        );
+                                    }
+                                    )
+                                }
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
