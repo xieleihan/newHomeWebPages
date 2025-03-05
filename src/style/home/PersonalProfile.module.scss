@@ -19,5 +19,45 @@
         left: 50%;
         border-radius: $radius;
         transform: translate(-50%,-50%);
+        padding: .6rem .5rem;
+        display: flex;
+        flex-direction: column;
+        .leftTop{
+            width: 100%;
+            height: 40%;
+            background-color: skyblue;
+            border-bottom: 1px dotted #ccc;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            .avaterBox{
+                width: 1.5rem;
+                aspect-ratio: 1/1;
+                border-radius: 50%;
+                overflow: hidden;
+                .avater{
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+            .username{
+                font-size: .5rem;
+                margin-top: .2rem;
+                background: linear-gradient(315deg, #42d392 25%, #647eff);
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+            .signature{
+                font-size: .3rem;
+                color: #ccc;
+                margin-top: .01rem;
+            }
+        }
+        .rightBottom{
+            width: 100%;
+            height: 60%;
+            background-color: pink;
+        }
     }
 }
