@@ -2,9 +2,6 @@
 import styles from '../../../../style/home/WebsiteinfoCom.module.scss';
 
 // 导入图片
-import react from '../../../../assets/icon/react.svg';
-import sass from '../../../../assets/icon/Sass.svg';
-import typescript from '../../../../assets/icon/typescript.svg';
 import antd from '../../../../assets/icon/antd.svg';
 import wechat from '../../../../assets/icon/WeChat.svg';
 import facebook from '../../../../assets/icon/Facebook.svg';
@@ -16,17 +13,17 @@ function WebsiteinfoCom() {
     // 技术栈的图片
     const imgArr = [
         {
-            icon: react,
+            icon: 'https://fastly.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg',
             url: 'https://react.docschina.org/',
             color: 'white',
         },
         {
-            icon: sass,
+            icon: 'https://fastly.jsdelivr.net/gh/devicons/devicon/icons/sass/sass-original.svg',
             url: 'https://www.sass.com',
             color: 'white',
         },
         {
-            icon: typescript,
+            icon: 'https://fastly.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg',
             url: 'https://www.typescriptlang.org/',
             color: '#5577c5'
         },
@@ -69,9 +66,9 @@ function WebsiteinfoCom() {
                         {
                             imgArr.map((item, index) => {
                                 return (
-                                    <a style={{ backgroundColor: item.color }} className={styles.aLink} key={index} href={item.url} target="_blank" rel="noreferrer">
+                                    <a className={styles.aLink} key={index} href={item.url} target="_blank" rel="noreferrer">
                                         <div className={styles.imgBox}>
-                                            <img className={styles.icon} src={item.icon} alt="技术栈图标" />
+                                            <img loading='lazy' className={styles.icon} src={item.icon} alt="技术栈图标" />
                                         </div>
                                     </a>
                                 );
@@ -84,10 +81,10 @@ function WebsiteinfoCom() {
                         {
                             websiteoutImgArr.map((item, index) => {
                                 return (
-                                    <a style={{ backgroundColor: item.color }} className={styles.aLink} key={index} href
+                                    <a className={styles.aLink} key={index} href
                                         ={item.url} target="_blank" rel="noreferrer">
-                                        <div  className={styles.imgBox}>
-                                            <img className={styles.icon} src={item.icon} alt="站外联系图标" />
+                                        <div className={styles.imgBox}>
+                                            <img loading='lazy' className={styles.icon} src={item.icon} alt="站外联系图标" />
                                         </div>
                                     </a>
                                 );
