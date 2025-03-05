@@ -12,6 +12,7 @@
   "dependencies": {
     "@paypal/react-paypal-js": "^8.8.2",
     "@reduxjs/toolkit": "^2.5.0",
+    "@vitejs/plugin-basic-ssl": "^2.0.0",
     "amfe-flexible": "^2.2.1",
     "antd": "^5.24.1",
     "antd-mobile": "^5.38.1",

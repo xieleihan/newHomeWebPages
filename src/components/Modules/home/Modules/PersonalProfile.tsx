@@ -25,9 +25,15 @@ function PersonalProfile() {
     }, []);
 
     return (
-        <section className={styles.personalProfile}>
-            <canvas ref={canvasRef} className={styles.canvas}></canvas>
-        </section>
+        <>
+            <section className={styles.personalProfile}>
+                <canvas ref={canvasRef} className={styles.canvas}></canvas>
+
+                <div className={styles.container}>
+                    
+                </div>
+            </section>
+        </>
     );
 }
 

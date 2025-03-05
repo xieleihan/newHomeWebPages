@@ -6,6 +6,8 @@ import * as path from 'path';
 import { visualizer } from 'rollup-plugin-visualizer';
 import { VitePWA } from 'vite-plugin-pwa';
 import ViteRestart from 'vite-plugin-restart';
+import basicSsl from '@vitejs/plugin-basic-ssl';
+import fs from 'fs';
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -48,11 +50,20 @@ export default defineConfig({
       restart: [
         'vite.config.ts',
       ]
-    })
+    }),
+    // HTTPS 证书插件
+    basicSsl()
   ],
   css: {
     modules: {
       generateScopedName: '[name]__[local]__[hash:base64:6]', // CSS模块化
     }
-  }
+  },
+  server: {
+    host: '0.0.0.0',
+    https: {
+      key: fs.readFileSync('./localhost-key.pem'),
+      cert: fs.readFileSync('./localhost.pem'),
+    }
+  },
 })
