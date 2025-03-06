@@ -2,7 +2,7 @@
 import styles from '../../../../style/home/PersonalProfile.module.scss';
 
 // 导入React
-import { useEffect, useRef,useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 // 导入waterCode
 import waterCode from "../../../../utils/waterCode";
@@ -88,12 +88,20 @@ function PersonalProfile() {
                                         const icon2 = `/src/assets/icon/svg/${item.label2.fileName}.svg`;
 
                                         return (
-                                            <>
+                                            <React.Fragment key={`${item.label1.fileName}`}>
                                                 <div key={index} className={styles.technologyStackItem}>
-                                                    {icon1 && <img className={styles.icon} src={icon1} alt={item.label1.fileName} />}
-                                                    {icon2 && <img className={styles.icon} src={icon2} alt={item.label2.fileName} />}
+                                                    {icon1 && <img loading='lazy' style={
+                                                        {
+                                                            backgroundColor: item.label1.bgColor,
+                                                        }
+                                                    } className={styles.icon} src={icon1} alt={item.label1.fileName} />}
+                                                    {icon2 && <img loading='lazy' style={
+                                                        {
+                                                            backgroundColor: item.label2.bgColor,
+                                                        }
+                                                    } className={styles.icon} src={icon2} alt={item.label2.fileName} />}
                                                 </div>
-                                            </>
+                                            </React.Fragment>
                                         );
                                     }
                                     )
@@ -105,12 +113,20 @@ function PersonalProfile() {
                                         const icon2 = `/src/assets/icon/svg/${item.label2.fileName}.svg`;
 
                                         return (
-                                            <>
+                                            <React.Fragment key={`${item.label2.fileName}`}>
                                                 <div key={index} className={styles.technologyStackItem}>
-                                                    {icon1 && <img className={styles.icon} src={icon1} alt={item.label1.fileName} />}
-                                                    {icon2 && <img className={styles.icon} src={icon2} alt={item.label2.fileName} />}
+                                                    {icon1 && <img loading='lazy' style={
+                                                        {
+                                                            backgroundColor: item.label1.bgColor,
+                                                        }
+                                                    } className={styles.icon} src={icon1} alt={item.label1.fileName} />}
+                                                    {icon2 && <img loading='lazy' style={
+                                                        {
+                                                            backgroundColor: item.label2.bgColor,
+                                                        }
+                                                    } className={styles.icon} src={icon2} alt={item.label2.fileName} />}
                                                 </div>
-                                            </>
+                                            </React.Fragment>
                                         );
                                     }
                                     )

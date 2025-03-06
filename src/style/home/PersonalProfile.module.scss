@@ -75,18 +75,31 @@
                     .technologyStackItem{
                         display: flex;
                         height: 100%;
+                        margin: 0 .1rem;
                         width: 1.4rem;
                         flex-direction: column;
                         justify-content: space-around;
                         animation: slideInFromRight 30s linear infinite;
                         .icon{
                             width: 100%;
+                            max-height: 50%;
                             aspect-ratio: 1/1;
                             border: 1px solid #ccc;
                             padding: .1rem;
                             &:nth-child(1){
                                 transform: translateX(-50%);
                             }
+
+                            // 电脑端
+                            @media (min-width: 768px){
+                                width: .8rem;
+                                
+                            }
+                        }
+
+                        @media (min-width: 768px){
+                            margin: 0 .05rem;
+                            width: .8rem;
                         }
                     }
                 }
@@ -167,4 +180,16 @@
     to {
         transform: translateX(-10rem);
     }
+}
+
+@media (min-width: 768px) {
+    @keyframes slideInFromRight {
+            from {
+                transform: translateX(0);
+            }
+    
+            to {
+                transform: translateX(-7rem);
+            }
+        }
 }
