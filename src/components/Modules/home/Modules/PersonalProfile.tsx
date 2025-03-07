@@ -11,11 +11,11 @@ import waterCode from "../../../../utils/waterCode";
 import avater from "../../../../assets/images/avater.png";
 
 // 导入Antd design组件
-import { Button, ButtonProps } from "antd";
+import { Button, ButtonProps,message } from "antd";
 import { GithubOutlined, AntDesignOutlined, WechatOutlined } from "@ant-design/icons";
 
-// 导入JSON
-import technologyStack from "../../../../assets/json/technologyStack.json";
+// 导入本地请求
+import { get } from '../../../../api';
 
 function PersonalProfile() {
     // 读取canvas
@@ -23,6 +23,32 @@ function PersonalProfile() {
 
     // 创建React变量
     const [buttonSize, setButtonSize] = useState(getButtonSize());
+
+    // 创建消息提示
+    const [messageApi,contextHolder] = message.useMessage();
+
+    const error = (content:string) => {
+        messageApi.open({
+            type: 'error',
+            content,
+        });
+    };
+
+    // 创建技术栈接口
+    interface TechnologyStackItem {
+        label1: {
+            fileName: string;
+            bgColor: string;
+        };
+        label2: {
+            fileName: string;
+            bgColor: string;
+        };
+    }
+
+    // 创建技术栈变量
+    const [technologyStack, setTechnologyStack] = useState<{ data: TechnologyStackItem[] }>({ data: [] });
+    
 
     function getButtonSize(): ButtonProps['size'] {
         if (window.innerWidth < 500) return 'small';
@@ -50,8 +76,21 @@ function PersonalProfile() {
         return () => window.removeEventListener('resize', handleResize);
     }, []);
 
+    useEffect(() => {
+        get('/json/technologyStack.json')
+            .then((res) => {
+                setTechnologyStack(res);
+            })
+            .catch(() => {
+                // 导入错误的messages
+                error('图片加载错误');
+            }
+            );
+    }, []);
+
     return (
         <>
+            {contextHolder}
             <section className={styles.personalProfile}>
                 {/* 背景canvas */}
                 <canvas ref={canvasRef} className={styles.canvas}></canvas>
