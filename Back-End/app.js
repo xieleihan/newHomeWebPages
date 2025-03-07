@@ -32,15 +32,25 @@ dotenv.config();
 //     ctx.body = 'Hello World!';
 // });
 
+// 导入路由
+const { TechnologyStack } = require('./router/index');
+// 使用跨域
+app.use(cors({
+    allowMethods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    // 允许所有域名访问
+    origin: function (ctx) {
+        return ctx.header.origin;
+    }
+}));
+
 // 使用路由
 app.use(router.routes());
 app.use(router.allowedMethods());
+app.use(TechnologyStack.routes());
 
 // 静态资源分发
 app.use(require('koa-static')(__dirname + '/public'));
 
-// 使用跨域
-app.use(cors());
 
 // 监听端口
 app.listen(process.env.SERVER_PORT, () => {

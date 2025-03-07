@@ -15,7 +15,7 @@ import { Button, ButtonProps,message } from "antd";
 import { GithubOutlined, AntDesignOutlined, WechatOutlined } from "@ant-design/icons";
 
 // 导入本地请求
-import { getOut } from '../../../../api';
+import { get } from '../../../../api';
 
 function PersonalProfile() {
     // 读取canvas
@@ -77,7 +77,7 @@ function PersonalProfile() {
     }, []);
 
     useEffect(() => {
-        getOut('https://raw.githubusercontent.com/xieleihan/newHomeWebPages/refs/heads/main/public/json/technologyStack.json')
+        get('/static/getTechnologyStack')
             .then((res) => {
                 setTechnologyStack(res);
             })
