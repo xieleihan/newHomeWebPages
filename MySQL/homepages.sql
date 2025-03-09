@@ -9,3 +9,11 @@ create table technology_stack(
     bgColor varchar(100) not null
 );
 select * from technology_stack;
+
+CREATE TABLE IF NOT EXISTS subscriptions (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    endpoint TEXT NOT NULL,
+    auth TEXT NOT NULL,
+    p256dh TEXT NOT NULL
+);
+select * from subscriptions;

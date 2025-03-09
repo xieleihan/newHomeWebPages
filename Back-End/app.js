@@ -14,6 +14,14 @@ const app = new Koa();
 // 创建一个Router对象表示web app的路由
 const router = new Router();
 
+// 升级https
+const https = require('https');
+const fs = require('fs');
+const options = {
+    key: fs.readFileSync('./localhost-key.pem'),
+    cert: fs.readFileSync('./localhost.pem')
+};
+
 // 读取环境变量
 dotenv.config();
 
@@ -33,7 +41,7 @@ dotenv.config();
 // });
 
 // 导入路由
-const { TechnologyStack } = require('./router/index');
+const { TechnologyStack,WebPushRouter } = require('./router/index');
 // 使用跨域
 app.use(cors({
     allowMethods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
@@ -46,13 +54,19 @@ app.use(cors({
 // 使用路由
 app.use(router.routes());
 app.use(router.allowedMethods());
-app.use(TechnologyStack.routes());
+app.use(TechnologyStack.routes()); // 技术栈图片路由
+app.use(WebPushRouter.routes()); // WebPush路由
 
 // 静态资源分发
 app.use(require('koa-static')(__dirname + '/public'));
 
 
 // 监听端口
-app.listen(process.env.SERVER_PORT, () => {
-    console.log(`Server is running at http://localhost:${process.env.SERVER_PORT}`);
+// app.listen(process.env.SERVER_PORT, () => {
+//     console.log(`Server is running at http://localhost:${process.env.SERVER_PORT}`);
+// });
+
+// 升级https
+https.createServer(options, app.callback()).listen(process.env.SERVER_PORT, () => {
+    console.log(`Server is running at https://localhost:${process.env.SERVER_PORT}`);
 });

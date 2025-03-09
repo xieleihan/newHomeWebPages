@@ -9,7 +9,19 @@ import HomeheaderCom from '../components/Modules/home/HomeheaderCom';
 import HomecontentCom from '../components/Modules/home/HomecontentCom';
 import HomefooterCom from '../components/Modules/home/HomefooterCom';
 
+// 导入React
+import { useEffect } from 'react';
+
+// 导入push
+import subscribeUser from '../utils/pushNotification';
+
 function HomePages() {
+    
+    // 创建生命周期
+    useEffect(() => {
+        // 订阅推送通知
+        subscribeUser();
+    }, []);
 
     return (
         <>
