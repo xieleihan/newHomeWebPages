@@ -63,10 +63,16 @@
             width: 100%;
             height: 60%;
             padding: .1rem;
+
+            .title{
+                font-size: .15rem;
+                margin-bottom: .1rem;
+            }
+
             .technologyStackBox{
                 width: 100%;
                 height: 40%;
-                border: .01rem solid #ccc;
+                // border: .01rem solid #ccc;
                 overflow: hidden;
                 .technologyStackBoxContainer{
                     display: flex;
@@ -92,7 +98,7 @@
 
                             // 电脑端
                             @media (min-width: 768px){
-                                width: .8rem;
+                                width: .75rem;
                                 
                             }
                         }
@@ -102,6 +108,13 @@
                             width: .8rem;
                         }
                     }
+                }
+            }
+
+            // 电脑端
+            @media (min-width: 768px){
+                .technologyStackBox{
+                    border: 0;
                 }
             }
         }

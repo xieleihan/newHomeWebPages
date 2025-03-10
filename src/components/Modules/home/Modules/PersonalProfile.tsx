@@ -11,7 +11,7 @@ import waterCode from "../../../../utils/waterCode";
 import avater from "../../../../assets/images/avater.png";
 
 // 导入Antd design组件
-import { Button, ButtonProps,message } from "antd";
+import { Button, ButtonProps,message,Spin } from "antd";
 import { GithubOutlined, AntDesignOutlined, WechatOutlined } from "@ant-design/icons";
 
 // 导入本地请求
@@ -117,60 +117,64 @@ function PersonalProfile() {
                         </div>
                     </div>
                     <div className={styles.rightBottom}>
-                        <p>技术栈:</p>
+                        <p className={styles.title}>技术栈:</p>
                         <div className={styles.technologyStackBox}>
-                            <div className={styles.technologyStackBoxContainer}>
-                                {
-                                    technologyStack.data.map((item, index) => {
+                            <>
+                                <Spin spinning={technologyStack.data.length === 0} tip="Loading...">
+                                    <div className={styles.technologyStackBoxContainer}>
+                                        {
+                                            technologyStack.data.map((item, index) => {
 
-                                        const icon1 = `/src/assets/icon/svg/${item.label1.fileName}.svg`;
-                                        const icon2 = `/src/assets/icon/svg/${item.label2.fileName}.svg`;
+                                                const icon1 = `/src/assets/icon/svg/${item.label1.fileName}.svg`;
+                                                const icon2 = `/src/assets/icon/svg/${item.label2.fileName}.svg`;
 
-                                        return (
-                                            <React.Fragment key={`${item.label1.fileName}`}>
-                                                <div key={index} className={styles.technologyStackItem}>
-                                                    {icon1 && <img loading='lazy' style={
-                                                        {
-                                                            backgroundColor: item.label1.bgColor,
-                                                        }
-                                                    } className={styles.icon} src={icon1} alt={item.label1.fileName} />}
-                                                    {icon2 && <img loading='lazy' style={
-                                                        {
-                                                            backgroundColor: item.label2.bgColor,
-                                                        }
-                                                    } className={styles.icon} src={icon2} alt={item.label2.fileName} />}
-                                                </div>
-                                            </React.Fragment>
-                                        );
-                                    }
-                                    )
-                                }
-                                {
-                                    technologyStack.data.map((item, index) => {
+                                                return (
+                                                    <React.Fragment key={`${item.label1.fileName}`}>
+                                                        <div key={index} className={styles.technologyStackItem}>
+                                                            {icon1 && <img loading='lazy' style={
+                                                                {
+                                                                    backgroundColor: item.label1.bgColor,
+                                                                }
+                                                            } className={styles.icon} src={icon1} alt={item.label1.fileName} />}
+                                                            {icon2 && <img loading='lazy' style={
+                                                                {
+                                                                    backgroundColor: item.label2.bgColor,
+                                                                }
+                                                            } className={styles.icon} src={icon2} alt={item.label2.fileName} />}
+                                                        </div>
+                                                    </React.Fragment>
+                                                );
+                                            }
+                                            )
+                                        }
+                                        {
+                                            technologyStack.data.map((item, index) => {
 
-                                        const icon1 = `/src/assets/icon/svg/${item.label1.fileName}.svg`;
-                                        const icon2 = `/src/assets/icon/svg/${item.label2.fileName}.svg`;
+                                                const icon1 = `/src/assets/icon/svg/${item.label1.fileName}.svg`;
+                                                const icon2 = `/src/assets/icon/svg/${item.label2.fileName}.svg`;
 
-                                        return (
-                                            <React.Fragment key={`${item.label2.fileName}`}>
-                                                <div key={index} className={styles.technologyStackItem}>
-                                                    {icon1 && <img loading='lazy' style={
-                                                        {
-                                                            backgroundColor: item.label1.bgColor,
-                                                        }
-                                                    } className={styles.icon} src={icon1} alt={item.label1.fileName} />}
-                                                    {icon2 && <img loading='lazy' style={
-                                                        {
-                                                            backgroundColor: item.label2.bgColor,
-                                                        }
-                                                    } className={styles.icon} src={icon2} alt={item.label2.fileName} />}
-                                                </div>
-                                            </React.Fragment>
-                                        );
-                                    }
-                                    )
-                                }
-                            </div>
+                                                return (
+                                                    <React.Fragment key={`${item.label2.fileName}`}>
+                                                        <div key={index} className={styles.technologyStackItem}>
+                                                            {icon1 && <img loading='lazy' style={
+                                                                {
+                                                                    backgroundColor: item.label1.bgColor,
+                                                                }
+                                                            } className={styles.icon} src={icon1} alt={item.label1.fileName} />}
+                                                            {icon2 && <img loading='lazy' style={
+                                                                {
+                                                                    backgroundColor: item.label2.bgColor,
+                                                                }
+                                                            } className={styles.icon} src={icon2} alt={item.label2.fileName} />}
+                                                        </div>
+                                                    </React.Fragment>
+                                                );
+                                            }
+                                            )
+                                        }
+                                    </div>
+                                </Spin>
+                            </>
                         </div>
                     </div>
                 </div>

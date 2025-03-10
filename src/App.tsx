@@ -79,6 +79,12 @@ function App() {
       console.log('获取用户IP地址失败:', err);
     });
   }, [])
+  // 订阅Service Worker 
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("/sw.js")
+      .then((reg) => console.log("Service Worker 注册成功", reg))
+      .catch((err) => console.error("Service Worker 注册失败", err));
+  }
 
   return (
     <>
