@@ -1,6 +1,12 @@
 @import '../base.module.scss';
 
-.componentsLayout{
+.componentsLayout {
     width: 100dvw;
     height: 100dvh;
+    padding: 1rem;
+
+    // 电脑端
+    @media (min-width: 768px){
+        padding: .5rem;
+    }
 }
