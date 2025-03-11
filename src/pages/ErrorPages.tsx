@@ -20,7 +20,7 @@ import { useNavigate } from 'react-router-dom';
 
 function ErrorPages() {
     // 创建React变量
-    const [userAgent, setUserAgent] = useState<string>('');
+    const [userAgent, setUserAgent] = useState<string>('pc');
     const [userAgentWidth, setUserAgentWidth] = useState<number>(0);
 
     // 生命周期创建
@@ -32,6 +32,9 @@ function ErrorPages() {
         const handleResize = () => {
             setUserAgentWidth(window.innerWidth);
         };
+
+        // 初始化 userAgentWidth
+        handleResize();
 
         // 监听窗口变化
         window.addEventListener("resize", handleResize);
