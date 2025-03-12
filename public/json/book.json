@@ -1,0 +1,10 @@
+{
+    "data": [
+        {
+            "bookName":"The Alchemist",
+            "imgUrl": "https://picsum.photos/300/200",
+            "author": "Paulo Coelho",
+            "linkHtml": "https://baidu.com"
+        }
+    ]
+}
