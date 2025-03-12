@@ -28,6 +28,9 @@ requestAnimationFrame(raf);
 // 导入ts
 import "./utils/console.js";
 
+// 导入swiper的样式文件
+import 'swiper/swiper.scss';
+
 createRoot(document.getElementById("root")!).render(
     <Provider store={store}>
         <HashRouter>

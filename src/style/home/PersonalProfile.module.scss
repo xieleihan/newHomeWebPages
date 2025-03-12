@@ -65,8 +65,15 @@
             padding: .1rem;
 
             .title{
-                font-size: .15rem;
+                font-size: .3rem;
                 margin-bottom: .1rem;
+            }
+
+            // 电脑端
+            @media (min-width: 768px) {
+                .title{
+                    font-size: .2rem;
+                }
             }
 
             .technologyStackBox{
@@ -82,7 +89,7 @@
                         display: flex;
                         height: 100%;
                         margin: 0 .1rem;
-                        width: 1.4rem;
+                        width: 1rem;
                         flex-direction: column;
                         justify-content: space-around;
                         animation: slideInFromRight 30s linear infinite;
@@ -99,13 +106,24 @@
                             // 电脑端
                             @media (min-width: 768px){
                                 width: .75rem;
-                                
+                            }
+
+                            // 超大屏幕
+                            @media (min-width: 1200px){
+                                width: .5rem;
                             }
                         }
-
+                        
+                        // 电脑端
                         @media (min-width: 768px){
                             margin: 0 .05rem;
                             width: .8rem;
+                        }
+
+                        // 超大屏幕
+                        @media (min-width: 1200px){
+                            margin: 0 .001rem;
+                            width: .6rem;
                         }
                     }
                 }

@@ -14,8 +14,8 @@ import avater from "../../../../assets/images/avater.png";
 import { Button, ButtonProps,message,Spin } from "antd";
 import { GithubOutlined, AntDesignOutlined, WechatOutlined } from "@ant-design/icons";
 
-// 导入本地请求
-import { get } from '../../../../api';
+// 导入技术栈接口
+import { getTechnologyStack } from "../../../../api/request";
 
 function PersonalProfile() {
     // 读取canvas
@@ -77,15 +77,12 @@ function PersonalProfile() {
     }, []);
 
     useEffect(() => {
-        get('/static/getTechnologyStack')
+        getTechnologyStack({})
             .then((res) => {
                 setTechnologyStack(res);
-            })
-            .catch(() => {
-                // 导入错误的messages
+            }).catch(() => {
                 error('图片加载错误');
-            }
-            );
+        })
     }, []);
 
     return (

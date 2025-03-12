@@ -183,6 +183,21 @@ function debounceFun(fn: (...args: any[]) => void, duration: number): (...args: 
     };
 }
 
+/**
+ * 返回一个随机数,包含min和max,已经处理min > max情况
+ * @param {number} min 最小值
+ * @param {number} max 最大值
+ * @returns {number} 随机数
+ */
+function getRandomNumber(min: number, max: number): number {
+    // 如果min>max,则交换min和max
+    if (min > max) {
+        [min, max] = [max, min];
+    }
+    // 返回min和max之间的随机数
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 export {
     parseTime,
     setStorage,
@@ -195,5 +210,6 @@ export {
     judgeHostCountry,
     throttleFun,
     debounceFun,
-    parseDate
+    parseDate,
+    getRandomNumber,
 }

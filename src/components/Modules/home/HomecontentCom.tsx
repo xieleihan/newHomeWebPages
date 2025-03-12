@@ -11,9 +11,11 @@ const BookFlow = lazy(()=> import('./Modules/BookFlow')); // 个人喜欢的书�
 
 interface HomecontentComProps {
     styles: { content: string };
+    userAgentWidth: number;
+    userAgent: string;
 }
 
-function HomecontentCom({ styles }: HomecontentComProps) {
+function HomecontentCom({ styles, userAgentWidth, userAgent }: HomecontentComProps) {
     const { Content } = Layout;
 
     return (
@@ -29,7 +31,7 @@ function HomecontentCom({ styles }: HomecontentComProps) {
                 </Suspense>
                 {/* 个人喜欢的书库 */}
                 <Suspense fallback={<Spin />}>
-                    <BookFlow />
+                    <BookFlow userAgent={userAgent} userAgentWidth={userAgentWidth} />
                 </Suspense>
             </Content>
         </>

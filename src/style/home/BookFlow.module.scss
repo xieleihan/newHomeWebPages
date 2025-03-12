@@ -1,1 +1,67 @@
 @import '../base.module.scss';
+
+.bookBox{
+    width: 100%;
+    height: 100%;
+    padding: .3rem 0;
+    .smallTitle{
+        font-size: .3rem;
+        line-height: .3rem;
+    }
+    .content{
+        width: 100%;
+        height: calc(100% - 1rem);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        .swiperBox{
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            .phone{
+                width: 100%;
+                height: 100%;
+                display: flex;
+                flex-wrap: wrap;
+                .swiperItemLink{
+                    width: calc(100% / 2);
+                    height: calc(100% / 2);
+                    padding: .3rem;
+                    display: inline-block;
+                    .swiperItem{
+                        width: 100%;
+                        height: 100%;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-between;
+                        .bookImg{
+                            width: 100%;
+                            height: 70%;
+                        }
+                        .bookInfo{
+                            width: 100%;
+                            height: 25%;
+                        }
+                    }
+                }
+            }
+            .bookArrayNull{
+                color: #ccc;
+            }
+        }
+    }
+    .btnBox{
+        width: 100%;
+        height: .8rem;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        .lookMore{
+            height: .8rem;
+        }
+    }
+}
