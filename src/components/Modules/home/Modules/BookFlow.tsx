@@ -5,7 +5,7 @@ function BookFlow() {
     return (
         <>
             <ComponentsLayout
-                title="图书流程"
+                title="书库"
                 isOpenPagination={false}
                 container={
                     <>

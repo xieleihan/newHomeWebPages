@@ -5,6 +5,17 @@
     height: 100dvh;
     padding: 1rem;
 
+    .layoutTitle{
+        width: 100%;
+        height: .3rem;
+        line-height: .3rem;
+    }
+
+    .layoutContainer{
+        width: 100%;
+        height: calc(100% - .3rem);
+    }
+
     // 电脑端
     @media (min-width: 768px){
         padding: .5rem;

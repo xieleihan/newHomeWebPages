@@ -23,9 +23,9 @@ function ComponentsLayout({ title, isOpenPagination, container }: Props) {
         <>
             <section className={styles.componentsLayout}>
                 {/* 标题 */}
-                <h2>{ title }</h2>
+                <h2 className={styles.layoutTitle}>{ title }</h2>
                 {/* 内容 */}
-                <div>
+                <div className={styles.layoutContainer}>
                     { container }
                 </div>
                 {/* 分页 */}
