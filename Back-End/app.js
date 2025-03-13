@@ -43,7 +43,7 @@ dotenv.config();
 // });
 
 // 导入路由
-const { TechnologyStack,WebPushRouter,ImgVerifyRouter } = require('./router/index');
+const { TechnologyStack,WebPushRouter,ImgVerifyRouter, EmailVerifyRouter } = require('./router/index');
 // 使用跨域
 app.use(cors({
     allowMethods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
@@ -62,6 +62,7 @@ app.use(router.allowedMethods());
 app.use(TechnologyStack.routes()); // 技术栈图片路由
 app.use(WebPushRouter.routes()); // WebPush路由
 app.use(ImgVerifyRouter.routes()); // 图形验证码路由
+app.use(EmailVerifyRouter.routes()); // 邮箱验证码路由
 
 // 静态资源分发
 app.use(require('koa-static')(__dirname + '/public'));

@@ -60,6 +60,8 @@ router.post('/verifyEmail', async (ctx) => {
         if(result === code) {
             ctx.status = 200;
             ctx.body = { code: 200, message: '验证成功' };
+            // 删除验证码
+            await redis.del(`emailVerify:${email}`);
         } else {
             ctx.status = 400;
             ctx.body = { code: 400, message: '验证码错误' };

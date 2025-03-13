@@ -2,7 +2,6 @@ require('dotenv').config({ path: '../../.env' });
 const transporter = require('./sendEmail');
 
 const qq = require('./qq');
-const sendEmail = require('./sendEmail');
 
 const PROJECT_NAME = qq.name;
 const FROM_EMAIL = qq.email;
