@@ -10,13 +10,14 @@ const Home = lazy(() => import('../pages/HomePages')); // 主页
 const ErrorPages = lazy(() => import('../pages/ErrorPages')); // 错误页
 const ContactPages = lazy(() => import('../pages/ContactPages')); // 联系页
 const SettingsPages = lazy(() => import('../pages/SettingsPages')); // 设置页
+const BookstorePages = lazy(() => import('../pages/secondLevelPage/BookstorePages')); // 书店页
 
 // 路由配置
 const routes = [
     {
         path: '/',
         element: (
-            <Suspense fallback={<Spin />}>
+            <Suspense fallback={<Spin size="large" />}>
                 <App />
             </Suspense>
         ),
@@ -24,7 +25,7 @@ const routes = [
     {
         path: '/home',
         element: (
-            <Suspense fallback={<Spin />}>
+            <Suspense fallback={<Spin size="large" />}>
                 <Home />
             </Suspense>
         ),
@@ -32,7 +33,7 @@ const routes = [
     {
         path: '/contact',
         element: (
-            <Suspense fallback={<Spin />}>
+            <Suspense fallback={<Spin size="large" />}>
                 <ContactPages />
             </Suspense>
         ),
@@ -40,15 +41,23 @@ const routes = [
     {
         path: '/settings',
         element: (
-            <Suspense fallback={<Spin />}>
+            <Suspense fallback={<Spin size="large" />}>
                 <SettingsPages />
+            </Suspense>
+        )
+    },
+    {
+        path: '/bookstore',
+        element: (
+            <Suspense fallback={<Spin size="large" />}>
+                <BookstorePages />
             </Suspense>
         )
     },
     {
         path: '*',
         element: (
-            <Suspense fallback={<Spin />}>
+            <Suspense fallback={<Spin size="large" />}>
                 <ErrorPages />
             </Suspense>
         ),

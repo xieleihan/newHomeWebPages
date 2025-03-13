@@ -1,5 +1,5 @@
 {
-  "name": "llm-intelligence-robot",
+  "name": "homepages_backend",
   "version": "1.0.0",
   "description": "backend",
   "keywords": [
@@ -15,16 +15,20 @@
   "dependencies": {
     "@koa/cors": "^5.0.0",
     "@koa/router": "^13.1.0",
+    "axios": "^1.8.3",
     "bcrypt": "^5.1.1",
     "crypto": "^1.0.1",
     "dotenv": "^16.4.7",
     "fs": "^0.0.1-security",
+    "ioredis": "^5.6.0",
     "koa": "^2.15.3",
     "koa-bodyparser": "^4.4.1",
     "koa-compress": "^5.1.1",
     "koa-static": "^5.0.0",
     "mysql2": "^3.11.5",
+    "nodemailer": "^6.10.0",
     "path": "^0.12.7",
+    "svg-captcha": "^1.4.0",
     "web-push": "^3.6.7"
   }
 }

@@ -26,6 +26,7 @@ import { getUserIp } from "./api/request";
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from './store/index';
 import { setIpInfo, setAddressInfo } from './store/generalStore.ts';
+import { setUserAgentWidthStore } from './store/Modules/WindowsSystemOptionsStore';
 
 function App() {
   // 创建React变量
@@ -79,6 +80,26 @@ function App() {
       console.log('获取用户IP地址失败:', err);
     });
   }, [])
+
+  // 创建生命周期
+  useEffect(() => {
+    // 定义窗口大小更新函数
+    const handleResize = () => {
+      dispatch(setUserAgentWidthStore(window.innerWidth));
+    };
+
+    // 初始化 userAgentWidth
+    handleResize();
+
+    // 监听窗口变化
+    window.addEventListener("resize", handleResize);
+
+    // 组件卸载时移除监听器，防止内存泄漏
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   // 订阅Service Worker 
   if ("serviceWorker" in navigator) {
     navigator.serviceWorker.register("/sw.js")

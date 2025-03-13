@@ -24,11 +24,15 @@ interface HomecontentComProps {
 // 导入React
 import React from 'react';
 
+// 导入React Router
+import { useNavigate } from 'react-router-dom';
+
 function BookFlow({ userAgentWidth, userAgent }: HomecontentComProps) {
     // 导入React变量
     const [bookArray, setBookArray] = useState<Array<any>>([]);
     const [width, setWidth] = useState<number>(0);
     const [agentName, setAgentName] = useState<string>('');
+    const [countItem, setCountItem] = useState<number>(4);
     
     // 创建消息提醒变量
     const [messageApi, contextHolder] = message.useMessage();
@@ -41,6 +45,7 @@ function BookFlow({ userAgentWidth, userAgent }: HomecontentComProps) {
         });
     };
 
+    // 生命周期,发起请求部分
     useEffect(() => {
         getBookFlowInfo({})
             .then((res) => {
@@ -63,17 +68,26 @@ function BookFlow({ userAgentWidth, userAgent }: HomecontentComProps) {
         setWidth(userAgentWidth);
         setAgentName(userAgent);
 
+        if (width > 375 && width <= 500) {
+            setCountItem(4);
+        } else if (width > 500 && width <= 768) { 
+            setCountItem(6);
+        }
+
         // 清除事件监听
         return () => {
             window.removeEventListener('resize', handleResize);
         };
     }, [userAgentWidth, userAgent]);
 
+    // 获取随机元素数组
     function getRandomItems<T>(array: T[], count: number): T[] {
         if (array.length <= count) return array; // 如果数组元素不足，直接返回全部
         const shuffled = [...array].sort(() => Math.random() - 0.5); // 打乱数组
         return shuffled.slice(0, count); // 取前 count 个
     }
+
+    const navigate = useNavigate();
 
     return (
         <>
@@ -93,17 +107,19 @@ function BookFlow({ userAgentWidth, userAgent }: HomecontentComProps) {
                                             {
                                                 // 判断是否电脑端和宽度是否高于768
                                                 agentName === 'pc' || width > 768 ? 
-                                                    <></> :
+                                                <>
+                                                
+                                                </> :
                                                     <>
                                                         {
                                                             bookArray.length >= 3 && bookArray.length > 0
                                                             ?
                                                                 <div className={styles.phone}>
                                                                     {
-                                                                        getRandomItems(bookArray, 4).map((item, index) => {
+                                                                    getRandomItems(bookArray, countItem).map((item, index) => {
                                                                             return (
                                                                                 <React.Fragment key={index}>
-                                                                                    <a className={styles.swiperItemLink} href={item.linkUrl} target="_blank" rel="noreferrer">
+                                                                                    <a className={styles.swiperItemLink} href={item.linkHtml} target="_blank" rel="noreferrer">
                                                                                         <div className={styles.swiperItem}>
                                                                                             <img className={styles.bookImg} loading="lazy" src={item.imgUrl} alt="图书照片" />
                                                                                             <div className={styles.bookInfo}>
@@ -134,7 +150,9 @@ function BookFlow({ userAgentWidth, userAgent }: HomecontentComProps) {
                                 </>
                             </div>
                             <div className={styles.btnBox}>
-                                <Button className={styles.lookMore}>查看更多</Button>
+                                <Button onClick={() => {
+                                    navigate('/bookstore');
+                                }} className={styles.lookMore}>查看更多</Button>
                             </div>
                         </div>
                     </>

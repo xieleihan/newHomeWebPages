@@ -1,6 +1,7 @@
 function AboutPages() {
     return (
-        <></>
+        <>
+        </>
     );
 }
 

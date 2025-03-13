@@ -22,7 +22,6 @@ function HomePages() {
     // 创建React变量
     const [userAgent, setUserAgent] = useState<string>('pc');
     const [userAgentWidth, setUserAgentWidth] = useState<number>(0);
-    
     // 创建生命周期
     useEffect(() => {
         // 订阅推送通知

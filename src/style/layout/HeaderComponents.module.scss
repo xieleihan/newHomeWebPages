@@ -1,0 +1,146 @@
+@import '../base.module.scss';
+
+.header {
+    width: 100dvw;
+    height: 1rem;
+    padding: 0 1rem;
+    display: flex;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    justify-content: space-between;
+    background-color: $headerBgColor;
+    z-index: 99999;
+
+    .popup {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        height: auto;
+        transition: all .5s;
+        transform-origin: center top;
+        background-color: $headerBgColor;
+
+        .popupItem {
+            padding: .1rem 1rem;
+            color: white;
+        }
+    }
+
+    .left {
+        height: 70%;
+        display: flex;
+        align-items: center;
+
+        .avater {
+            aspect-ratio: 1/1;
+            height: 100%;
+            border-radius: .1rem;
+        }
+
+        .title {
+            height: 100%;
+            line-height: .7rem;
+            color: white;
+            margin-left: .2rem;
+            font-size: .3rem;
+            white-space: nowrap;
+        }
+    }
+
+    .right {
+        height: 100%;
+        display: flex;
+        justify-content: flex-end;
+
+        .nav {
+            background-color: transparent;
+            height: 100%;
+            display: flex;
+
+            .item {
+                height: 100%;
+                padding: 0 .2rem;
+                display: flex;
+                align-items: center;
+                color: white;
+                font-size: .3rem;
+                cursor: pointer;
+                justify-content: center;
+
+                span {
+                    line-height: .3rem;
+                    transition: box-shadow .5s;
+                }
+
+                &:hover {
+                    span {
+                        box-shadow: 0 0 1rem .2rem $googleBlue;
+                    }
+                }
+            }
+        }
+
+        .operateBox {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            .icon {
+                display: none;
+                height: 50%;
+                aspect-ratio: 1/1;
+                margin-left: .2rem;
+            }
+        }
+    }
+
+    // 移动端
+    @media (max-width: 600px) {
+        .right {
+            .nav {
+                display: none;
+            }
+
+            .operateBox {
+                .icon {
+                    display: block;
+                }
+            }
+        }
+    }
+
+    // 电脑端
+    @media (min-width: 768px) {
+        height: .5rem;
+
+        .left {
+            .avater {
+                border-radius: .05rem;
+            }
+
+            .title {
+                font-size: .2rem;
+                line-height: .35rem;
+            }
+        }
+
+        .right {
+            width: 4rem;
+
+            .nav {
+                .item {
+                    font-size: .15rem;
+                    padding: 0 .1rem;
+
+                    span {
+                        line-height: .15rem;
+                    }
+                }
+            }
+        }
+    }
+}
