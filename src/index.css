@@ -8,6 +8,7 @@
   margin: 0;
   /* css3新增样式 */
   box-sizing: border-box;
+  user-select: none;
 }
 
 /* 去掉列表符号 */
@@ -77,6 +78,10 @@ html {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+button{
+  cursor: url("./assets/cursor/ayuda.cur"),auto !important;
 }
 
 /* end */

@@ -57,17 +57,21 @@ router.post('/verifyEmail', async (ctx) => {
     }
     try {
         const result = await redis.get(`emailVerify:${email}`);
+
+        if(!result && result == null) {
+            ctx.body = { code: 400, message: '验证码已过期' };
+            return;
+        }
+
         if(result === code) {
             ctx.status = 200;
             ctx.body = { code: 200, message: '验证成功' };
             // 删除验证码
             await redis.del(`emailVerify:${email}`);
         } else {
-            ctx.status = 400;
             ctx.body = { code: 400, message: '验证码错误' };
         }
     } catch {
-        ctx.status = 500;
         ctx.body = { code: 500, message: '服务器错误' };
     }
 });

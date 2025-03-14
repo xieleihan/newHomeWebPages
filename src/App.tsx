@@ -116,11 +116,11 @@ function App() {
               <div className={styles.start}>
                 <div className={styles.translate}>
                   <Dropdown menu={{ items }}>
-                    <img onClick={(e) => { e.preventDefault() }} src={translate} alt="" />
+                    <img draggable="false" onClick={(e) => { e.preventDefault() }} src={translate} alt="" />
                   </Dropdown>
                 </div>
                 <div className={styles.operate}>
-                  <img className={styles.logo} src={Logo} alt="" />
+                  <img draggable="false" className={styles.logo} src={Logo} alt="" />
                   <p className={styles.title}>
                     {t('startPages.title')}
                   </p>

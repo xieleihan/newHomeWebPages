@@ -1,4 +1,4 @@
-import { axiosGet,axiosPost } from './index';
+const { axiosGet, axiosPost } = require('./index');
 
 /**
  * 获取图片验证码

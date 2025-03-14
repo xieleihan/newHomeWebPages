@@ -46,7 +46,6 @@ router.post('/verifyImgCode', async (ctx) => {
     const { key, code } = ctx.request.body;
 
     if (!key || !code) {
-        ctx.status = 400;
         if (!key) {
             ctx.body = {
                 code: 400,
@@ -64,8 +63,7 @@ router.post('/verifyImgCode', async (ctx) => {
     try {
         // 从Redis获取验证码
         const storeCaptcha = await redis.get(key);
-        if (!storeCaptcha) {
-            ctx.status = 400;
+        if (!storeCaptcha && storeCaptcha == null) {
             ctx.body = {
                 code: 400,
                 message: "验证码已过期"
@@ -83,14 +81,12 @@ router.post('/verifyImgCode', async (ctx) => {
                 message: "验证成功"
             }
         }else {
-            ctx.status = 400;
             ctx.body = {
                 code: 400,
                 message: "验证码错误"
             }
         }
     } catch {
-        ctx.status = 500;
         ctx.body = {
             code: 500,
             message: "Redis错误"

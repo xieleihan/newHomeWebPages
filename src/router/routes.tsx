@@ -5,7 +5,9 @@ import { lazy, Suspense } from 'react';
 import { Spin } from 'antd';
 
 // 导入视图
-const App = lazy(()=>import('../App')) // 主视图
+const App = lazy(() => import('../App')) // 主视图
+const RegisterPages = lazy(() => import('../pages/RegisterPages')); // 注册页
+const LoginPages = lazy(() => import('../pages/LoginPages')); // 登录页
 const Home = lazy(() => import('../pages/HomePages')); // 主页
 const ErrorPages = lazy(() => import('../pages/ErrorPages')); // 错误页
 const ContactPages = lazy(() => import('../pages/ContactPages')); // 联系页
@@ -19,6 +21,22 @@ const routes = [
         element: (
             <Suspense fallback={<Spin size="large" />}>
                 <App />
+            </Suspense>
+        ),
+    },
+    {
+        path: '/register',
+        element: (
+            <Suspense fallback={<Spin size="large" />}>
+                <RegisterPages />
+            </Suspense>
+        ),
+    },
+    {
+        path: '/login',
+        element: (
+            <Suspense fallback={<Spin size="large" />}>
+                <LoginPages />
             </Suspense>
         ),
     },

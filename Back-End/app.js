@@ -6,6 +6,10 @@ const Router = require('@koa/router');
 const cors = require('@koa/cors');
 // 导入Koa-bodyparser
 const bodyParser = require('koa-bodyparser');
+// 导入Koa-compress
+const compress = require('koa-compress');
+// 导入Koa-helmet
+const helmet = require('koa-helmet');
 
 // 插件
 // 获取环境变量插件
@@ -43,7 +47,7 @@ dotenv.config();
 // });
 
 // 导入路由
-const { TechnologyStack,WebPushRouter,ImgVerifyRouter, EmailVerifyRouter } = require('./router/index');
+const { TechnologyStack,WebPushRouter,ImgVerifyRouter, EmailVerifyRouter,UserRouter } = require('./router/index');
 // 使用跨域
 app.use(cors({
     allowMethods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
@@ -55,6 +59,16 @@ app.use(cors({
 
 // 使用bodyparser
 app.use(bodyParser());
+// 使用 koa-compress 中间件
+app.use(compress({
+    threshold: 1024, // 超过 1KB 才进行压缩
+    flush: require('zlib').Z_SYNC_FLUSH, // 立即刷新压缩数据
+    gzip: {
+        level: 9 // gzip 压缩级别，范围 0-9，越高压缩率越大
+    }
+}));
+// 使用koa-helmet
+app.use(helmet());
 
 // 使用路由
 app.use(router.routes());
@@ -63,6 +77,7 @@ app.use(TechnologyStack.routes()); // 技术栈图片路由
 app.use(WebPushRouter.routes()); // WebPush路由
 app.use(ImgVerifyRouter.routes()); // 图形验证码路由
 app.use(EmailVerifyRouter.routes()); // 邮箱验证码路由
+app.use(UserRouter.routes()); // 用户路由
 
 // 静态资源分发
 app.use(require('koa-static')(__dirname + '/public'));
