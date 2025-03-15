@@ -35,3 +35,21 @@ export const getTechnologyStack = function (params: any) {
 export const getBookFlowInfo = function (params: any) {
     return getOut('https://localhost:5173/json/book.json', params);
 }
+
+/**
+ * 生成图片验证码
+ * @param params 不用填入参数
+ * @returns data 图片svg code 响应码 key redis的key
+ */
+export const getImgVerify = function (params: any) {
+    return get('/imgVerify/getImgVerify', params);
+}
+
+/**
+ * 发送邮件验证码
+ * @param data 
+ * @returns 
+ */
+export const sendEmail = function (data: any) {
+    return post('/emailVerify/sendEmail', data);
+}

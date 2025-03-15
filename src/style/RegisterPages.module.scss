@@ -1,8 +1,61 @@
 @import './base.module.scss';
 
-.register{
+.register {
     width: 100dvw;
     height: 100dvh;
-    display: flex;
     position: relative;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    font-family: 'zk';
+
+    // 兼容 image-set() 解析失败的情况
+    background-image: url(https://picsum.photos/1920/1080.webp);
+
+    background-image: image-set("https://picsum.photos/1280/720.webp" type("image/webp") 1x,
+            "https://picsum.photos/1920/1080.webp" type("image/webp") 2x,
+            "https://picsum.photos/2560/1440.webp" type("image/webp") 3x,
+            "https://picsum.photos/3840/2160.webp" type("image/webp") 4x);
+
+    // 针对高分辨率屏幕
+    @media (min-resolution: 2dppx) {
+        background-image: url(https://picsum.photos/1920/1080.webp);
+    }
+
+    @media (min-resolution: 3dppx) {
+        background-image: url(https://picsum.photos/2560/1440.webp);
+    }
+
+    @media (min-resolution: 4dppx) {
+        background-image: url(https://picsum.photos/3840/2160.webp);
+    }
+
+    .container{
+        width: 100%;
+        height: 100%;
+        .registerBox{
+            background-color: rgba($color: #fff, $alpha: .7);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            height: fit-content;
+            padding: .5rem;
+            border: 1px solid #ccc;
+            .title{
+                font-weight: bold;
+                font-size: .8rem;
+            }
+            .enTitle{
+                font-size: .6rem;
+            }
+            .desc{
+                font-size: .5rem;
+                color: #666;
+                letter-spacing: .2rem;
+            }
+        }
+    }
+
 }
