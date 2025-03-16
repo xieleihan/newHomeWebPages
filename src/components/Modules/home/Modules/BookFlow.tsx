@@ -11,7 +11,7 @@ import { useEffect,useState } from "react";
 import { Button,message,Spin } from 'antd';
 
 // 导入Swiper
-import { Swiper,SwiperSlide } from 'swiper/react';
+// import { Swiper,SwiperSlide } from 'swiper/react';
 
 // 导入请求
 import { getBookFlowInfo } from "../../../../api/request";
@@ -26,6 +26,9 @@ import React from 'react';
 
 // 导入React Router
 import { useNavigate } from 'react-router-dom';
+
+// 导入图片
+import articleNight from '../../../../assets/images/article-bg-night.webp';
 
 function BookFlow({ userAgentWidth, userAgent }: HomecontentComProps) {
     // 导入React变量
@@ -94,6 +97,7 @@ function BookFlow({ userAgentWidth, userAgent }: HomecontentComProps) {
             <ComponentsLayout
                 title="个人书库"
                 isOpenPagination={false}
+                backgroundImage={articleNight}
                 container={
                     <>
                         {contextHolder}

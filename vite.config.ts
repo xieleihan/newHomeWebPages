@@ -12,6 +12,24 @@ import legacyPlugin from '@vitejs/plugin-legacy';
 
 // https://vite.dev/config/
 export default defineConfig({
+  build: {
+    rollupOptions: {
+      output: {
+        entryFileNames: 'js/[name]-[hash].js',
+        chunkFileNames: 'js/[name]-[hash].js',
+        assetFileNames(assetsInfo) {
+          if(assetsInfo.name?.endsWith('.css')) {
+            return `css/[name]-[hash][extname]`;
+          }
+          const imgExts = ['.png', '.jpg', '.jpeg', '.webp', '.gif', '.svg', '.ico', '.avif'];
+          if(imgExts.some(ext => assetsInfo.name?.endsWith(ext))) {
+            return `assets/[ext]/[name]-[hash][extname]`;
+          }
+          return `assets/[name]-[hash][extname]`;
+        },
+      }
+    }
+  },
   plugins: [
     // React 插件
     react(),

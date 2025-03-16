@@ -9,6 +9,7 @@ interface Props {
     title: string;
     isOpenPagination?: boolean;  // 可选
     container: React.ReactNode;
+    backgroundImage?: string;  // 可选
 }
 
 /**
@@ -16,12 +17,16 @@ interface Props {
  * @param {string} title 标题 
  * @param {boolean} isOpenPagination 是否开启分页
  * @param {HTMLElement} container 容器
+ * @param {string} backgroundImage 背景图片
  * @returns JSX.Element
  */
-function ComponentsLayout({ title, isOpenPagination, container }: Props) {
+function ComponentsLayout({ title, isOpenPagination, container, backgroundImage}: Props) {
     return (
         <>
-            <section className={styles.componentsLayout}>
+            <section
+                className={styles.componentsLayout}
+                style={backgroundImage ? { background: `url(${backgroundImage}) no-repeat center center`, backgroundSize: 'cover', backgroundAttachment : 'fixed' } : {} }
+            >
                 {/* 标题 */}
                 <h2 className={styles.layoutTitle}>{ title }</h2>
                 {/* 内容 */}
