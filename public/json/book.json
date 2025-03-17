@@ -1,39 +1,39 @@
 {
     "data": [
         {
-            "bookName":"The Alchemist",
-            "imgUrl": "https://picsum.photos/300/200",
-            "author": "Paulo Coelho",
+            "bookName":"某某",
+            "imgUrl": "/static/book/bookimg/某某.jpg",
+            "author": "木苏里",
             "linkHtml": "https://baidu.com"
         },
         {
-            "bookName":"The Alchemist",
-            "imgUrl": "https://picsum.photos/300/200",
-            "author": "Paulo Coelho",
+            "bookName":"过门",
+            "imgUrl": "/static/book/bookimg/过门.jpg",
+            "author": "Priest",
             "linkHtml": "https://baidu.com"
         },
         {
-            "bookName":"The Alchemist",
-            "imgUrl": "https://picsum.photos/300/200",
-            "author": "Paulo Coelho",
+            "bookName":"撒野",
+            "imgUrl": "/static/book/bookimg/撒野.jpg",
+            "author": "巫哲",
             "linkHtml": "https://baidu.com"
         },
         {
-            "bookName":"The Alchemist",
-            "imgUrl": "https://picsum.photos/300/200",
-            "author": "Paulo Coelho",
+            "bookName":"一枝",
+            "imgUrl": "/static/book/bookimg/一枝.jpg",
+            "author": "绿山",
             "linkHtml": "https://baidu.com"
         },
         {
-            "bookName":"The Alchemist",
-            "imgUrl": "https://picsum.photos/300/200",
-            "author": "Paulo Coelho",
+            "bookName":"两棵",
+            "imgUrl": "/static/book/bookimg/两棵.jpg",
+            "author": "绿山",
             "linkHtml": "https://baidu.com"
         },
         {
-            "bookName":"The Alchemist",
-            "imgUrl": "https://picsum.photos/300/200",
-            "author": "Paulo Coelho",
+            "bookName":"百万UP学神天天演我",
+            "imgUrl": "/static/book/bookimg/百万UP学神天天演我.jpg",
+            "author": "小霄",
             "linkHtml": "https://baidu.com"
         },
         {

@@ -48,3 +48,32 @@ CREATE TABLE user (
     userpassword VARCHAR(100) NOT NULL -- 用户密码
 );
 select * from user;
+
+-- 用户信息表
+drop table if exists `user_info`;
+create table user_info(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+	useravater text, -- 用户头像
+    userdesc varchar(200), -- 用户签名或者描述
+    useraddress varchar(20), -- 用户地址
+    username VARCHAR(50) NOT NULL ,-- 用户名
+    userip varchar(100), -- 用户的Ip信息
+    registerTime datetime, -- 注册时间
+    uuid text -- 唯一标识符
+);
+select * from userinfo;
+
+-- 音乐
+drop table if exists `db_music`;
+create table db_music(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    musicid varchar(100) not null, -- 音乐id
+);
+select * from db_music;
+
+-- 相册
+drop table if exists `db_photo`;
+create table db_photo(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    photopath varchar(400) not null, -- 图片路径
+);
