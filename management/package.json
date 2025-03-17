@@ -9,7 +9,20 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "vue": "^3.5.13"
+    "@vitejs/plugin-basic-ssl": "^2.0.0",
+    "@vitejs/plugin-legacy": "^6.0.2",
+    "axios": "^1.8.3",
+    "element-plus": "^2.9.6",
+    "pinia": "^3.0.1",
+    "rollup-plugin-visualizer": "^5.14.0",
+    "sass-embedded": "^1.85.1",
+    "scss-loader": "^0.0.1",
+    "style-loader": "^4.0.0",
+    "vite-plugin-compression": "^0.5.1",
+    "vite-plugin-restart": "^0.4.2",
+    "vite-plugin-vconsole": "^2.1.1",
+    "vue": "^3.5.13",
+    "vue-router": "^4.5.0"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.2.1",
