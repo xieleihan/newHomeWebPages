@@ -7,6 +7,8 @@ import 'amfe-flexible';
 import router from './router';
 // 导入存储库
 import store from './store/index';
+import ElementPlus from 'element-plus'
+import 'element-plus/dist/index.css'
 
 const app = createApp(App);
 
@@ -14,5 +16,7 @@ const app = createApp(App);
 app.use(router);
 // 使用存储库
 app.use(store);
+// 使用element-plus
+app.use(ElementPlus)
 
 app.mount('#app');
