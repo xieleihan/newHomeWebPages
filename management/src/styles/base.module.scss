@@ -1,0 +1,28 @@
+// 公共样式
+// Copyright© 2024 SouthAki
+
+// 变量
+$headerBgColor: #656565;
+$googleRed: #e63e31;
+$googleYellow: #fcc629;
+$googleGreen: #239443;
+$googleBlue: #307def;
+$noSendInput: #dbeafe;
+$sendInput: #4d6bfe;
+$radius: .3rem;
+
+// 初始化样式
+button {
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+input {
+    border: none;
+    outline: none;
+}
+
+a {
+    text-decoration: none;
+}
