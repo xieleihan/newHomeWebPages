@@ -1,5 +1,13 @@
 <template>
     <div class="error">
+        <div class="top">
+            <div class="left">
+                <img class="logo" loading="lazy" src="../assets/icon/peacock_flat.png" alt="logo">
+            </div>
+            <div class="right">
+                <span>当前时间:</span><span>{{ nowTime }}</span>
+            </div>
+        </div>
         <div class="container">
             <div class="topLeft">
                 <img loading="lazy" src="../assets/icon/404.svg" alt="Error">
@@ -19,7 +27,40 @@
 </template>
 
 <script setup lang="ts">
+import { ref, onMounted, onUnmounted } from 'vue';
 
+// 创建变量
+const nowTime = ref('');
+
+// 格式化时间（补零）
+const padZero = (num: number) => String(num).padStart(2, '0');
+
+// 创建方法
+const getTime = () => {
+    const date = new Date();
+    const year = date.getFullYear();
+    const month = padZero(date.getMonth() + 1);
+    const day = padZero(date.getDate());
+    const hour = padZero(date.getHours());
+    const minute = padZero(date.getMinutes());
+    const second = padZero(date.getSeconds());
+    nowTime.value = `${year}-${month}-${day} ${hour}:${minute}:${second}`;
+}
+
+let intervalId: ReturnType<typeof setInterval> | null = null;
+
+// 生命周期钩子
+onMounted(() => {
+    getTime();
+    intervalId = setInterval(getTime, 1000);
+});
+
+// 卸载生命周期
+onUnmounted(() => {
+    if (intervalId) {
+        clearInterval(intervalId);
+    }
+});
 </script>
 
 <style scoped lang="scss">
@@ -31,6 +72,25 @@
     align-items: center;
     font-family: 'zk';
     position: relative;
+    .top{
+        position: absolute;
+        top: 0;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        padding: .1rem .2rem;
+        height: .5rem;
+        .left{
+            .logo{
+                width: .3rem;
+                height: .3rem;
+            }
+        }
+        .right{
+            display: flex;
+            align-items: center;
+        }
+    }
     .copyright{
         position: absolute;
         bottom: 0;

@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="about">
 
     </div>
 </template>
@@ -8,6 +8,9 @@
 
 </script>
 
-<style scoped>
-
+<style scoped lang="scss">
+.about{
+    width: 100dvw;
+    height: 100dvh;
+}
 </style>
