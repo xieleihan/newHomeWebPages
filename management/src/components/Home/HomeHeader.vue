@@ -63,7 +63,9 @@ const getTime = () => {
     const hour = padZero(date.getHours());
     const minute = padZero(date.getMinutes());
     const second = padZero(date.getSeconds());
-    nowTime.value = `${year}-${month}-${day} ${hour}:${minute}:${second}`;
+    const week = date.getDay();
+    const weekArr = ['日', '一', '二', '三', '四', '五', '六'];
+    nowTime.value = `${year}-${month}-${day} ${hour}:${minute}:${second} 星期${weekArr[week]}`;
 }
 
 let intervalId: ReturnType<typeof setInterval> | null = null;
@@ -88,6 +90,8 @@ const logout = () => {
         cancelButtonText: '取消',
         type: 'warning'
     }).then(() => {
+        // 清除cookies
+        document.cookie = 'AUTO_TOKEN=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
         // 跳转到起始页
         router.push('/start');
     }).catch(() => {

@@ -21,7 +21,30 @@
                         </el-breadcrumb>
                     </div>
                     <div class="bottom">
-                        <router-view />
+                        <div
+                            v-if="!isOpenRouterView"
+                            class="overflow"
+                        >
+                            <div class="box">
+                                <p>数通中台</p>
+                                <div>
+                                    <img
+                                        loading="lazy"
+                                        src="../assets/icon/vue.svg"
+                                        alt="vue"
+                                    >
+                                    <img
+                                        loading="lazy"
+                                        src="../assets/icon/vite.svg"
+                                        alt="vite"
+                                    >
+                                    <img loading="lazy" src="../assets/icon/Sass.svg" alt="scss">
+                                    <img loading="lazy" src="../assets/icon/typescript.svg" alt="TypeScript">
+                                    <img loading="lazy" src="../assets/icon/element-plus.svg" alt="Element Plus">
+                                </div>
+                            </div>
+                        </div>
+                        <router-view v-else />
                     </div>
                 </el-main>
             </el-container>
@@ -38,9 +61,12 @@ import HomeAside from '../components/Home/HomeAside.vue';
 import HomeHeader from '../components/Home/HomeHeader.vue';
 import HomeFooter from '../components/Home/HomeFooter.vue';
 // 导入Vue-Router
-import { computed } from 'vue';
+import { computed, watchEffect,ref } from 'vue';
 // 导入Vue-Router
 import { useRoute } from 'vue-router';
+
+// 定义变量
+const isOpenRouterView = ref(false);
 
 // 假设 routes 的 meta 定义了面包屑的结构
 const route = useRoute();
@@ -51,6 +77,15 @@ const breadcrumbList = computed(() => {
         path: item.path,
         name: item.meta.breadcrumb,
     }));
+});
+
+// 监听当前的路径是否/home
+watchEffect(() => {
+    if (route.path !== '/home') {
+        isOpenRouterView.value = true;
+    } else {
+        isOpenRouterView.value = false;
+    }
 });
 </script>
 
@@ -80,6 +115,20 @@ const breadcrumbList = computed(() => {
                     width: 100%;
                     height: calc(100% - .2rem);
                     border-top: 1px solid #ccc;
+                    .overflow{
+                        width: 100%;
+                        height: 100%;
+                        background: url('../assets/images/macos-catalina-mountains-island-daytime-stock-5k.webp') no-repeat center center/cover;
+                        .box{
+                            width: 100%;
+                            height: 100%;
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: center;
+                            align-items: center;
+                            background-color: rgba($color: #fff, $alpha: .7);
+                        }
+                    }
                 }
             }
         }

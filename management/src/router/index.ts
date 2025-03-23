@@ -1,5 +1,8 @@
 import { createWebHistory, createRouter } from 'vue-router';
 
+// 导入工具
+import { getCookie } from '../utils/index';
+
 const routes: any = [
     {
         path: '/:pathMatch(.*)*',
@@ -45,7 +48,28 @@ const routes: any = [
         component: () => import('../views/HomeView.vue'),
         meta: {
             breadcrumb: '首页',
-        }
+            requiresAuth: true
+        },
+        children: [
+            {
+                path: 'overview',
+                name: 'Overview',
+                component: () => import('../components/container/HomeOverview.vue'),
+                meta: {
+                    breadcrumb: '概览',
+                    requiresAuth: true
+                }
+            },
+            {
+                path: 'systemlog',
+                name: 'SystemLog',
+                component: () => import('../components/container/HomeSystemlog.vue'),
+                meta: {
+                    breadcrumb: '系统日志',
+                    requiresAuth: true
+                }
+            }
+        ]
     },
     {
         path: '/about',
@@ -53,6 +77,7 @@ const routes: any = [
         component: () => import('../views/AboutView.vue'),
         meta: {
             breadcrumb: '关于我们',
+            requiresAuth: true
         }
     }
 ];
@@ -60,6 +85,25 @@ const routes: any = [
 const router = createRouter({
     history: createWebHistory(),
     routes,
+});
+
+// 添加路由守卫
+router.beforeEach((to, from, next) => {
+    if (to.matched.some((record: any) => record.meta.requiresAuth)) {
+        // 获取cookies中是否有auto_token字段
+        const token = getCookie('AUTO_TOKEN');;
+        if (!token) {
+            next({
+                path: '/start',
+                query: { redirect: to.fullPath }
+            }) // 生产环境使用
+            // next() // 开发环境使用
+        } else {
+            next()
+        }
+    } else {
+        next() // 保证一定要调用 next()
+    }
 });
 
 export default router;

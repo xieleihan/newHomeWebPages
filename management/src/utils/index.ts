@@ -252,6 +252,42 @@ function getLanguage() {
 }
 
 /**
+ * 获取用户代理
+ * @return {string} 返回用户代理
+ */
+function getUserAgent() {
+    return navigator.userAgent;
+}
+
+// Extend Performance interface for Chrome's memory info
+interface PerformanceMemory {
+    jsHeapSizeLimit: number;
+    totalJSHeapSize: number;
+    usedJSHeapSize: number;
+}
+
+interface ExtendedPerformance extends Performance {
+    memory?: PerformanceMemory;
+}
+
+function getMenoryInfo() {
+    const extPerformance = performance as ExtendedPerformance;
+    if (!extPerformance.memory) {
+        return {
+            total: '0',
+            used: '0',
+            limit: '0'
+        };
+    }
+    
+    return {
+        total: (extPerformance.memory.jsHeapSizeLimit / 1e9).toFixed(2),
+        used: (extPerformance.memory.usedJSHeapSize / 1e9).toFixed(2),
+        limit: (extPerformance.memory.totalJSHeapSize / 1e9).toFixed(2),
+    }
+}
+
+/**
  * 整体返回设备信息
  * @returns {Object} 返回设备信息
  */
@@ -262,7 +298,9 @@ function getDeviceInfo() {
         screenInfo: getScreenInfo(),
         viewportSize: getViewportSize(),
         deviceType: getDeviceType(),
-        language: getLanguage()
+        language: getLanguage(),
+        userAgent: getUserAgent(),
+        memoryInfo: getMenoryInfo(),
     }
 }
 

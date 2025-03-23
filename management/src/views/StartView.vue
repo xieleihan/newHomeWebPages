@@ -68,7 +68,10 @@
                                 class="col"
                                 :span="24"
                             >
-                                <div class="colBox" @click="refresh()">
+                                <div
+                                    class="colBox"
+                                    @click="refresh()"
+                                >
                                     <el-icon>
                                         <Refresh />
                                     </el-icon>
@@ -79,8 +82,12 @@
                     </el-form-item>
                     <el-form-item class="formItem">
                         <el-checkbox v-model="form.accept">同意<router-link
-                                to="/start/userAgreement">用户协议</router-link>与<router-link
-                                to="/start/privacyPolicy">隐私政策</router-link></el-checkbox>
+                                to="/start/userAgreement"
+                                class="goToLink"
+                            >《用户协议》</router-link>与<router-link
+                                to="/start/privacyPolicy"
+                                class="goToLink"
+                            >《隐私政策》</router-link></el-checkbox>
                     </el-form-item>
                     <el-form-item>
                         <el-button
@@ -168,6 +175,11 @@ function refresh() {
 
 async function submit() {
     if (!rulesFormRef.value) return;
+
+    if(form.value.accept === false){
+        ElMessage.error('请先同意用户协议和隐私政策');
+        return;
+    }
 
     await rulesFormRef.value.validate((valid) => {
         if (valid) {
@@ -265,6 +277,10 @@ async function submit() {
 
                 .formItem{
                     width: 100%;
+                    .goToLink{
+                        color: $googleBlue;
+                        cursor: pointer;
+                    }
                 }
 
                 .svgBox {

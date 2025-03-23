@@ -17,23 +17,28 @@
                     <p class="title">网络错误</p>
                     <p class="desc">你来到无人问津的荒漠</p>
                 </div>
-                <el-button size="large" type="primary">返回首页</el-button>
+                <el-button @click="goToHome" size="large" type="primary">返回首页</el-button>
             </div>
         </div>
         <div class="copyright">
-            Copyright© 2025 SouthAki, All Rights Reserved. | 
+            Copyright© 2025 SouthAki, All Rights Reserved. | 网盾星球,提供CDN服务
         </div>
     </div>
 </template>
 
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue';
+// 导入Vue Router
+import { useRouter } from 'vue-router';
 
 // 创建变量
 const nowTime = ref('');
 
 // 格式化时间（补零）
 const padZero = (num: number) => String(num).padStart(2, '0');
+
+// 获取路由
+const router = useRouter();
 
 // 创建方法
 const getTime = () => {
@@ -44,7 +49,9 @@ const getTime = () => {
     const hour = padZero(date.getHours());
     const minute = padZero(date.getMinutes());
     const second = padZero(date.getSeconds());
-    nowTime.value = `${year}-${month}-${day} ${hour}:${minute}:${second}`;
+    const week = date.getDay();
+    const weekArr = ['日', '一', '二', '三', '四', '五', '六'];
+    nowTime.value = `${year}-${month}-${day} ${hour}:${minute}:${second} 星期${weekArr[week]}`;
 }
 
 let intervalId: ReturnType<typeof setInterval> | null = null;
@@ -61,6 +68,10 @@ onUnmounted(() => {
         clearInterval(intervalId);
     }
 });
+
+function goToHome(){
+    router.push('/home');
+}
 </script>
 
 <style scoped lang="scss">
