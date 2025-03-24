@@ -8,7 +8,7 @@
   ],
   "main": "app.js",
   "scripts": {
-    "dev": "node app.js"
+    "dev": "pm2 start app.js --watch"
   },
   "author": "SouthAki",
   "license": "GPL-3.0",

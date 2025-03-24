@@ -162,29 +162,17 @@ router.post('/login', async (ctx) => {
     }
 
     // 检验图片验证码
-    try {
-        const verifyImgRes = await verifyImgCode({ key, code });
-        if(verifyImgRes.data.code !== 200) {
-            ctx.status = 400;
-            ctx.body = { code: 400, message: '验证码错误' };
-            return;
-        }
-    } catch {
-        ctx.status = 500;
-        ctx.body = { code: 500, message: '服务器错误' };
+    const verifyImgRes = await verifyImgCode({ key, code });
+    if (verifyImgRes.data.code !== 200) {
+        ctx.status = 400;
+        ctx.body = { code: 400, message: '验证码错误' };
         return;
     }
     // 检验邮箱验证码
-    try {
-        const verifyEmailRes = await verifyEmailCode({ useremail, verifyCode });
-        if(verifyEmailRes.data.code !== 200) {
-            ctx.status = 400;
-            ctx.body = { code: 400, message: '邮箱验证码错误' };
-            return;
-        }
-    }catch {
-        ctx.status = 500;
-        ctx.body = { code: 500, message: '服务器错误' };
+    const verifyEmailRes = await verifyEmailCode({ useremail, verifyCode });
+    if (verifyEmailRes.data.code !== 200) {
+        ctx.status = 400;
+        ctx.body = { code: 400, message: '邮箱验证码错误' };
         return;
     }
     // 查询数据库

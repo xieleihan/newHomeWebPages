@@ -68,6 +68,15 @@ const routes: any = [
                     breadcrumb: '系统日志',
                     requiresAuth: true
                 }
+            },
+            {
+                path: 'serverstatus',
+                name: 'ServerStatus',
+                component: () => import('../components/container/HomeServerstatus.vue'),
+                meta: {
+                    breadcrumb: '服务器状态',
+                    requiresAuth: true
+                }
             }
         ]
     },

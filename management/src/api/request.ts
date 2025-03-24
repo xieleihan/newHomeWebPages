@@ -8,8 +8,22 @@ export const login = (data: any) => {
 }
 
 /**
+ * 获取日志信息
+ */
+export const getLogList = (params: any) => {
+    return get('/logs', params);
+}
+
+/**
  * 获取图片验证码的图片
  */
 export const getImgVerify = (params:any) => {
     return get('/imgVerify/getImgVerify',params);
+}
+
+/**
+ * 获取服务器状态
+ */
+export const getServerStatus = (params:any) => {
+    return get('/private/superServerStatus',params);
 }

@@ -22,9 +22,14 @@
                             系统日志
                         </el-menu-item>
                     </router-link>
+                    <router-link to="/home/serverstatus">
+                        <el-menu-item index="1-3">
+                            服务器状态
+                        </el-menu-item>
+                    </router-link>
                 </el-menu-item-group>
                 <el-menu-item-group title="系统">
-                    <el-menu-item index="1-3">item three</el-menu-item>
+                    <el-menu-item index="1-31">item three</el-menu-item>
                 </el-menu-item-group>
                 <el-sub-menu index="1-4">
                     <template #title>item four</template>
@@ -56,6 +61,9 @@ watchEffect(() => {
             break;
         case '/home/systemlog':
             defaultActive.value = '1-2';
+            break;
+        case '/home/serverstatus':
+            defaultActive.value = '1-3';
             break;
         default:
             defaultActive.value = '1-1';

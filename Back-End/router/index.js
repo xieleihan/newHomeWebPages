@@ -5,6 +5,8 @@ const ImgVerifyRouter = require('./Modules/ImgVerifyRouter'); // 图片验证码
 const EmailVerifyRouter = require('./Modules/EmailVerifyRouter'); // 邮箱验证码路由
 const UserRouter = require('./Modules/UserRouter'); // 用户路由
 const SuperUserRouter = require('./Modules/super_UserRouter'); // 超级用户路由
+const superServerStatus = require('./Modules/super_serverStatusRouter'); // 服务器状态路由
+const SuperUserManageRouter = require('./Modules/super_UsermanageRouter'); // 超级用户管理路由
 
 // 导出模块
 module.exports = {
@@ -13,5 +15,7 @@ module.exports = {
     ImgVerifyRouter,
     EmailVerifyRouter,
     UserRouter,
-    SuperUserRouter
+    SuperUserRouter,
+    superServerStatus,
+    SuperUserManageRouter
 };
