@@ -135,7 +135,7 @@ router.get("/logs", async (ctx) => {
         ctx.body = { code: 401, message: '未登录' };
         return;
     }
-    jwt.verify(token.split(' ')[1], SECRET_KEY, (err, decoded) => {
+    jwt.verify(token, SECRET_KEY, (err, decoded) => {
         if (err) {
             ctx.status = 401;
             ctx.body = { code: 401, message: '登录过期，请重新登录' };
@@ -153,7 +153,7 @@ router.post('/reset', async (ctx) => {
         ctx.body = { code: 401, message: '未登录' };
         return;
     }
-    jwt.verify(token.split(' ')[1], SECRET_KEY, (err, decoded) => {
+    jwt.verify(token, SECRET_KEY, (err, decoded) => {
         if (err) {
             ctx.status = 401;
             ctx.body = { code: 401, message: '登录过期，请重新登录' };
@@ -180,7 +180,7 @@ router.post('/stop', async (ctx) => {
         ctx.body = { code: 401, message: '未登录' };
         return;
     }
-    jwt.verify(token.split(' ')[1], SECRET_KEY, (err, decoded) => {
+    jwt.verify(token, SECRET_KEY, (err, decoded) => {
         if (err) {
             ctx.status = 401;
             ctx.body = { code: 401, message: '登录过期，请重新登录' };

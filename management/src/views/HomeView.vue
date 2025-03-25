@@ -10,15 +10,17 @@
                 </el-aside>
                 <el-main class="content">
                     <div class="top">
-                        <el-breadcrumb separator="/">
-                            <el-breadcrumb-item
-                                v-for="(item, index) in breadcrumbList"
-                                :key="index"
-                                :to="index !== breadcrumbList.length - 1 ? item.path : null"
-                            >
-                                {{ item.name }}
-                            </el-breadcrumb-item>
-                        </el-breadcrumb>
+                        <div class="left">
+                            <el-breadcrumb separator="/">
+                                <el-breadcrumb-item
+                                    v-for="(item, index) in breadcrumbList"
+                                    :key="index"
+                                    :to="index !== breadcrumbList.length - 1 ? item.path : null"
+                                >
+                                    {{ item.name }}
+                                </el-breadcrumb-item>
+                            </el-breadcrumb>
+                        </div>
                     </div>
                     <div class="bottom">
                         <div
@@ -38,9 +40,21 @@
                                         src="../assets/icon/vite.svg"
                                         alt="vite"
                                     >
-                                    <img loading="lazy" src="../assets/icon/Sass.svg" alt="scss">
-                                    <img loading="lazy" src="../assets/icon/typescript.svg" alt="TypeScript">
-                                    <img loading="lazy" src="../assets/icon/element-plus.svg" alt="Element Plus">
+                                    <img
+                                        loading="lazy"
+                                        src="../assets/icon/Sass.svg"
+                                        alt="scss"
+                                    >
+                                    <img
+                                        loading="lazy"
+                                        src="../assets/icon/typescript.svg"
+                                        alt="TypeScript"
+                                    >
+                                    <img
+                                        loading="lazy"
+                                        src="../assets/icon/element-plus.svg"
+                                        alt="Element Plus"
+                                    >
                                 </div>
                             </div>
                         </div>
@@ -111,6 +125,17 @@ watchEffect(() => {
                 .top{
                     height: .2rem;
                     width: 100%;
+                    display: flex;
+                    justify-content: space-between;
+                    .left{
+                        width: 30%;
+                        height: 100%;
+                    }
+                    .right{
+                        width: 50%;
+                        height: 55%;
+                        background-color: orange;
+                    }
                 }
                 .bottom{
                     width: 100%;

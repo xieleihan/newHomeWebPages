@@ -193,7 +193,7 @@ async function submit() {
                 let obj = JSON.parse(str);
                 if (obj.code === 200) {
                     ElMessage.success('登录成功');
-                    document.cookie = `AUTO_TOKEN=${obj.token}`;
+                    document.cookie = `AUTO_TOKEN=${obj.token};path=/`;
                     router.push({ path: '/home' })
                 } else {
                     getSvgImg();

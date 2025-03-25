@@ -85,4 +85,56 @@ router.post('/superLogin', async (ctx) => {
     }
 })
 
+router.post('/superChangePassword', async (ctx) => {
+    const { oldPassword, newPassword } = ctx.request.body;
+    const token = ctx.header.authorization;
+
+    if (!token) {
+        ctx.status = 401;
+        ctx.body = { code: 401, message: '未登录' };
+        return;
+    }
+    // 解析 token
+    try {
+        const decoded = jwt.verify(token, SECRET_KEY);
+        const username = decoded.username;
+
+        // 查询数据库是否存在该用户
+        const sql = "SELECT * FROM super_admin WHERE superusername = ?";
+        const [res] = await pool.query(sql, [username]);
+
+        if (res.length === 0) {
+            ctx.status = 400;
+            ctx.body = { code: 400, message: '账户不存在' };
+            return;
+        }
+
+        const user = res[0];
+
+        // 验证旧密码
+        const isPasswordValid = await bcrypt.compare(oldPassword, user.superuserpassword);
+        if (!isPasswordValid) {
+            ctx.status = 400;
+            ctx.body = { code: 400, message: '密码错误' };
+            return;
+        }
+
+        // 加密新密码
+        const hash = await bcrypt.hash(newPassword, 10);
+
+        // 更新数据库
+        const updateSql = "UPDATE super_admin SET superuserpassword = ? WHERE superusername = ?";
+        await pool.query(updateSql, [hash, username]);
+
+        ctx.status = 200;
+        ctx.body = { code: 200, message: '修改成功' };
+
+    } catch (error) {
+        console.error('修改密码错误:', error);
+        ctx.status = 500;
+        ctx.body = { code: 500, message: '服务器错误' };
+    }
+});
+
+
 module.exports = router;

@@ -34,3 +34,10 @@ export const getServerStatus = (params:any) => {
 export const getProcessList = (params: any) => {
     return get('/processes', params);
 }
+
+/**
+ * 修改登录密码
+ */
+export const changePassword = (data: any) => {
+    return post('/private/superChangePassword', data);
+}
