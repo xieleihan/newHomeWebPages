@@ -101,6 +101,7 @@ watchEffect(() => {
             background-color: $googleBlue;
         }
         .main{
+            height: calc(100% - 120px);
             .aside{
                 background-color: #ccc;
                 width: 1.5rem;

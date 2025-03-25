@@ -12,5 +12,6 @@
 .app{
   width: 100dvw;
   height: 100dvh;
+  overflow-x: hidden;
 }
 </style>

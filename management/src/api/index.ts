@@ -77,3 +77,5 @@ export const postOut = async (url: string, data: any = {}) => {
         throw error; // 继续抛出错误，供调用方捕获
     }
 };
+
+

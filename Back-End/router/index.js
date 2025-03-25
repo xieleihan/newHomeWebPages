@@ -8,6 +8,7 @@ const SuperUserRouter = require('./Modules/super_UserRouter'); // 超级用户�
 const superServerStatus = require('./Modules/super_serverStatusRouter'); // 服务器状态路由
 const SuperUserManageRouter = require('./Modules/super_UsermanageRouter'); // 超级用户管理路由
 
+
 // 导出模块
 module.exports = {
     TechnologyStack,
@@ -17,5 +18,5 @@ module.exports = {
     UserRouter,
     SuperUserRouter,
     superServerStatus,
-    SuperUserManageRouter
+    SuperUserManageRouter,
 };

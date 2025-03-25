@@ -77,6 +77,15 @@ const routes: any = [
                     breadcrumb: '服务器状态',
                     requiresAuth: true
                 }
+            },
+            {
+                path: 'system',
+                name: 'System',
+                component: () => import('../components/container/HomeSystem.vue'),
+                meta: {
+                    breadcrumb: '系统',
+                    requiresAuth: true
+                }
             }
         ]
     },

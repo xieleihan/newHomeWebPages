@@ -4,19 +4,23 @@
 </template>
 
 <script setup lang="ts">
-// 导入Vue
 import { ref, onMounted, onUnmounted } from 'vue';
-// 导入请求
-import { getLogList } from '../../api/request';
+import { useWebSocket } from '../../api/websocket';
 
-// 创建变量
+// 存储 WebSocket 实例
+let wsConnection: any = null;
+
+// HTML 内容
 const htmlStr = ref('<div>Windows PowerShell</div><div>版权所有（C） Microsoft Corporation。保留所有权利。</div><div>安装最新的 PowerShell，了解新功能和改进！https://aka.ms/PSWindows</div><div>PS C:/\Users/\Administration/npm run dev</div><br />');
 
-// 使用Set存储已添加的日志防止重复
+// 防止重复日志
 const logSet = new Set<string>();
 
-function updateLogs() {
-    getLogList({}).then(res => {
+// WebSocket 消息处理函数
+const handleMessage = (message: string) => {
+    try {
+        const res = JSON.parse(message); // 假设消息是 JSON 格式
+
         // 确保 res 是数组
         if (!Array.isArray(res)) return;
 
@@ -33,18 +37,26 @@ function updateLogs() {
         if (newLogs) {
             htmlStr.value += newLogs;
         }
-    });
-}
+    } catch (error) {
+        console.error('WebSocket 消息解析失败:', error);
+    }
+};
 
-let intervalId: any = null;
-
+// 挂载时启动 WebSocket
 onMounted(() => {
-    updateLogs();
-    intervalId = setInterval(updateLogs, 5000);
+    wsConnection = useWebSocket('/logs', {
+        onMessage: handleMessage, // 监听 WebSocket 消息
+        onOpen: () => console.log('WebSocket 已连接'),
+        onClose: () => console.log('WebSocket 已关闭'),
+        onError: (error) => console.error('WebSocket 发生错误:', error),
+    });
 });
 
+// 组件销毁时断开 WebSocket 连接
 onUnmounted(() => {
-    clearInterval(intervalId);
+    if (wsConnection) {
+        wsConnection.close();
+    }
 });
 </script>
 
@@ -56,5 +68,9 @@ onUnmounted(() => {
     color: #fff;
     padding: .1rem;
     overflow-y: scroll;
+    // 隐藏滚动条
+    &::-webkit-scrollbar {
+        display: none;
+    }
 }
 </style>

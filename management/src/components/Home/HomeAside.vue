@@ -29,7 +29,9 @@
                     </router-link>
                 </el-menu-item-group>
                 <el-menu-item-group title="系统">
-                    <el-menu-item index="1-31">item three</el-menu-item>
+                    <router-link to="/home/system">
+                        <el-menu-item index="1-31">系统</el-menu-item>
+                    </router-link>
                 </el-menu-item-group>
                 <el-sub-menu index="1-4">
                     <template #title>item four</template>

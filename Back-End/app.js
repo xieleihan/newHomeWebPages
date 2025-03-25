@@ -13,6 +13,7 @@ const helmet = require('koa-helmet');
 const { exec } = require('child_process');
 // 导入jsonwebtoken
 const jwt = require('jsonwebtoken');
+const WebSocket = require('ws');
 
 // 插件
 // 获取环境变量插件
@@ -51,8 +52,10 @@ const SECRET_KEY = process.env.SECRET_KEY; // 定义密钥
 //     ctx.body = 'Hello World!';
 // });
 
+const getServerStatus = require('./utils/Modules/performance');
+
 // 导入路由
-const { TechnologyStack, WebPushRouter, ImgVerifyRouter, EmailVerifyRouter, UserRouter, SuperUserRouter, superServerStatus,SuperUserManageRouter } = require('./router/index');
+const { TechnologyStack, WebPushRouter, ImgVerifyRouter, EmailVerifyRouter, UserRouter, SuperUserRouter, superServerStatus, SuperUserManageRouter } = require('./router/index');
 // 使用跨域
 app.use(cors({
     allowMethods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
@@ -101,11 +104,18 @@ let logs = []; // 用于存储日志
 const originalLog = console.log;
 const originalError = console.error;
 
+const server = https.createServer(options, app.callback());
+const wss1 = new WebSocket.Server({ noServer: true });
+const getServerStatusWss = new WebSocket.Server({ noServer: true });
+
 // 拦截 console.log 并存储日志
 console.log = (...args) => {
     const message = `[LOG] ${new Date().toISOString()} - ${args.join(" ")}`;
     logs.push(message);
     originalLog.apply(console, args); // 仍然打印到终端
+    wss1.clients.forEach((client) => {
+        client.send(JSON.stringify(logs));
+    })
 };
 
 // 拦截 console.error 并存储日志
@@ -113,9 +123,25 @@ console.error = (...args) => {
     const message = `[ERROR] ${new Date().toISOString()} - ${args.join(" ")}`;
     logs.push(message);
     originalError.apply(console, args);
+    wss1.clients.forEach((client) => {
+        client.send(JSON.stringify(logs));
+    })
 };
 
 router.get("/logs", async (ctx) => {
+    const token = ctx.header.authorization;
+    if (!token) {
+        ctx.status = 401;
+        ctx.body = { code: 401, message: '未登录' };
+        return;
+    }
+    jwt.verify(token.split(' ')[1], SECRET_KEY, (err, decoded) => {
+        if (err) {
+            ctx.status = 401;
+            ctx.body = { code: 401, message: '登录过期，请重新登录' };
+            return;
+        }
+    });
     ctx.body = logs.slice(-200); // 只返回最近 50 条日志，避免数据过大
 });
 
@@ -173,7 +199,59 @@ router.post('/stop', async (ctx) => {
     });
 });
 
+router.get('/processes', async (ctx) => {
+    const psList = (await import('ps-list')).default;
+    const processes = await psList();
+    ctx.body = {
+        total: processes.length,
+        list: processes.slice(0, 10) // 只返回前 10 个进程
+    };
+});
+
 // 升级https
-https.createServer(options, app.callback()).listen(process.env.SERVER_PORT, () => {
+server.listen(process.env.SERVER_PORT, () => {
     console.log(`Server is running at https://localhost:${process.env.SERVER_PORT}`);
+});
+
+server.on('upgrade', (request, socket, head) => {
+    const { url } = request;
+    if (url === '/logs') {
+        wss1.handleUpgrade(request, socket, head, (ws) => {
+            wss1.emit('connection', ws, request);
+        });
+    } else if (url === '/private/superServerStatus') {
+        getServerStatusWss.handleUpgrade(request, socket, head, (ws) => {
+            getServerStatusWss.emit('connection', ws, request);
+        });
+    } else {
+        socket.destroy();
+    }
+});
+
+wss1.on('connection', (ws) => {
+    // 连接成功后，发送最近的日志
+    ws.send(JSON.stringify(logs.slice(-200)));
+});
+
+// WebSocket 连接
+getServerStatusWss.on('connection', async (ws) => {
+    console.log('WebSocket 客户端已连接');
+
+    // 发送初始数据
+    ws.send(JSON.stringify(await getServerStatus()));
+
+    // 每 1 秒发送一次服务器状态更新
+    const interval = setInterval(async () => {
+        if (ws.readyState === WebSocket.OPEN) {
+            ws.send(JSON.stringify(await getServerStatus()));
+        } else {
+            clearInterval(interval);
+        }
+    }, 1000);
+
+    // 关闭连接时清理定时器
+    ws.on('close', () => {
+        console.log('WebSocket 连接关闭');
+        clearInterval(interval);
+    });
 });

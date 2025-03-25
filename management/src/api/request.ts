@@ -27,3 +27,10 @@ export const getImgVerify = (params:any) => {
 export const getServerStatus = (params:any) => {
     return get('/private/superServerStatus',params);
 }
+
+/**
+ * 获取进程列表
+ */
+export const getProcessList = (params: any) => {
+    return get('/processes', params);
+}

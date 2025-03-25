@@ -4,7 +4,7 @@ const Router = require('@koa/router');
 const jwt = require('jsonwebtoken');
 // 导入环境变量
 const dotenv = require('dotenv');
-const os = require('os');
+const getServerStatus = require('../../utils/Modules/performance');
 
 // 加载环境变量
 dotenv.config();
@@ -31,42 +31,11 @@ router.get('/superServerStatus', async (ctx) => {
         }
     });
 
-    const usedMemPercentage = (os.totalmem() - os.freemem()) / os.totalmem() * 100;
-    const freeMemPercentage = os.freemem() / os.totalmem() * 100;
-
-    // CPU占用率
-    const cpus = os.cpus();
-    let totalIdle = 0;
-    let totalTick = 0;
-    for (let i = 0, len = cpus.length; i < len; i++) {
-        const cpu = cpus[i];
-        for (let type in cpu.times) {
-            totalTick += cpu.times[type];
-        }
-        totalIdle += cpu.times.idle;
-    }
-    const idle = totalIdle / cpus.length;
-    const tick = totalTick / cpus.length;
-    const cpuUsage = 100 - (idle / tick) * 100;
-
     ctx.status = 200;
     ctx.body = {
         code: 200,
         message: '获取服务器状态成功',
-        data: {
-            hostname: os.hostname(),
-            type: os.type(),
-            platform: os.platform(),
-            arch: os.arch(),
-            cpus: os.cpus(),
-            totalmem: os.totalmem(),
-            freemem: os.freemem(),
-            loadavg: os.loadavg(),
-            networkInterfaces: os.networkInterfaces(),
-            usedMemPercentage: usedMemPercentage.toFixed(2),
-            freeMemPercentage: freeMemPercentage.toFixed(2),
-            cpuUsage: cpuUsage.toFixed(2)
-        }
+        data: getServerStatus()
     };
 });
 
