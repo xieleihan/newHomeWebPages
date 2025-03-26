@@ -1,5 +1,9 @@
 const axios = require('axios');
 const https = require('https');
+const dotenv = require('dotenv'); // 导入dotenv模块
+dotenv.config(); // 读取环境变量
+
+const github_token = process.env.GITHUB_TOKEN;
 
 // 创建axios实例
 const service = axios.create({
@@ -16,6 +20,7 @@ service.interceptors.request.use(
         config.headers['Content-Type'] = 'application/json';
         // 可以在这里添加请求头等
         // config.headers['Authorization'] = `token ${}`;
+        config.headers['Authorization'] = `token ${github_token}`;
         console.log("这是请求:", config);
         return config;
     },

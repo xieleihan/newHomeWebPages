@@ -1,4 +1,4 @@
-const { axiosGet, axiosPost } = require('./index');
+const { axiosGet, axiosPost,axiosInternetGet } = require('./index');
 
 /**
  * 获取图片验证码
@@ -47,9 +47,29 @@ function verifyEmailCode(data) {
     return axiosPost('/emailVerify/verifyEmail', data);
 }
 
+/**
+ * 获取Github的Releases
+ * @param {object} parmas 包含owner和name 
+ * @returns 
+ */
+function getCommit(parmas) {
+    return axiosInternetGet(`https://api.github.com/repos/${parmas.owner}/${parmas.name}/commits`, {});
+}
+
+/**
+ * 获取Github的Commits
+ * @param {object} parmas  包含owner和name
+ * @returns 
+ */
+function getReleases(parmas) {
+    return axiosInternetGet(`https://api.github.com/repos/${parmas.owner}/${parmas.name}/releases`, {});
+}
+
 module.exports = {
     getImgVerify,
     verifyImgCode,
     sendEmailCode,
-    verifyEmailCode
+    verifyEmailCode,
+    getCommit,
+    getReleases
 }

@@ -1,3 +1,4 @@
+import { pa } from 'element-plus/es/locale/index.mjs';
 import { post, get } from './index';
 
 /**
@@ -40,4 +41,39 @@ export const getProcessList = (params: any) => {
  */
 export const changePassword = (data: any) => {
     return post('/private/superChangePassword', data);
+}
+
+/**
+ * 获取文件信息
+ */
+export const getCountFileType = (params: any) => { 
+    return get('/private/file-stats', params);
+}
+
+/**
+ * 读取环境变量
+ */
+export const getEmvList = (params: any) => {
+    return get('/private/getEnvConfig', params);
+}
+
+/**
+ * 重启
+ */
+export const sendReset = (data: any) => { 
+    return post('/reset', data);
+}
+
+/**
+ * 关机
+ */
+export const sendShutdown = (data: any) => {
+    return post('/stop', data);
+}
+
+/**
+ * 获取提交记录
+ */
+export const getCommitList = (params: any) => {
+    return get('/private/getCommit', params);
 }

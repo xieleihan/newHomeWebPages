@@ -55,7 +55,19 @@ const SECRET_KEY = process.env.SECRET_KEY; // 定义密钥
 const getServerStatus = require('./utils/Modules/performance');
 
 // 导入路由
-const { TechnologyStack, WebPushRouter, ImgVerifyRouter, EmailVerifyRouter, UserRouter, SuperUserRouter, superServerStatus, SuperUserManageRouter } = require('./router/index');
+const {
+    TechnologyStack,
+    WebPushRouter,
+    ImgVerifyRouter,
+    EmailVerifyRouter,
+    UserRouter,
+    SuperUserRouter,
+    superServerStatus,
+    SuperUserManageRouter,
+    SuperGithubRouter,
+    SuperFileRouter,
+    SuperSystemConfigRouter
+} = require('./router/index');
 // 使用跨域
 app.use(cors({
     allowMethods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
@@ -89,6 +101,9 @@ app.use(UserRouter.routes()); // 用户路由
 app.use(SuperUserRouter.routes()); // 超级用户路由
 app.use(superServerStatus.routes()); // 服务器状态路由
 app.use(SuperUserManageRouter.routes()); // 超级用户管理路由
+app.use(SuperGithubRouter.routes()); // Github路由
+app.use(SuperFileRouter.routes()); // 文件路由
+app.use(SuperSystemConfigRouter.routes()); // 系统配置路由
 
 // 静态资源分发
 app.use(require('koa-static')(__dirname + '/public'));
