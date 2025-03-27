@@ -85,7 +85,7 @@ onMounted(() => {
 });
 
 const handleDetail = (url: string) => {
-    goToUrl.value = url;
+    window.open(url);
 };
 
 </script>

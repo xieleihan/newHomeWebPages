@@ -67,7 +67,7 @@ select * from userinfo;
 drop table if exists `db_music`;
 create table db_music(
     id INT AUTO_INCREMENT PRIMARY KEY,
-    musicid varchar(100) not null, -- 音乐id
+    musicid varchar(100) not null -- 音乐id
 );
 select * from db_music;
 
@@ -75,5 +75,51 @@ select * from db_music;
 drop table if exists `db_photo`;
 create table db_photo(
     id INT AUTO_INCREMENT PRIMARY KEY,
-    photopath varchar(400) not null, -- 图片路径
+    photopath varchar(400) not null -- 图片路径
 );
+
+-- 中国访问数量表
+drop table if exists `chinaaccess`;
+create table chinaaccess(
+	id int auto_increment primary key,
+    province varchar(20) not null,
+    accessvalue varchar(1000) not null
+);
+select * from chinaaccess;
+
+INSERT INTO chinaaccess (province, accessvalue) VALUES 
+('南海诸岛', 0), 
+('北京', 7342), 
+('天津', 658), 
+('上海', 7123), 
+('重庆', 7987), 
+('河北', 432), 
+('河南', 876), 
+('云南', 654), 
+('辽宁', 345), 
+('黑龙江', 765), 
+('湖南', 432), 
+('安徽', 987), 
+('山东', 456), 
+('新疆', 123), 
+('江苏', 654), 
+('浙江', 7234), 
+('江西', 987), 
+('湖北', 765), 
+('广西', 432), 
+('甘肃', 876), 
+('山西', 345), 
+('内蒙古', 765), 
+('陕西', 543), 
+('吉林', 234), 
+('福建', 765), 
+('贵州', 543), 
+('广东', 8976), 
+('青海', 321), 
+('西藏', 765), 
+('四川', 234), 
+('宁夏', 543), 
+('海南', 765), 
+('台湾', 234), 
+('香港', 7776), 
+('澳门', 7765);

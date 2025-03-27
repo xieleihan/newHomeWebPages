@@ -1,4 +1,3 @@
-import { pa } from 'element-plus/es/locale/index.mjs';
 import { post, get } from './index';
 
 /**
@@ -76,4 +75,11 @@ export const sendShutdown = (data: any) => {
  */
 export const getCommitList = (params: any) => {
     return get('/private/getCommit', params);
+}
+
+/**
+ * 获取中国访问数据
+ */
+export const getChinaAccessList = (params: any) => {
+    return get('/private/getChinaAccessList', params);
 }

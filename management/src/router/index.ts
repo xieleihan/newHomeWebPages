@@ -83,7 +83,16 @@ const routes: any = [
                 name: 'System',
                 component: () => import('../components/container/HomeSystem.vue'),
                 meta: {
-                    breadcrumb: '系统',
+                    breadcrumb: '管理权',
+                    requiresAuth: true
+                }
+            },
+            {
+                path: 'systemAccess',
+                name: 'SystemAccess',
+                component: () => import('../components/container/HomeSystemaccess.vue'),
+                meta: {
+                    breadcrumb: '访问情况',
                     requiresAuth: true
                 }
             }

@@ -10,6 +10,7 @@ const SuperUserManageRouter = require('./Modules/super_UsermanageRouter'); // �
 const SuperGithubRouter = require('./Modules/super_GithubRouter'); // Github路由
 const SuperFileRouter = require('./Modules/super_FileRouter'); // 文件路由
 const SuperSystemConfigRouter = require('./Modules/super_SystemConfigRouter'); // 系统配置路由
+const SuperAccessRouter = require('./Modules/super_AccessRouter'); // 访问路由
 
 // 导出模块
 module.exports = {
@@ -23,5 +24,6 @@ module.exports = {
     SuperUserManageRouter,
     SuperGithubRouter,
     SuperFileRouter,
-    SuperSystemConfigRouter
+    SuperSystemConfigRouter,
+    SuperAccessRouter
 };
