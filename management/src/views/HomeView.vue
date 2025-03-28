@@ -144,7 +144,7 @@ watchEffect(() => {
                     .overflow{
                         width: 100%;
                         height: 100%;
-                        background: url('../assets/images/macos-catalina-mountains-island-daytime-stock-5k.webp') no-repeat center center/cover;
+                        background: url('/bg.webp') no-repeat center center/cover;
                         .box{
                             width: 100%;
                             height: 100%;

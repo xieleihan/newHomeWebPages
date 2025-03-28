@@ -193,7 +193,8 @@ async function submit() {
                 let obj = JSON.parse(str);
                 if (obj.code === 200) {
                     ElMessage.success('登录成功');
-                    document.cookie = `AUTO_TOKEN=${obj.token};path=/`;
+                    // 设置有效期为半天
+                    document.cookie = `AUTO_TOKEN=${obj.token};path=/;expires=${new Date(Date.now() + 43200000).toUTCString()}`;
                     router.push({ path: '/home' })
                 } else {
                     getSvgImg();
@@ -217,7 +218,7 @@ async function submit() {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: url(https://picsum.photos/3840/2160.webp) no-repeat center center/cover;
+    background: url(/bg.webp) no-repeat center center/cover;
 
     .container {
         width: 60%;

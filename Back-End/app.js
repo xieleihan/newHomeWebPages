@@ -67,7 +67,8 @@ const {
     SuperGithubRouter,
     SuperFileRouter,
     SuperSystemConfigRouter,
-    SuperAccessRouter
+    SuperAccessRouter,
+    SuperAuthenticationRouter
 } = require('./router/index');
 // 使用跨域
 app.use(cors({
@@ -106,6 +107,7 @@ app.use(SuperGithubRouter.routes()); // Github路由
 app.use(SuperFileRouter.routes()); // 文件路由
 app.use(SuperSystemConfigRouter.routes()); // 系统配置路由
 app.use(SuperAccessRouter.routes()); // 访问路由
+app.use(SuperAuthenticationRouter.routes()); // 认证路由
 
 // 静态资源分发
 app.use(require('koa-static')(__dirname + '/public'));

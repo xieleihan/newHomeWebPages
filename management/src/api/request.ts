@@ -83,3 +83,10 @@ export const getCommitList = (params: any) => {
 export const getChinaAccessList = (params: any) => {
     return get('/private/getChinaAccessList', params);
 }
+
+/**
+ * 检验Token是否有效
+ */
+export const checkToken = (data:any) => {
+    return post('/private/authentication', data);
+}

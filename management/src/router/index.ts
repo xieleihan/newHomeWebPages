@@ -3,6 +3,9 @@ import { createWebHistory, createRouter } from 'vue-router';
 // 导入工具
 import { getCookie } from '../utils/index';
 
+// 导入请求
+import { checkToken } from '../api/request';
+
 const routes: any = [
     {
         path: '/:pathMatch(.*)*',
@@ -15,6 +18,22 @@ const routes: any = [
     {
         path: '/',
         redirect: '/start'
+    },
+    {
+        path: '/unauthorized',
+        name: 'Unauthorized',
+        component: () => import('../views/UnauthorizedView.vue'),
+        meta: {
+            breadcrumb: '未授权的访问',
+        }
+    },
+    {
+        path: '/serverError',
+        name: 'ServerError',
+        component: () => import('../views/ServerErrorView.vue'),
+        meta: {
+            breadcrumb: '服务器错误',
+        }
     },
     {
         path: '/start',
@@ -95,6 +114,24 @@ const routes: any = [
                     breadcrumb: '访问情况',
                     requiresAuth: true
                 }
+            },
+            {
+                path: 'userManagement',
+                name: 'UserManagement',
+                component: () => import('../components/container/UserManagement.vue'),
+                meta: {
+                    breadcrumb: '用户列表',
+                    requiresAuth: true
+                }
+            },
+            {
+                path: 'userFeedback',
+                name: 'UserFeedback',
+                component: () => import('../components/container/UserFeedback.vue'),
+                meta: {
+                    breadcrumb: '用户反馈',
+                    requiresAuth: true
+                }
             }
         ]
     },
@@ -115,16 +152,25 @@ const router = createRouter({
 });
 
 // 添加路由守卫
-router.beforeEach((to, from, next) => {
+router.beforeEach(async (to, from, next) => {
     if (to.matched.some((record: any) => record.meta.requiresAuth)) {
         // 获取cookies中是否有auto_token字段
-        const token = getCookie('AUTO_TOKEN');;
+        const token = getCookie('AUTO_TOKEN');
         if (!token) {
             next({
                 path: '/start',
                 query: { redirect: to.fullPath }
-            }) // 生产环境使用
+            })// 生产环境使用
             // next() // 开发环境使用
+            return;
+        }
+        const res = await checkToken({token});
+        const str = JSON.stringify(res);
+        const obj = JSON.parse(str);
+        if (obj.code === 401) { 
+            next({ path: '/unauthorized' });
+        } else if (obj.code === 500) {
+            next({ path: '/serverError' });
         } else {
             next()
         }

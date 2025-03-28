@@ -48,8 +48,12 @@
                 <el-menu-item-group title="模块">
                     <el-sub-menu index="2-1">
                         <template #title>用户管理</template>
-                        <el-menu-item index="2-1-1">用户列表</el-menu-item>
-                        <el-menu-item index="2-1-2">反馈查询</el-menu-item>
+                        <router-link to="/home/userManagement">
+                            <el-menu-item index="2-1-1">用户列表</el-menu-item>
+                        </router-link>
+                        <router-link to="/home/userFeedback">
+                            <el-menu-item index="2-1-2">反馈查询</el-menu-item>
+                        </router-link>
                     </el-sub-menu>
                     <el-sub-menu index="2-2">
                         <template #title>轮播管理</template>
