@@ -10,6 +10,7 @@ import store from './store/index';
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
+import './utils/console.js'
 
 const app = createApp(App);
 

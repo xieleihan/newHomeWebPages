@@ -90,6 +90,10 @@
                             >《隐私政策》</router-link></el-checkbox>
                     </el-form-item>
                     <el-form-item>
+                        <span v-if="isLoggedIn()" style="margin-right: .1rem;">你已经登录,点击<router-link
+                                style="color:#409EFF;"
+                                to="/home"
+                            >这里</router-link>跳转</span>
                         <el-button
                             @click="submit"
                             type="primary"
@@ -111,6 +115,10 @@ import { ElMessage, type FormInstance, type FormRules } from 'element-plus'
 import { getImgVerify,login } from '../api/request';
 
 // 创建变量
+const isLoggedIn = (() => {
+    return document.cookie.split(';').some(item => item.trim().startsWith('AUTO_TOKEN='));
+});
+
 const form = ref({
     username: '',
     password: '',

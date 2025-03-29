@@ -152,6 +152,7 @@ const router = createRouter({
 });
 
 // 添加路由守卫
+//@ts-ignore
 router.beforeEach(async (to, from, next) => {
     if (to.matched.some((record: any) => record.meta.requiresAuth)) {
         // 获取cookies中是否有auto_token字段

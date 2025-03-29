@@ -61,7 +61,7 @@ create table user_info(
     registerTime datetime, -- 注册时间
     uuid text -- 唯一标识符
 );
-select * from userinfo;
+select * from user_info;
 
 -- 音乐
 drop table if exists `db_music`;

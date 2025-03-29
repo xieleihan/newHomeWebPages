@@ -72,7 +72,6 @@ interface CommitItem {
 }
 
 const commitList = ref<CommitItem[]>([]);
-const goToUrl = ref('https://github.com');
 
 onMounted(() => {
     getCommitList({}).then((res) => {

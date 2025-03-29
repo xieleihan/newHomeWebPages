@@ -28,33 +28,46 @@
                             class="overflow"
                         >
                             <div class="box">
-                                <p>数通中台</p>
-                                <div>
+                                <div class="vue-top">
                                     <img
+                                        @click="goToPages('https://cn.vite.dev/')"
+                                        class="icon"
+                                        src="/vite.svg"
+                                        alt="Vite"
                                         loading="lazy"
-                                        src="../assets/icon/vue.svg"
-                                        alt="vue"
                                     >
                                     <img
+                                        @click="goToPages('https://cn.vuejs.org/')"
+                                        class="icon"
+                                        src="/vue.svg"
+                                        alt="Vue"
                                         loading="lazy"
-                                        src="../assets/icon/vite.svg"
-                                        alt="vite"
                                     >
                                     <img
-                                        loading="lazy"
-                                        src="../assets/icon/Sass.svg"
-                                        alt="scss"
-                                    >
-                                    <img
-                                        loading="lazy"
-                                        src="../assets/icon/typescript.svg"
+                                        @click="goToPages('https://www.typescriptlang.org/zh/')"
+                                        class="icon"
+                                        src="https://fastly.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg"
                                         alt="TypeScript"
+                                        loading="lazy"
                                     >
                                     <img
+                                        @click="goToPages('https://sass-lang.com/')"
+                                        alt="SASS"
+                                        src="https://fastly.jsdelivr.net/gh/devicons/devicon/icons/sass/sass-original.svg"
+                                        class="icon"
                                         loading="lazy"
-                                        src="../assets/icon/element-plus.svg"
-                                        alt="Element Plus"
                                     >
+                                    <img
+                                        @click="goToPages('https://element-plus.org/')"
+                                        alt="element-plus"
+                                        src="../assets/icon/element-plus.svg"
+                                        class="icon"
+                                        loading="lazy"
+                                    >
+                                </div>
+                                <div class="vue-bottom">
+                                    基于Vue3.0+Vite2.0+TS4.0+Element-Plus的后台管理
+                                    <p class="vuewebsite"><span>渐进式</span>JavaScript框架</p>
                                 </div>
                             </div>
                         </div>
@@ -101,6 +114,10 @@ watchEffect(() => {
         isOpenRouterView.value = false;
     }
 });
+
+function goToPages(url: string) {
+    window.open(url, '_blank');
+}
 </script>
 
 <style scoped lang="scss">
@@ -153,6 +170,37 @@ watchEffect(() => {
                             justify-content: center;
                             align-items: center;
                             background-color: rgba($color: #fff, $alpha: .7);
+                            .vue-top {
+                                    margin-bottom: .2rem;
+                            
+                                    .icon {
+                                        width: .4rem;
+                                        height: .4rem;
+                                        margin-right: .1rem;
+                                        cursor: pointer;
+                            
+                                        &:last-child {
+                                            margin-right: 0;
+                                        }
+                                    }
+                                }
+                            
+                                .vue-bottom {
+                                    font-weight: bold;
+                                    font-size: .15rem;
+                                    color: #666;
+                            
+                                    .vuewebsite {
+                                        font-size: .12rem;
+                                        text-align: center;
+                                        color: black;
+                            
+                                        span {
+                                            -webkit-text-fill-color: transparent;
+                                            background: -webkit-linear-gradient(315deg, rgb(66, 211, 146) 25%, rgb(100, 126, 255)) text;
+                                        }
+                                    }
+                                }
                         }
                     }
                 }

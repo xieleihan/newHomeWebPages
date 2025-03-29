@@ -24,7 +24,7 @@
             <div class="bottomRight">
                 <div class="box">
                     <p class="title">服务器离线</p>
-                    <p class="desc">别困扰,这是我们的问题,很快就好</p>
+                    <p class="desc" style="white-space: nowrap;">别困扰,这是我们的问题,很快就好</p>
                 </div>
                 <el-button
                     @click="goToHome"

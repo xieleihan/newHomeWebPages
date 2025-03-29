@@ -215,7 +215,7 @@ const submit = () => {
             changePassword({
                 oldPassword: form.oldPassword,
                 newPassword: form.newPassword
-            }).then((res) => {
+            }).then(() => {
                 ElMessage.success("密码修改成功");
                 form.oldPassword = '';
                 form.newPassword = '';
