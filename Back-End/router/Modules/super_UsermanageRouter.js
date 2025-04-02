@@ -32,7 +32,7 @@ router.get('/userManage', async (ctx) => {
         }
     });
 
-    const sql = `SELECT * FROM user`;
+    const sql = `SELECT * FROM user_info`;
     const [res] = await pool.query(sql);
 
     ctx.status = 200;

@@ -90,3 +90,10 @@ export const getChinaAccessList = (params: any) => {
 export const checkToken = (data:any) => {
     return post('/private/authentication', data);
 }
+
+/**
+ * 加载用户信息列表
+ */
+export const getUserList = (params: any) => { 
+    return get('/private/userManage', params);
+}
