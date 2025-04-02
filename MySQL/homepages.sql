@@ -55,13 +55,75 @@ create table user_info(
     id INT AUTO_INCREMENT PRIMARY KEY,
 	useravater text, -- 用户头像
     userdesc varchar(200), -- 用户签名或者描述
-    useraddress varchar(20), -- 用户地址
+    useraddress varchar(200), -- 用户地址
     username VARCHAR(50) NOT NULL ,-- 用户名
     userip varchar(100), -- 用户的Ip信息
     registerTime datetime, -- 注册时间
     uuid text -- 唯一标识符
 );
 select * from user_info;
+INSERT INTO user_info (useravater, userdesc, useraddress, username, userip, registerTime, uuid) VALUES
+('https://localhost:3000/static/avater_img/1.png', 'Life is beautiful.', 'New York, USA', 'JohnDoe', '192.168.1.1', '2024-03-31 10:00:00', '550e8400-e29b-41d4-a716-446655440000'),
+('https://localhost:3000/static/avater_img/2.png', 'Dream big, work hard.', 'Los Angeles, USA', 'JaneSmith', '192.168.1.2', '2024-03-31 10:10:00', '550e8400-e29b-41d4-a716-446655440001'),
+('https://localhost:3000/static/avater_img/3.png', 'Stay positive, stay fighting.', 'London, UK', 'AliceBrown', '192.168.1.3', '2024-03-31 10:20:00', '550e8400-e29b-41d4-a716-446655440002'),
+('https://localhost:3000/static/avater_img/4.png', 'Happiness is a choice.', 'Toronto, Canada', 'CharlieWilson', '192.168.1.4', '2024-03-31 10:30:00', '550e8400-e29b-41d4-a716-446655440003'),
+('https://localhost:3000/static/avater_img/5.png', 'Never stop exploring.', 'Sydney, Australia', 'DavidWhite', '192.168.1.5', '2024-03-31 10:40:00', '550e8400-e29b-41d4-a716-446655440004'),
+('https://localhost:3000/static/avater_img/6.png', 'Make today amazing.', 'Berlin, Germany', 'EmilyClark', '192.168.1.6', '2024-03-31 10:50:00', '550e8400-e29b-41d4-a716-446655440005'),
+('https://localhost:3000/static/avater_img/7.png', 'Success is no accident.', 'Paris, France', 'FrankThomas', '192.168.1.7', '2024-03-31 11:00:00', '550e8400-e29b-41d4-a716-446655440006'),
+('https://localhost:3000/static/avater_img/8.png', 'Every moment matters.', 'Tokyo, Japan', 'GraceHarris', '192.168.1.8', '2024-03-31 11:10:00', '550e8400-e29b-41d4-a716-446655440007'),
+('https://localhost:3000/static/avater_img/9.png', 'Be your own hero.', 'Seoul, South Korea', 'HenryWalker', '192.168.1.9', '2024-03-31 11:20:00', '550e8400-e29b-41d4-a716-446655440008'),
+('https://localhost:3000/static/avater_img/10.png', 'Work hard, stay humble.', 'Beijing, China', 'IsabellaMartinez', '192.168.1.10', '2024-03-31 11:30:00', '550e8400-e29b-41d4-a716-446655440009'),
+('https://localhost:3000/static/avater_img/11.png', 'Create your own sunshine.', 'Moscow, Russia', 'JackRobinson', '192.168.1.11', '2024-03-31 11:40:00', '550e8400-e29b-41d4-a716-446655440010'),
+('https://localhost:3000/static/avater_img/12.png', 'Dream it. Believe it. Achieve it.', 'Rome, Italy', 'KatieYoung', '192.168.1.12', '2024-03-31 11:50:00', '550e8400-e29b-41d4-a716-446655440011'),
+('https://localhost:3000/static/avater_img/13.png', 'Embrace the journey.', 'Madrid, Spain', 'LeoScott', '192.168.1.13', '2024-03-31 12:00:00', '550e8400-e29b-41d4-a716-446655440012'),
+('https://localhost:3000/static/avater_img/14.png', 'Smile more, worry less.', 'Amsterdam, Netherlands', 'MiaGreen', '192.168.1.14', '2024-03-31 12:10:00', '550e8400-e29b-41d4-a716-446655440013'),
+('https://localhost:3000/static/avater_img/15.png', 'Start each day with a grateful heart.', 'Stockholm, Sweden', 'NathanAdams', '192.168.1.15', '2024-03-31 12:20:00', '550e8400-e29b-41d4-a716-446655440014'),
+('https://localhost:3000/static/avater_img/16.png', 'Keep pushing forward.', 'Vienna, Austria', 'OliviaParker', '192.168.1.16', '2024-03-31 12:30:00', '550e8400-e29b-41d4-a716-446655440015'),
+('https://localhost:3000/static/avater_img/17.png', 'Chase your dreams.', 'Oslo, Norway', 'PeterEvans', '192.168.1.17', '2024-03-31 12:40:00', '550e8400-e29b-41d4-a716-446655440016'),
+('https://localhost:3000/static/avater_img/18.png', 'Do what makes you happy.', 'Copenhagen, Denmark', 'QuinnMiller', '192.168.1.18', '2024-03-31 12:50:00', '550e8400-e29b-41d4-a716-446655440017'),
+('https://localhost:3000/static/avater_img/19.png', 'Find joy in the journey.', 'Helsinki, Finland', 'RachelDavis', '192.168.1.19', '2024-03-31 13:00:00', '550e8400-e29b-41d4-a716-446655440018'),
+('https://localhost:3000/static/avater_img/20.png', 'Believe in yourself.', 'Zurich, Switzerland', 'SamWilson', '192.168.1.20', '2024-03-31 13:10:00', '550e8400-e29b-41d4-a716-446655440019'),
+('https://localhost:3000/static/avater_img/1.png', 'Life is beautiful.', 'New York, USA', 'JohnDoe', '192.168.1.1', '2024-03-31 10:00:00', '550e8400-e29b-41d4-a716-446655440000'),
+('https://localhost:3000/static/avater_img/2.png', 'Dream big, work hard.', 'Los Angeles, USA', 'JaneSmith', '192.168.1.2', '2024-03-31 10:10:00', '550e8400-e29b-41d4-a716-446655440001'),
+('https://localhost:3000/static/avater_img/3.png', 'Stay positive, stay fighting.', 'London, UK', 'AliceBrown', '192.168.1.3', '2024-03-31 10:20:00', '550e8400-e29b-41d4-a716-446655440002'),
+('https://localhost:3000/static/avater_img/4.png', 'Happiness is a choice.', 'Toronto, Canada', 'CharlieWilson', '192.168.1.4', '2024-03-31 10:30:00', '550e8400-e29b-41d4-a716-446655440003'),
+('https://localhost:3000/static/avater_img/5.png', 'Never stop exploring.', 'Sydney, Australia', 'DavidWhite', '192.168.1.5', '2024-03-31 10:40:00', '550e8400-e29b-41d4-a716-446655440004'),
+('https://localhost:3000/static/avater_img/6.png', 'Make today amazing.', 'Berlin, Germany', 'EmilyClark', '192.168.1.6', '2024-03-31 10:50:00', '550e8400-e29b-41d4-a716-446655440005'),
+('https://localhost:3000/static/avater_img/7.png', 'Success is no accident.', 'Paris, France', 'FrankThomas', '192.168.1.7', '2024-03-31 11:00:00', '550e8400-e29b-41d4-a716-446655440006'),
+('https://localhost:3000/static/avater_img/8.png', 'Every moment matters.', 'Tokyo, Japan', 'GraceHarris', '192.168.1.8', '2024-03-31 11:10:00', '550e8400-e29b-41d4-a716-446655440007'),
+('https://localhost:3000/static/avater_img/9.png', 'Be your own hero.', 'Seoul, South Korea', 'HenryWalker', '192.168.1.9', '2024-03-31 11:20:00', '550e8400-e29b-41d4-a716-446655440008'),
+('https://localhost:3000/static/avater_img/10.png', 'Work hard, stay humble.', 'Beijing, China', 'IsabellaMartinez', '192.168.1.10', '2024-03-31 11:30:00', '550e8400-e29b-41d4-a716-446655440009'),
+('https://localhost:3000/static/avater_img/11.png', 'Create your own sunshine.', 'Moscow, Russia', 'JackRobinson', '192.168.1.11', '2024-03-31 11:40:00', '550e8400-e29b-41d4-a716-446655440010'),
+('https://localhost:3000/static/avater_img/12.png', 'Dream it. Believe it. Achieve it.', 'Rome, Italy', 'KatieYoung', '192.168.1.12', '2024-03-31 11:50:00', '550e8400-e29b-41d4-a716-446655440011'),
+('https://localhost:3000/static/avater_img/13.png', 'Embrace the journey.', 'Madrid, Spain', 'LeoScott', '192.168.1.13', '2024-03-31 12:00:00', '550e8400-e29b-41d4-a716-446655440012'),
+('https://localhost:3000/static/avater_img/14.png', 'Smile more, worry less.', 'Amsterdam, Netherlands', 'MiaGreen', '192.168.1.14', '2024-03-31 12:10:00', '550e8400-e29b-41d4-a716-446655440013'),
+('https://localhost:3000/static/avater_img/15.png', 'Start each day with a grateful heart.', 'Stockholm, Sweden', 'NathanAdams', '192.168.1.15', '2024-03-31 12:20:00', '550e8400-e29b-41d4-a716-446655440014'),
+('https://localhost:3000/static/avater_img/16.png', 'Keep pushing forward.', 'Vienna, Austria', 'OliviaParker', '192.168.1.16', '2024-03-31 12:30:00', '550e8400-e29b-41d4-a716-446655440015'),
+('https://localhost:3000/static/avater_img/17.png', 'Chase your dreams.', 'Oslo, Norway', 'PeterEvans', '192.168.1.17', '2024-03-31 12:40:00', '550e8400-e29b-41d4-a716-446655440016'),
+('https://localhost:3000/static/avater_img/18.png', 'Do what makes you happy.', 'Copenhagen, Denmark', 'QuinnMiller', '192.168.1.18', '2024-03-31 12:50:00', '550e8400-e29b-41d4-a716-446655440017'),
+('https://localhost:3000/static/avater_img/19.png', 'Find joy in the journey.', 'Helsinki, Finland', 'RachelDavis', '192.168.1.19', '2024-03-31 13:00:00', '550e8400-e29b-41d4-a716-446655440018'),
+('https://localhost:3000/static/avater_img/20.png', 'Believe in yourself.', 'Zurich, Switzerland', 'SamWilson', '192.168.1.20', '2024-03-31 13:10:00', '550e8400-e29b-41d4-a716-446655440019'),
+('https://localhost:3000/static/avater_img/1.png', 'Life is beautiful.', 'New York, USA', 'JohnDoe', '192.168.1.1', '2024-03-31 10:00:00', '550e8400-e29b-41d4-a716-446655440000'),
+('https://localhost:3000/static/avater_img/2.png', 'Dream big, work hard.', 'Los Angeles, USA', 'JaneSmith', '192.168.1.2', '2024-03-31 10:10:00', '550e8400-e29b-41d4-a716-446655440001'),
+('https://localhost:3000/static/avater_img/3.png', 'Stay positive, stay fighting.', 'London, UK', 'AliceBrown', '192.168.1.3', '2024-03-31 10:20:00', '550e8400-e29b-41d4-a716-446655440002'),
+('https://localhost:3000/static/avater_img/4.png', 'Happiness is a choice.', 'Toronto, Canada', 'CharlieWilson', '192.168.1.4', '2024-03-31 10:30:00', '550e8400-e29b-41d4-a716-446655440003'),
+('https://localhost:3000/static/avater_img/5.png', 'Never stop exploring.', 'Sydney, Australia', 'DavidWhite', '192.168.1.5', '2024-03-31 10:40:00', '550e8400-e29b-41d4-a716-446655440004'),
+('https://localhost:3000/static/avater_img/6.png', 'Make today amazing.', 'Berlin, Germany', 'EmilyClark', '192.168.1.6', '2024-03-31 10:50:00', '550e8400-e29b-41d4-a716-446655440005'),
+('https://localhost:3000/static/avater_img/7.png', 'Success is no accident.', 'Paris, France', 'FrankThomas', '192.168.1.7', '2024-03-31 11:00:00', '550e8400-e29b-41d4-a716-446655440006'),
+('https://localhost:3000/static/avater_img/8.png', 'Every moment matters.', 'Tokyo, Japan', 'GraceHarris', '192.168.1.8', '2024-03-31 11:10:00', '550e8400-e29b-41d4-a716-446655440007'),
+('https://localhost:3000/static/avater_img/9.png', 'Be your own hero.', 'Seoul, South Korea', 'HenryWalker', '192.168.1.9', '2024-03-31 11:20:00', '550e8400-e29b-41d4-a716-446655440008'),
+('https://localhost:3000/static/avater_img/10.png', 'Work hard, stay humble.', 'Beijing, China', 'IsabellaMartinez', '192.168.1.10', '2024-03-31 11:30:00', '550e8400-e29b-41d4-a716-446655440009'),
+('https://localhost:3000/static/avater_img/11.png', 'Create your own sunshine.', 'Moscow, Russia', 'JackRobinson', '192.168.1.11', '2024-03-31 11:40:00', '550e8400-e29b-41d4-a716-446655440010'),
+('https://localhost:3000/static/avater_img/12.png', 'Dream it. Believe it. Achieve it.', 'Rome, Italy', 'KatieYoung', '192.168.1.12', '2024-03-31 11:50:00', '550e8400-e29b-41d4-a716-446655440011'),
+('https://localhost:3000/static/avater_img/13.png', 'Embrace the journey.', 'Madrid, Spain', 'LeoScott', '192.168.1.13', '2024-03-31 12:00:00', '550e8400-e29b-41d4-a716-446655440012'),
+('https://localhost:3000/static/avater_img/14.png', 'Smile more, worry less.', 'Amsterdam, Netherlands', 'MiaGreen', '192.168.1.14', '2024-03-31 12:10:00', '550e8400-e29b-41d4-a716-446655440013'),
+('https://localhost:3000/static/avater_img/15.png', 'Start each day with a grateful heart.', 'Stockholm, Sweden', 'NathanAdams', '192.168.1.15', '2024-03-31 12:20:00', '550e8400-e29b-41d4-a716-446655440014'),
+('https://localhost:3000/static/avater_img/16.png', 'Keep pushing forward.', 'Vienna, Austria', 'OliviaParker', '192.168.1.16', '2024-03-31 12:30:00', '550e8400-e29b-41d4-a716-446655440015'),
+('https://localhost:3000/static/avater_img/17.png', 'Chase your dreams.', 'Oslo, Norway', 'PeterEvans', '192.168.1.17', '2024-03-31 12:40:00', '550e8400-e29b-41d4-a716-446655440016'),
+('https://localhost:3000/static/avater_img/18.png', 'Do what makes you happy.', 'Copenhagen, Denmark', 'QuinnMiller', '192.168.1.18', '2024-03-31 12:50:00', '550e8400-e29b-41d4-a716-446655440017'),
+('https://localhost:3000/static/avater_img/19.png', 'Find joy in the journey.', 'Helsinki, Finland', 'RachelDavis', '192.168.1.19', '2024-03-31 13:00:00', '550e8400-e29b-41d4-a716-446655440018'),
+('https://localhost:3000/static/avater_img/20.png', 'Believe in yourself.', 'Zurich, Switzerland', 'SamWilson', '192.168.1.20', '2024-03-31 13:10:00', '550e8400-e29b-41d4-a716-446655440019');
+
 
 -- 音乐
 drop table if exists `db_music`;

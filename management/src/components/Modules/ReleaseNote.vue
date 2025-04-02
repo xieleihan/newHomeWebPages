@@ -6,7 +6,7 @@
         <el-tabs type="border-card">
             <el-tab-pane label="提交历史">
                 <div class="onePages">
-                    <el-timeline style="max-width: 600px">
+                    <el-timeline class="timeline" style="max-width: 600px;overflow-y: scroll;">
                         <el-timeline-item
                             v-for="(item, index) in commitList"
                             :key="index"
@@ -43,7 +43,7 @@
                             </el-card>
                         </el-timeline-item>
                     </el-timeline>
-                    <el-card style="width: calc(100% - 600px);">
+                    <el-card style="width: calc(100% - 650px);height: 65dvh;position: sticky;top: 0;">
                         
                     </el-card>
                 </div>
@@ -94,9 +94,15 @@ const handleDetail = (url: string) => {
     width: 100%;
     min-height: 1rem;
     .onePages{
+        position: relative;
         width: 100%;
+        height: 66dvh;
         display: flex;
         justify-content: space-between;
+        ::-webkit-scrollbar {
+                display: none;
+                /* Safari and Chrome */
+            }
     }
 }
 </style>
