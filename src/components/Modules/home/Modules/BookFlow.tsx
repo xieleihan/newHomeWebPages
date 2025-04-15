@@ -96,6 +96,7 @@ function BookFlow({ userAgentWidth, userAgent }: HomecontentComProps) {
         <>
             <ComponentsLayout
                 title="个人书库"
+                titleColor="white"
                 isOpenPagination={false}
                 backgroundImage={articleNight}
                 container={

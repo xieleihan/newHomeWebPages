@@ -7,7 +7,8 @@ import { Layout, Spin } from 'antd';
 // 导入组件
 const SignatureCom = lazy(() => import('./Modules/SignatureCom'));
 const PersonalProfile = lazy(() => import('./Modules/PersonalProfile')); // 个人资料
-const BookFlow = lazy(()=> import('./Modules/BookFlow')); // 个人喜欢的书库
+const BookFlow = lazy(() => import('./Modules/BookFlow')); // 个人喜欢的书库
+const DocumnetFlow = lazy(() => import('./Modules/DocumentFlow')); // 个人文档
 
 interface HomecontentComProps {
     styles: { content: string };
@@ -32,6 +33,10 @@ function HomecontentCom({ styles, userAgentWidth, userAgent }: HomecontentComPro
                 {/* 个人喜欢的书库 */}
                 <Suspense fallback={<Spin />}>
                     <BookFlow userAgent={userAgent} userAgentWidth={userAgentWidth} />
+                </Suspense>
+                {/* 个人文档 */}
+                <Suspense fallback={<Spin />}>
+                    <DocumnetFlow />
                 </Suspense>
             </Content>
         </>
