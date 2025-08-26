@@ -57,6 +57,9 @@
                 display: flex;
                 flex-direction: row;
                 justify-content: space-around;
+                span{
+                    font-family: 'zk','PingFang SC';
+                }
             }
         }
         .rightBottom{
@@ -81,10 +84,13 @@
                 height: 40%;
                 // border: .01rem solid #ccc;
                 overflow: hidden;
+                display: flex;
+                margin-bottom: .4rem;
                 .technologyStackBoxContainer{
                     display: flex;
                     width: 20rem;
                     height: 100%;
+                    
                     .technologyStackItem{
                         display: flex;
                         height: 100%;

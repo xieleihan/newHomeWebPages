@@ -11,7 +11,7 @@ import waterCode from "../../../../utils/waterCode";
 import avater from "../../../../assets/images/avater.png";
 
 // 导入Antd design组件
-import { Button, ButtonProps,message,Spin } from "antd";
+import { Button, ButtonProps, message, Spin, Skeleton } from "antd";
 import { GithubOutlined, AntDesignOutlined, WechatOutlined } from "@ant-design/icons";
 
 // 导入技术栈接口
@@ -25,9 +25,9 @@ function PersonalProfile() {
     const [buttonSize, setButtonSize] = useState(getButtonSize());
 
     // 创建消息提示
-    const [messageApi,contextHolder] = message.useMessage();
+    const [messageApi, contextHolder] = message.useMessage();
 
-    const error = (content:string) => {
+    const error = (content: string) => {
         messageApi.open({
             type: 'error',
             content,
@@ -48,7 +48,7 @@ function PersonalProfile() {
 
     // 创建技术栈变量
     const [technologyStack, setTechnologyStack] = useState<{ data: TechnologyStackItem[] }>({ data: [] });
-    
+
 
     function getButtonSize(): ButtonProps['size'] {
         if (window.innerWidth < 500) return 'small';
@@ -82,7 +82,7 @@ function PersonalProfile() {
                 setTechnologyStack(res);
             }).catch(() => {
                 error('图片加载错误');
-        })
+            })
     }, []);
 
     return (
@@ -115,9 +115,9 @@ function PersonalProfile() {
                     </div>
                     <div className={styles.rightBottom}>
                         <p className={styles.title}>技术栈:</p>
-                        <div className={styles.technologyStackBox}>
-                            <>
-                                <Spin spinning={technologyStack.data.length === 0} tip="Loading...">
+                        <Spin spinning={technologyStack.data.length === 0} tip="Loading...">
+                            <div className={styles.technologyStackBox}>
+                                <>
                                     <div className={styles.technologyStackBoxContainer}>
                                         {
                                             technologyStack.data.map((item, index) => {
@@ -170,8 +170,12 @@ function PersonalProfile() {
                                             )
                                         }
                                     </div>
-                                </Spin>
-                            </>
+                                </>
+                            </div>
+                        </Spin>
+                        <p className={styles.title}>探索我的世界:</p>
+                        <div className={styles.desc}>
+                            <Skeleton active title={false}></Skeleton>
                         </div>
                     </div>
                 </div>

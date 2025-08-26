@@ -78,6 +78,12 @@
             white-space: nowrap;
             font-size: .3rem;
         }
+
+        @media (min-width: 768px) {
+            .footer{
+                font-size: .1rem;
+            }
+        }
     }
 
 }
