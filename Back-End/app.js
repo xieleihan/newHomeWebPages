@@ -68,7 +68,8 @@ const {
     SuperFileRouter,
     SuperSystemConfigRouter,
     SuperAccessRouter,
-    SuperAuthenticationRouter
+    SuperAuthenticationRouter,
+    BilibiliFollowInfoRouter
 } = require('./router/index');
 // 使用跨域
 app.use(cors({
@@ -90,7 +91,7 @@ app.use(compress({
     }
 }));
 // 使用koa-helmet
-app.use(helmet());
+// app.use(helmet());
 
 // 使用路由
 app.use(router.routes());
@@ -108,6 +109,7 @@ app.use(SuperFileRouter.routes()); // 文件路由
 app.use(SuperSystemConfigRouter.routes()); // 系统配置路由
 app.use(SuperAccessRouter.routes()); // 访问路由
 app.use(SuperAuthenticationRouter.routes()); // 认证路由
+app.use(BilibiliFollowInfoRouter.routes()); // B站关注的信息路由
 
 // 静态资源分发
 app.use(require('koa-static')(__dirname + '/public'));

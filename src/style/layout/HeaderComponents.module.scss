@@ -95,6 +95,10 @@
                 aspect-ratio: 1/1;
                 margin-left: .2rem;
             }
+            .iconRotate {
+                transition: transform .5s;
+                transform: rotate(90deg);
+            }
         }
     }
 

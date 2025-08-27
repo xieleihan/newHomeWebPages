@@ -8,7 +8,8 @@ import styles from '../../../../style/home/BookFlow.module.scss';
 import { useEffect,useState } from "react";
 
 // 导入Antd design组件
-import { Button,message,Spin } from 'antd';
+import { Button, message, Spin } from 'antd';
+import LazyImage from "../../../../hook/LazyImage";
 
 // 导入Swiper
 // import { Swiper,SwiperSlide } from 'swiper/react';
@@ -104,7 +105,6 @@ function BookFlow({ userAgentWidth, userAgent }: HomecontentComProps) {
                     <>
                         {contextHolder}
                         <div className={styles.bookBox}>
-                            <p className={styles.smallTitle}>点击看看</p>
                             <div className={styles.content}>
                                 <Spin size="large" spinning={bookArray.length === 0}>
                                 </Spin>
@@ -127,7 +127,8 @@ function BookFlow({ userAgentWidth, userAgent }: HomecontentComProps) {
                                                                                 <React.Fragment key={index}>
                                                                                     <a className={styles.swiperItemLink} href={item.linkHtml} target="_blank" rel="noreferrer">
                                                                                         <div className={styles.swiperItem}>
-                                                                                            <img className={styles.bookImg} loading="lazy" src={item.imgUrl} alt="图书照片" />
+                                                                                            {/* <img className={styles.bookImg} loading="lazy" src={item.imgUrl} alt="图书照片" /> */}
+                                                                                            <LazyImage className={styles.bookImg} src={item.imgUrl} alt="图书照片" />
                                                                                             <div className={styles.bookInfo}>
                                                                                                 {/* 书名 */}
                                                                                                 <p className={styles.bookName}>

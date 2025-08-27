@@ -13,6 +13,7 @@ const ErrorPages = lazy(() => import('../pages/ErrorPages')); // 错误页
 const ContactPages = lazy(() => import('../pages/ContactPages')); // 联系页
 const SettingsPages = lazy(() => import('../pages/SettingsPages')); // 设置页
 const BookstorePages = lazy(() => import('../pages/secondLevelPage/BookstorePages')); // 书店页
+const BookreaderPages = lazy(() => import('../pages/secondLevelPage/BookreaderPages')); // 书籍阅读页
 
 // 路由配置
 const routes = [
@@ -70,7 +71,17 @@ const routes = [
             <Suspense fallback={<Spin size="large" />}>
                 <BookstorePages />
             </Suspense>
-        )
+        ),
+        children: [
+            {
+                path: 'reader',
+                element: (
+                    <Suspense fallback={<Spin size="large" />}>
+                        <BookreaderPages />
+                    </Suspense>
+                ),
+            },
+        ],
     },
     {
         path: '*',

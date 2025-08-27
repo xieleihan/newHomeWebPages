@@ -2,7 +2,7 @@
 import { Layout } from 'antd';
 
 // 导入React
-import { useState } from 'react';
+import { useState,useRef } from 'react';
 
 // 导入图片
 import Settings from '../../../assets/icon/setting.svg';
@@ -23,12 +23,14 @@ interface HomeheaderComProps {
         icon: string;
         popup: string;
         popupItem: string;
+        iconRotate: string;
     };
 }
 
 function HomeheaderCom({styles}: HomeheaderComProps) {
     // 创建React变量
     const [visible, setVisible] = useState(false); // 控制弹出菜单的显示隐藏
+    const iconSider = useRef<HTMLImageElement | null>(null);
 
     const { Header } = Layout;
 
@@ -70,7 +72,14 @@ function HomeheaderCom({styles}: HomeheaderComProps) {
                     <div className={styles.operateBox}>
                         <img onClick={() => {
                             setVisible(!visible);
-                        }} loading="lazy" className={styles.icon} src={Sider} alt="侧边栏" />
+                            if(iconSider.current){
+                                if(!visible){
+                                    iconSider.current.classList.add(styles.iconRotate);
+                                } else {
+                                    iconSider.current.classList.remove(styles.iconRotate);
+                                }
+                            }
+                        }} ref={iconSider} loading="lazy" className={styles.icon} src={Sider} alt="侧边栏" />
                         <img loading="lazy" className={styles.icon} src={Settings} alt="设置" />
                         <img loading="lazy" className={styles.icon} src={Translate} alt="翻译" />
                     </div>

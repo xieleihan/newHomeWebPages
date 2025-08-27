@@ -9,6 +9,7 @@ const SignatureCom = lazy(() => import('./Modules/SignatureCom'));
 const PersonalProfile = lazy(() => import('./Modules/PersonalProfile')); // 个人资料
 const BookFlow = lazy(() => import('./Modules/BookFlow')); // 个人喜欢的书库
 const DocumnetFlow = lazy(() => import('./Modules/DocumentFlow')); // 个人文档
+const MusicFlow = lazy(() => import('./Modules/MusicFlow')); // 个人音乐
 
 interface HomecontentComProps {
     styles: { content: string };
@@ -36,7 +37,11 @@ function HomecontentCom({ styles, userAgentWidth, userAgent }: HomecontentComPro
                 </Suspense>
                 {/* 个人文档 */}
                 <Suspense fallback={<Spin />}>
-                    <DocumnetFlow />
+                    <DocumnetFlow userAgent={userAgent} userAgentWidth={userAgentWidth} />
+                </Suspense>
+                {/* 个人音乐 */}
+                <Suspense fallback={<Spin />}>
+                    <MusicFlow userAgent={userAgent} userAgentWidth={userAgentWidth} />
                 </Suspense>
             </Content>
         </>
