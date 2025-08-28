@@ -14,6 +14,8 @@ const { exec } = require('child_process');
 // 导入jsonwebtoken
 const jwt = require('jsonwebtoken');
 const WebSocket = require('ws');
+const axios = require('axios');
+const path = require('path');
 
 // 插件
 // 获取环境变量插件
@@ -92,6 +94,54 @@ app.use(compress({
 }));
 // 使用koa-helmet
 // app.use(helmet());
+
+
+router.post('/proxy', async (ctx) => {
+    const { url } = ctx.request.body;
+    if (!url) {
+        ctx.status = 400;
+        ctx.body = { code: 400, message: '缺少url参数' };
+        return;
+    }
+
+    try {
+        // 确保目录存在
+        const saveDir = path.join(__dirname, 'public/static/bilibili');
+        if (!fs.existsSync(saveDir)) {
+            fs.mkdirSync(saveDir, { recursive: true });
+        }
+
+        // 从url里取文件名
+        const fileName = path.basename(new URL(url).pathname);
+        const filePath = path.join(saveDir, fileName);
+
+        // 请求远程资源，保存为文件
+        // 检查本地是否已经有相同文件名的文件
+        if (!fs.existsSync(filePath)) {
+            const response = await axios.get(url, {
+                responseType: 'arraybuffer', // 二进制流
+                headers: {
+                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3'
+                }
+            });
+
+            fs.writeFileSync(filePath, response.data);
+        }
+        
+
+        // 拼接静态访问路径（前提：Koa挂载了static目录）
+        const fileUrl = `/static/bilibili/${fileName}`;
+
+        ctx.body = {
+            code: 200,
+            message: '下载成功',
+            url: fileUrl
+        };
+    } catch (error) {
+        ctx.status = 500;
+        ctx.body = { code: 500, message: '请求失败', error: error.message };
+    }
+});
 
 // 使用路由
 app.use(router.routes());

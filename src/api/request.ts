@@ -60,3 +60,10 @@ export const sendEmail = function (data: any) {
 export const getMyBilibiliFollowAnime = function (params: any) {
     return get('/public/getMyFollowAnime', params);
 }
+
+/**
+ * 后端代理[绕过403和跨域的问题]
+ */
+export const proxyRequest = function (data: any) {
+    return post('/proxy', data);
+}

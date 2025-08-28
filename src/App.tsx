@@ -130,6 +130,7 @@ function App() {
                       setIsStartPages(false);
                       navigate('/home');
                     }}
+                    className={styles.enterButton}
                   >
                     {t('startPages.enter')}
                   </Button>

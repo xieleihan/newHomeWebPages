@@ -14,8 +14,18 @@ import { getMyBilibiliFollowAnime } from '../../../../api/request';
 // 导入图片
 import movieHeaderImage from '../../../../assets/images/movieHeaderImage.webp';
 
+// 导入组件
+import WallpaperGallery from '../../../../hook/WallpaperGallery';
+
 // 导入Antd
 import { message } from 'antd';
+
+interface MovieItem {
+    id: number;
+    title: string;
+    cover: string;
+    url: string;
+}
 
 function MovieFlow() {
     // 获取img的容器
@@ -59,7 +69,16 @@ function MovieFlow() {
         const cachedData = window.sessionStorage.getItem('bilibiliFollowAnime');
         if (cachedData) {
             console.log('有缓存', JSON.parse(cachedData));
-            setAnimeArray(JSON.parse(cachedData));
+            let cachaarr: { id: any; title: any; cover: any; url: any; }[] = []
+            JSON.parse(cachedData).forEach((item: any) => {
+                cachaarr.push({
+                    id: item.id,
+                    title: item.title,
+                    cover: item.cover,
+                    url: item.url
+                });
+            });
+            setAnimeArray(cachaarr as Array<MovieItem>);
             return; // 如果有缓存，直接返回
         }
 
@@ -70,8 +89,17 @@ function MovieFlow() {
                     getMyBilibiliFollowAnime({})
                         .then((res) => {
                             console.log('b站追番列表', res.data);
-                            setAnimeArray(res.data);
-                            sessionStorage.setItem('bilibiliFollowAnime', JSON.stringify(res.data));
+                            let arr: { id: any; title: any; cover: any; url: any; }[] = []
+                            res.data.forEach((item: any) => {
+                                arr.push({
+                                    id: item.id,
+                                    title: item.title,
+                                    cover: item.cover,
+                                    url: item.url
+                                });
+                            });
+                            setAnimeArray(arr as Array<MovieItem>);
+                            sessionStorage.setItem('bilibiliFollowAnime', JSON.stringify(arr));
                         }).catch(() => {
                             console.log('请求失败');
                             error('获取追番请求失败');
@@ -94,7 +122,7 @@ function MovieFlow() {
                 <img ref={imageRef} className={styles.headerImage} src={movieHeaderImage} loading='lazy' alt="b站追番" />
 
                 <div className={styles.container}>
-                    <canvas className={styles.canvas}></canvas>
+                    <WallpaperGallery data={animeArray} />
                 </div>
             </section>
         </>

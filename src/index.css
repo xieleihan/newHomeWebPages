@@ -9,6 +9,7 @@
   /* css3新增样式 */
   box-sizing: border-box;
   user-select: none;
+  font-family: 'zk','PingFang SC' !important;
 }
 
 /* 去掉列表符号 */

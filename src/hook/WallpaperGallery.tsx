@@ -1,7 +1,8 @@
 import { useRef, useEffect } from 'react';
+import { proxyRequest } from '../api/request';
 
 interface ImageArray {
-    src: string;
+    cover: string;
     alt: string;
     title: string;
     link: string;
@@ -19,12 +20,14 @@ function WallpaperGallery({ data }: { data: Array<ImageArray> }) {
     const imgDataRef = useRef<ImgData[]>([]);
     const hoverImgRef = useRef<ImgData | null>(null);
 
+    console.log('data', data);
+
     const config = useRef({
-        img_total: data.length,
-        row_max: 3,
-        line_max: 3,
-        img_width: Math.min(window.innerWidth / 5, 200),
-        img_height: Math.min(window.innerHeight / 5, 200),
+        img_total: 0,
+        row_max: 15,
+        line_max: 15,
+        img_width: window.innerWidth / 8,
+        img_height: window.innerHeight / 3,
         img_margin: 10,
         total_width: 0,
         total_height: 0,
@@ -72,11 +75,27 @@ function WallpaperGallery({ data }: { data: Array<ImageArray> }) {
         if (!canvas) return;
         const ctx = canvas.getContext("2d");
         if (!ctx) return;
+
+        console.log('moveImgs called with', dx, dy, 'canvas size:', canvas.width, canvas.height);
+        console.log('imgDataRef.current.length:', imgDataRef.current.length);
+
+        // 检查是否有图片数据
+        if (imgDataRef.current.length === 0) {
+            console.log('No image data available for moving');
+            return;
+        }
+
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
         const { img_width, img_height, total_width, total_height, img_margin } = config.current;
 
-        imgDataRef.current.forEach(img => {
+        imgDataRef.current.forEach((img, index) => {
+            // 检查图片是否已加载
+            if (!img.img || !img.img.complete) {
+                console.log('Image not loaded yet:', index);
+                return;
+            }
+
             img.x += dx;
             img.y += dy;
 
@@ -146,22 +165,62 @@ function WallpaperGallery({ data }: { data: Array<ImageArray> }) {
     /**
      * 创建图片数据
      */
-    const createImgData = () => {
+    const createImgData = async () => {
+        // 检查数据是否存在
+        if (!data || data.length === 0) {
+            console.warn('No data provided or data is empty');
+            return;
+        }
+
+        // 更新配置
+        config.current.img_total = data.length;
+        config.current.line_max = Math.ceil(data.length / config.current.row_max);
+
         const { img_total, row_max, img_width, img_height, img_margin } = config.current;
         let imagesLoaded = 0;
         imgDataRef.current = [];
+
+        console.log('Creating img data for', img_total, 'images');
+
         for (let i = 0; i < img_total; i++) {
             const img = new Image();
-            img.src = data[i].src;
-            img.onload = () => {
-                const col_index = i % row_max;
-                const line_index = Math.floor(i / row_max);
-                const x = col_index * (img_width + img_margin);
-                const y = line_index * (img_height + img_margin);
-                imgDataRef.current.push({ img, x, y, scale: 1 });
-                imagesLoaded++;
-                if (imagesLoaded === img_total) moveImgs(0, 0);
-            };
+            img.crossOrigin = 'anonymous'; // 处理跨域问题
+            
+            try {
+                const response = await proxyRequest({ url: data[i].cover });
+                console.log('Image proxy response:', response);
+                const str = JSON.stringify(response);
+                const obj = JSON.parse(str);
+                img.src = 'https://localhost:3000' + obj.url;
+            } catch (error) {
+                console.error('Failed to get proxy image:', error);
+                // 如果代理失败，直接使用原图片URL
+                img.src = data[i].cover;
+            }
+
+            // 创建闭包保存当前索引
+            ((index) => {
+                img.onload = () => {
+                    console.log('Image loaded:', index, data[index].cover);
+                    const col_index = index % row_max;
+                    const line_index = Math.floor(index / row_max);
+                    const x = col_index * (img_width + img_margin);
+                    const y = line_index * (img_height + img_margin);
+                    imgDataRef.current.push({ img, x, y, scale: 1 });
+                    imagesLoaded++;
+                    console.log('Images loaded:', imagesLoaded, 'of', img_total);
+                    if (imagesLoaded === img_total) {
+                        moveImgs(0, 0);
+                    }
+                };
+
+                img.onerror = () => {
+                    imagesLoaded++;
+                    if (imagesLoaded === img_total) {
+                        moveImgs(0, 0);
+                    }
+                };
+            })(i);
         }
     };
 
@@ -183,7 +242,15 @@ function WallpaperGallery({ data }: { data: Array<ImageArray> }) {
         const ctx = canvas.getContext("2d");
         if (!ctx) return;
 
-        const { row_max, line_max, img_width, img_height, img_margin } = config.current;
+        // 检查数据
+        if (!data || data.length === 0) {
+            console.warn('No data available for rendering');
+            return;
+        }
+
+        const { row_max, img_width, img_height, img_margin } = config.current;
+        const line_max = Math.ceil(data.length / row_max);
+        config.current.line_max = line_max;
         config.current.total_width = row_max * (img_width + img_margin) - img_margin;
         config.current.total_height = line_max * (img_height + img_margin) - img_margin;
 
@@ -197,6 +264,14 @@ function WallpaperGallery({ data }: { data: Array<ImageArray> }) {
         const handleMouseUp = (e: MouseEvent) => { config.current.if_movable = false; handleHover(e.offsetX, e.offsetY); };
         const handleMouseLeave = () => { config.current.if_movable = false; };
         const handleMouseMove = (e: MouseEvent) => {
+            console.log('Mouse move event:', { 
+                if_movable: config.current.if_movable, 
+                movementX: e.movementX, 
+                movementY: e.movementY,
+                offsetX: e.offsetX,
+                offsetY: e.offsetY
+            });
+            
             if (!config.current.if_movable) {
                 handleHover(e.offsetX, e.offsetY);
                 return;
@@ -216,9 +291,25 @@ function WallpaperGallery({ data }: { data: Array<ImageArray> }) {
             canvas.removeEventListener("mouseleave", handleMouseLeave);
             canvas.removeEventListener("mousemove", handleMouseMove);
         };
-    }, []);
+    }, [data]); // 添加 data 依赖
 
-    return <canvas ref={canvasRef}></canvas>;
+    return (
+        <div style={{ width: '100%', height: '100%', position: 'relative' }}>
+            <canvas style={{ width: '100%', height: '100%' }} ref={canvasRef}></canvas>
+            {(!data || data.length === 0) && (
+                <div style={{
+                    position: 'absolute',
+                    top: '50%',
+                    left: '50%',
+                    transform: 'translate(-50%, -50%)',
+                    color: '#666',
+                    fontSize: '18px'
+                }}>
+                    No images to display
+                </div>
+            )}
+        </div>
+    );
 }
 
 export default WallpaperGallery;
