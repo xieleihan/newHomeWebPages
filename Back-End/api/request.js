@@ -1,4 +1,4 @@
-const { axiosGet, axiosPost,axiosInternetGet } = require('./index');
+const { axiosGet, axiosPost, axiosInternetGet } = require('./index');
 
 /**
  * 获取图片验证码
@@ -9,7 +9,7 @@ const { axiosGet, axiosPost,axiosInternetGet } = require('./index');
  * @returns {string} data.key 返回Redis的键
  */
 function getImgVerify(params) {
-    return axiosGet('/imgVerify/getImgVerify',params);
+    return axiosGet('/imgVerify/getImgVerify', params);
 }
 
 /**
@@ -21,7 +21,7 @@ function getImgVerify(params) {
  * @returns {string} data.message 返回信息
  */
 function verifyImgCode(data) {
-    return axiosPost('/imgVerify/verifyImgCode',data);
+    return axiosPost('/imgVerify/verifyImgCode', data);
 }
 
 /**
@@ -65,11 +65,19 @@ function getReleases(parmas) {
     return axiosInternetGet(`https://api.github.com/repos/${parmas.owner}/${parmas.name}/releases`, {});
 }
 
+/**
+ * 获取b站uid用户的追番列表
+ */
+function getBiliFollowAnime(params) {
+    return axiosInternetGet('https://api.bilibili.com/x/space/bangumi/follow/list', params);
+}
+
 module.exports = {
     getImgVerify,
     verifyImgCode,
     sendEmailCode,
     verifyEmailCode,
     getCommit,
-    getReleases
+    getReleases,
+    getBiliFollowAnime
 }

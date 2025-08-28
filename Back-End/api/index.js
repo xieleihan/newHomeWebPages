@@ -20,7 +20,7 @@ function axiosPost(url, data) {
 
 // 封装远程Get请求
 function axiosInternetGet(url, params) {
-    return service.get(url, params)
+    return service.get(url.trim(), {params})
         .then(res => res)  // 返回整个响应对象
         .catch(err => Promise.reject(err));
 }

@@ -1,0 +1,20 @@
+@import '../base.module.scss';
+
+.movie {
+    width: 100dvw;
+    height: 100dvh;
+    background-color: black;
+    .headerImage{
+        width: 100%;
+        object-fit: cover;
+        height: 20dvh;
+    }
+    .container{
+        width: 100%;
+        height: calc(100% - 20dvh);
+        .canvas{
+            width: 100%;
+            height: 100%;
+        }
+    }
+}

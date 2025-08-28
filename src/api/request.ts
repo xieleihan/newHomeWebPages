@@ -53,3 +53,10 @@ export const getImgVerify = function (params: any) {
 export const sendEmail = function (data: any) {
     return post('/emailVerify/sendEmail', data);
 }
+
+/**
+ * 获取自己的b站追番列表
+ */
+export const getMyBilibiliFollowAnime = function (params: any) {
+    return get('/public/getMyFollowAnime', params);
+}
