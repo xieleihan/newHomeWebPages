@@ -29,6 +29,7 @@ function WallpaperGallery({ data, width, agentName }: WallpaperGalleryProps) {
     const imgDataRef = useRef<ImgData[]>([]);
     const hoverImgRef = useRef<ImgData | null>(null);
 
+    // 输出传递的数据
     console.log('data', data);
 
     const config = useRef({
