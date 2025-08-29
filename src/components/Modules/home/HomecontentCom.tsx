@@ -38,7 +38,7 @@ function HomecontentCom({ styles, userAgentWidth, userAgent }: HomecontentComPro
                 </Suspense>
                 {/* 个人电影 */}
                 <Suspense fallback={<Spin />}>
-                    <MovieFlow />
+                    <MovieFlow userAgent={userAgent} userAgentWidth={userAgentWidth} />
                 </Suspense>
                 {/* 个人文档 */}
                 <Suspense fallback={<Spin />}>

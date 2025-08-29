@@ -27,11 +27,18 @@ interface MovieItem {
     url: string;
 }
 
-function MovieFlow() {
+interface HomecontentComProps {
+    userAgentWidth: number;
+    userAgent: string;
+}
+
+function MovieFlow({ userAgentWidth, userAgent }: HomecontentComProps) {
     // 获取img的容器
     const imageRef = useRef<HTMLImageElement>(null);
     // 获取组件的容器
     const sectionMovieRef = useRef<HTMLElement>(null);
+    const [width, setWidth] = useState<number>(0);
+    const [agentName, setAgentName] = useState<string>('');
     // 数据
     const [animeArray, setAnimeArray] = useState<Array<any>>([]);
 
@@ -44,6 +51,23 @@ function MovieFlow() {
             content,
         });
     };
+
+    useEffect(() => {
+        const handleResize = () => {
+            setWidth(userAgentWidth);
+            setAgentName(userAgent);
+        };
+
+        window.addEventListener('resize', handleResize);
+
+        // 初始化
+        setWidth(userAgentWidth);
+        setAgentName(userAgent);
+
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        }
+    }, [userAgentWidth, userAgent])
 
     useEffect(() => {
         if (!imageRef.current) return;
@@ -119,10 +143,12 @@ function MovieFlow() {
         <>
             <section ref={sectionMovieRef} className={styles.movie}>
                 {contextHolder}
-                <img ref={imageRef} className={styles.headerImage} src={movieHeaderImage} loading='lazy' alt="b站追番" />
+                <div className={styles.headerBox}>
+                    <img ref={imageRef} className={styles.headerImage} src={movieHeaderImage} loading='lazy' alt="b站追番" />
+                </div>
 
                 <div className={styles.container}>
-                    <WallpaperGallery data={animeArray} />
+                    <WallpaperGallery width={width} agentName={agentName} data={animeArray} />
                 </div>
             </section>
         </>

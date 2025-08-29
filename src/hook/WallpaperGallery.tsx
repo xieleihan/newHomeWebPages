@@ -1,6 +1,9 @@
 import { useRef, useEffect } from 'react';
 import { proxyRequest } from '../api/request';
 
+// 导入环境变量
+const base_url = import.meta.env.VITE_BASE_API;
+
 interface ImageArray {
     cover: string;
     alt: string;
@@ -15,7 +18,13 @@ interface ImgData {
     scale: number;
 }
 
-function WallpaperGallery({ data }: { data: Array<ImageArray> }) {
+interface WallpaperGalleryProps {
+    data: Array<ImageArray>;
+    width: number;
+    agentName: string;
+}
+
+function WallpaperGallery({ data, width, agentName }: WallpaperGalleryProps) {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const imgDataRef = useRef<ImgData[]>([]);
     const hoverImgRef = useRef<ImgData | null>(null);
@@ -24,10 +33,10 @@ function WallpaperGallery({ data }: { data: Array<ImageArray> }) {
 
     const config = useRef({
         img_total: 0,
-        row_max: 15,
-        line_max: 15,
-        img_width: window.innerWidth / 8,
-        img_height: window.innerHeight / 3,
+        row_max: width > 768 && agentName !== 'mobile' ? 15 : 4,
+        line_max: width > 768 && agentName !== 'mobile' ? 15 : 4,
+        img_width: width > 768 && agentName !== 'mobile' ? window.innerWidth / 8 : window.innerWidth / 4,
+        img_height: width > 768 && agentName !== 'mobile' ? window.innerHeight / 3  : window.innerWidth / 2 ,
         img_margin: 10,
         total_width: 0,
         total_height: 0,
@@ -191,7 +200,7 @@ function WallpaperGallery({ data }: { data: Array<ImageArray> }) {
                 console.log('Image proxy response:', response);
                 const str = JSON.stringify(response);
                 const obj = JSON.parse(str);
-                img.src = 'https://localhost:3000' + obj.url;
+                img.src = base_url + obj.url;
             } catch (error) {
                 console.error('Failed to get proxy image:', error);
                 // 如果代理失败，直接使用原图片URL
@@ -279,10 +288,40 @@ function WallpaperGallery({ data }: { data: Array<ImageArray> }) {
             moveImgs(e.movementX, e.movementY);
         };
 
+        // pc端
         canvas.addEventListener("mousedown", handleMouseDown);
         canvas.addEventListener("mouseup", handleMouseUp);
         canvas.addEventListener("mouseleave", handleMouseLeave);
         canvas.addEventListener("mousemove", handleMouseMove);
+
+
+        let lastTouchX = 0;
+        let lastTouchY = 0;
+        // 移动端
+        canvas.addEventListener("touchstart", (e) => {
+            config.current.if_movable = true;
+            if (e.touches.length === 1) {
+                const touch = e.touches[0];
+                lastTouchX = touch.clientX;
+                lastTouchY = touch.clientY;
+                handleHover(touch.clientX, touch.clientY);
+            }
+        });
+        canvas.addEventListener("touchend", () => {
+            config.current.if_movable = false
+        });
+        canvas.addEventListener("touchmove", (e) => {
+            if (!config.current.if_movable) return;
+            if (e.touches.length === 1) {
+                const touch = e.touches[0];
+                const dx = touch.clientX - lastTouchX;
+                const dy = touch.clientY - lastTouchY;
+                moveImgs(dx, dy);
+                lastTouchX = touch.clientX;
+                lastTouchY = touch.clientY;
+            }
+            e.preventDefault();
+        }, { passive: false });
 
         return () => {
             window.removeEventListener("resize", handleResize);
@@ -290,6 +329,11 @@ function WallpaperGallery({ data }: { data: Array<ImageArray> }) {
             canvas.removeEventListener("mouseup", handleMouseUp);
             canvas.removeEventListener("mouseleave", handleMouseLeave);
             canvas.removeEventListener("mousemove", handleMouseMove);
+
+            // 移动端
+            canvas.removeEventListener("touchstart", () => { });
+            canvas.removeEventListener("touchend", () => { });
+            canvas.removeEventListener("touchmove", () => { });
         };
     }, [data]); // 添加 data 依赖
 
