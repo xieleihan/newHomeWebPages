@@ -1,5 +1,9 @@
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect,useState } from 'react';
 import { proxyRequest } from '../api/request';
+import styles from './styles/WallpaperGallery.module.scss';
+
+// 导入process_quese
+import { processQueue } from '../utils/process_quese';
 
 // 导入环境变量
 const base_url = import.meta.env.VITE_BASE_API;
@@ -28,16 +32,24 @@ function WallpaperGallery({ data, width, agentName }: WallpaperGalleryProps) {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const imgDataRef = useRef<ImgData[]>([]);
     const hoverImgRef = useRef<ImgData | null>(null);
+    const [propsWidth, setPropsWidth] = useState<number>(width);
+    const [propsAgentName, setPropsAgentName] = useState<string>(agentName);
 
     // 输出传递的数据
     console.log('data', data);
 
+    useEffect(() => {
+        setPropsWidth(width);
+        setPropsAgentName(agentName);
+        console.log('Props updated:', { propsWidth: width, propsAgentName: agentName, windowInnerWidth: window.innerWidth }, propsWidth > 768 && propsAgentName !== 'mobile' ? window.innerWidth / 30 : window.innerWidth / 3);
+    }, [width, agentName]);
+
     const config = useRef({
         img_total: 0,
-        row_max: width > 768 && agentName !== 'mobile' ? 15 : 4,
-        line_max: width > 768 && agentName !== 'mobile' ? 15 : 4,
-        img_width: width > 768 && agentName !== 'mobile' ? window.innerWidth / 8 : window.innerWidth / 4,
-        img_height: width > 768 && agentName !== 'mobile' ? window.innerHeight / 3  : window.innerWidth / 2 ,
+        row_max: propsWidth > 768 && propsAgentName !== 'mobile' ? 15 : 4,
+        line_max: propsWidth > 768 && propsAgentName !== 'mobile' ? 15 : 4,
+        img_width: propsWidth > 768 && propsAgentName !== 'mobile' ? window.innerWidth / 30 : window.innerWidth / 3,
+        img_height: propsWidth > 768 && propsAgentName !== 'mobile' ? window.innerHeight / 4  : window.innerHeight / 3.5,
         img_margin: 10,
         total_width: 0,
         total_height: 0,
@@ -241,12 +253,32 @@ function WallpaperGallery({ data, width, agentName }: WallpaperGalleryProps) {
     const resizeCanvas = () => {
         const canvas = canvasRef.current;
         if (!canvas) return;
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+
+        const ctx = canvas.getContext("2d");
+        if (!ctx) return;
+
+        const dpr = window.devicePixelRatio || 1; // 屏幕像素比
+        const displayWidth = window.innerWidth;
+        const displayHeight = window.innerHeight;
+
+        // 内部像素尺寸 = 显示尺寸 * dpr
+        canvas.width = displayWidth * dpr;
+        canvas.height = displayHeight * dpr;
+
+        // CSS 尺寸保持原来的显示尺寸
+        canvas.style.width = `${displayWidth}px`;
+        canvas.style.height = `${displayHeight}px`;
+
+        // 缩放绘制坐标系到 CSS 尺寸
+        ctx.setTransform(1, 0, 0, 1, 0, 0);
+        ctx.scale(dpr, dpr);
+
+        // 移动/绘制图片
         if (imgDataRef.current.length > 0) moveImgs(0, 0);
     };
 
     useEffect(() => {
+        if (!propsWidth || !propsAgentName) return;
         const canvas = canvasRef.current;
         if (!canvas) return;
         const ctx = canvas.getContext("2d");
@@ -259,6 +291,9 @@ function WallpaperGallery({ data, width, agentName }: WallpaperGalleryProps) {
         }
 
         const { row_max, img_width, img_height, img_margin } = config.current;
+        config.current.img_width = propsWidth > 768 && propsAgentName !== 'mobile' ? window.innerWidth / 8 : window.innerWidth / 3;
+        config.current.img_height = propsWidth > 768 && propsAgentName !== 'mobile' ? window.innerHeight / 3 : window.innerHeight / 3.5;
+        config.current.row_max = propsWidth > 768 && propsAgentName !== 'mobile' ? 13 : 4;
         const line_max = Math.ceil(data.length / row_max);
         config.current.line_max = line_max;
         config.current.total_width = row_max * (img_width + img_margin) - img_margin;
@@ -336,10 +371,10 @@ function WallpaperGallery({ data, width, agentName }: WallpaperGalleryProps) {
             canvas.removeEventListener("touchend", () => { });
             canvas.removeEventListener("touchmove", () => { });
         };
-    }, [data]); // 添加 data 依赖
+    }, [data, propsWidth, propsAgentName]); // 添加 data 依赖
 
     return (
-        <div style={{ width: '100%', height: '100%', position: 'relative' }}>
+        <div className={styles.canvas} style={{ width: '100%', height: '100%', position: 'relative' }}>
             <canvas style={{ width: '100%', height: '100%' }} ref={canvasRef}></canvas>
             {(!data || data.length === 0) && (
                 <div style={{

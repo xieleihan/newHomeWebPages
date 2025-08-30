@@ -11,7 +11,7 @@ import waterCode from "../../../../utils/waterCode";
 import avater from "../../../../assets/images/avater.png";
 
 // 导入Antd design组件
-import { Button, ButtonProps, message, Spin, Skeleton } from "antd";
+import { Button, ButtonProps, message, Spin, Skeleton,Modal } from "antd";
 import { GithubOutlined, AntDesignOutlined, WechatOutlined } from "@ant-design/icons";
 
 // 导入技术栈接口
@@ -26,6 +26,7 @@ function PersonalProfile() {
 
     // 创建消息提示
     const [messageApi, contextHolder] = message.useMessage();
+    const [isWechatModalOpen, setIsWechatModalOpen] = useState(false);
 
     const error = (content: string) => {
         messageApi.open({
@@ -49,6 +50,17 @@ function PersonalProfile() {
     // 创建技术栈变量
     const [technologyStack, setTechnologyStack] = useState<{ data: TechnologyStackItem[] }>({ data: [] });
 
+    const showWechatModal = () => {
+        setIsWechatModalOpen(true);
+    };
+
+    const handleOk = () => {
+        setIsWechatModalOpen(false);
+    };
+
+    const handleCancel = () => {
+        setIsWechatModalOpen(false);
+    };
 
     function getButtonSize(): ButtonProps['size'] {
         if (window.innerWidth < 500) return 'small';
@@ -110,7 +122,7 @@ function PersonalProfile() {
                         <div className={styles.btnBox}>
                             <Button color="default" variant="solid" size={buttonSize}><GithubOutlined />Github</Button>
                             <Button color="primary" variant="solid" size={buttonSize}><AntDesignOutlined />Blog</Button>
-                            <Button color="cyan" variant="solid" size={buttonSize}><WechatOutlined />WeChat</Button>
+                            <Button color="cyan" variant="solid" size={buttonSize} onClick={showWechatModal}><WechatOutlined />WeChat</Button>
                         </div>
                     </div>
                     <div className={styles.rightBottom}>
@@ -180,6 +192,16 @@ function PersonalProfile() {
                     </div>
                 </div>
             </section>
+            <Modal
+                title="我的WeChat"
+                closable={{ 'aria-label': 'Custom Close Button' }}
+                open={isWechatModalOpen}
+                onOk={handleOk}
+                onCancel={handleCancel}
+                okText='一键添加'
+                cancelText='还有一个微信'
+            >
+            </Modal>
         </>
     );
 }

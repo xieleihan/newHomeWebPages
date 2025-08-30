@@ -62,6 +62,13 @@ export const getMyBilibiliFollowAnime = function (params: any) {
 }
 
 /**
+ * 获取自己的b站追电影列表
+ */
+export const getMyBilibiliFollowMovie = function (params: any) {
+    return get('/public/getMyFollowMovie', params);
+}
+
+/**
  * 后端代理[绕过403和跨域的问题]
  */
 export const proxyRequest = function (data: any) {

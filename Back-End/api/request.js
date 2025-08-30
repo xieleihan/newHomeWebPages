@@ -72,6 +72,13 @@ function getBiliFollowAnime(params) {
     return axiosInternetGet('https://api.bilibili.com/x/space/bangumi/follow/list', params);
 }
 
+/**
+ * 获取b站uid用户的追电影列表
+ */
+function getBiliFollowMovie(params) {
+    return axiosInternetGet('https://api.bilibili.com/x/space/bangumi/follow/list', params);
+}
+
 module.exports = {
     getImgVerify,
     verifyImgCode,
@@ -79,5 +86,6 @@ module.exports = {
     verifyEmailCode,
     getCommit,
     getReleases,
-    getBiliFollowAnime
+    getBiliFollowAnime,
+    getBiliFollowMovie
 }

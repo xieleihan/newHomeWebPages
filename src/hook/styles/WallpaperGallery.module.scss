@@ -1,0 +1,9 @@
+.canvas{
+    max-width: 100% !important;
+    max-height: 100% !important;
+    canvas{
+        max-width: 100% !important;
+        max-height: 100% !important;
+        will-change: transform;
+    }
+}
