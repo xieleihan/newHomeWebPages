@@ -10,17 +10,19 @@
         width: 100%;
         height: 20%;
         padding: .2rem;
-
+        
         .container {
+            border-radius: $radius;
             display: flex;
             width: 100%;
             position: relative;
             height: 100%;
             background: rgba(255, 255, 255, 0.15);
             backdrop-filter: blur(15px);
-            
+            align-items: center;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
 
             .left,
             .right {
@@ -28,20 +30,27 @@
             }
 
             .left {
-                width: 32%;
+                width: 30%;
+                aspect-ratio: 1/1;
                 position: relative;
                 padding: .1rem;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                overflow: hidden;
                 .imgBox{
                     width: 100%;
-                    height: 100%;
+                    border-radius: $radius;
                     aspect-ratio: 1/1;
+                    overflow: hidden;
                 }
                 .audioLayout{
                     width: 100%;
-                    height: 100%;
+                    aspect-ratio: 1/1;
                     position: absolute;
-                    top: 0;
-                    left: 0;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
                     .audioContainer{
                         position: relative;
                         width: 100%;
@@ -61,7 +70,6 @@
                             transition: all .3s ease;
                             img{
                                 width: 80%;
-                                height: 80%;
                                 aspect-ratio: 1/1;
                             }
                         }
@@ -70,10 +78,9 @@
                             top: 80%;
                             left: 80%;
                             width: 30%;
-                            height: 30%;
+                            aspect-ratio: 1/1;
                             img {
                                     width: 80%;
-                                    height: 80%;
                                     aspect-ratio: 1/1;
                                 }
                         }
@@ -96,13 +103,28 @@
                     animation: scrollText 10s linear infinite;
                 }
                 .songScroll{
-
+                    overflow-y: auto;
+                    overflow-x: hidden;
+                    width: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    height: calc(100% - .5rem);
+                    color: #999;
+                    // 隐藏滚动条
+                    &::-webkit-scrollbar {
+                        display: none;
+                    }
+                    .activeLyric{
+                        color: $monet-sky-blue-5;
+                    }
                 }
                 .config{
                     display: flex;
                     width: 100%;
                     align-items: center;
                     color: #999;
+                    font-size: .3rem;
                     .loading{
                         flex: 1;
                         height: .1rem;
@@ -140,6 +162,11 @@
     .bottomRight {
         width: 100%;
         height: calc(100% - 20%);
+        overflow-y: auto;
+        // 隐藏滚动条
+        &::-webkit-scrollbar {
+            display: none;
+        }
 
         .listItem,
         .standenrListItem {
@@ -174,7 +201,6 @@
                 .left {
                     width: 50%;
                     display: flex;
-
                     .musicTitle,
                     .musicStandenrTitle {
                         margin-left: .1rem;
@@ -190,10 +216,18 @@
                 }
 
                 .right{
+                    width: 40%;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    text-align: right;
                     .artistName,
                     .standenrArtistName{
                         color: $monet-flower-red-1;
                         transition: all .3s ease;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
                     }
                     .standenrArtistName{
                         color: #000;

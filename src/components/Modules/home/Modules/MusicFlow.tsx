@@ -44,7 +44,7 @@ function MusicFlow({ userAgentWidth, userAgent }: HomecontentComProps) {
     }, [userAgentWidth, userAgent])
 
     useEffect(() => {
-        setMusicArray([1473228889, 2074099994])
+        setMusicArray([1473228889, 2074099994, 2726976414, 2726292701, 2704615139, 2708087389, 1807935120, 2695669007, 2641162175, 2657178566])
     },[])
 
     return (

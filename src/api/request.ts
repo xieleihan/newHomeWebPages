@@ -90,3 +90,10 @@ export const getNetEaseMusicDetail = function (params: any) {
 export const getNetEaseMusicLyric = function (params: any) {
     return getOut(`${netEaseMusicApiBaseUrl}/lyric`, params);
 }
+
+/**
+ * 获取网易云音乐歌曲的url
+ */
+export const getNetEaseMusicUrl = function (params: any) {
+    return getOut(`${netEaseMusicApiBaseUrl}/song/url`, params);
+}

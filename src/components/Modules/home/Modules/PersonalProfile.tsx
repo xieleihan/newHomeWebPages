@@ -9,6 +9,7 @@ import waterCode from "../../../../utils/waterCode";
 
 // 导入图片
 import avater from "../../../../assets/images/avater.png";
+import master_wechat from "../../../../assets/images/master_wechat.jpg";
 
 // 导入Antd design组件
 import { Button, ButtonProps, message, Spin, Skeleton,Modal } from "antd";
@@ -56,6 +57,8 @@ function PersonalProfile() {
 
     const handleOk = () => {
         setIsWechatModalOpen(false);
+        const deeplink = 'weixin://dl/chat?username=SouthAki';
+        window.open(deeplink);
     };
 
     const handleCancel = () => {
@@ -201,6 +204,7 @@ function PersonalProfile() {
                 okText='一键添加'
                 cancelText='还有一个微信'
             >
+                <img style={{width:'100%'}} loading='lazy' src={master_wechat} alt="微信二维码" />
             </Modal>
         </>
     );
