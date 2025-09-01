@@ -1,4 +1,6 @@
-import { getOut,post,get } from './index';
+import { getOut, post, get } from './index';
+
+const netEaseMusicApiBaseUrl = 'https://apis.netstart.cn/music'
 
 /**
  * 获取用户IP
@@ -73,4 +75,18 @@ export const getMyBilibiliFollowMovie = function (params: any) {
  */
 export const proxyRequest = function (data: any) {
     return post('/proxy', data);
+}
+
+/**
+ * 获取网易云音乐歌曲详情
+ */
+export const getNetEaseMusicDetail = function (params: any) {
+    return getOut(`${netEaseMusicApiBaseUrl}/song/detail`, params);
+}
+
+/**
+ * 获取网易云音乐歌词
+ */
+export const getNetEaseMusicLyric = function (params: any) {
+    return getOut(`${netEaseMusicApiBaseUrl}/lyric`, params);
 }
