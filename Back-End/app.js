@@ -145,7 +145,6 @@ router.post('/proxy', async (ctx) => {
 
 router.post('/verifyFriend', async (ctx) => {
     const { password } = ctx.request.body; // 前端传递过来的密码
-    console.log('收到的密码:', password);
     const FRIEND_PASSWORD = process.env.FRIEND_PASSWORD; // 预设的密码，存储在环境变量中
     if (password === null) {
         ctx.status = 400;

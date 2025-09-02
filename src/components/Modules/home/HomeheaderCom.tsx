@@ -2,7 +2,9 @@
 import { Layout } from 'antd';
 
 // 导入React
-import { useState,useRef } from 'react';
+import { useState, useRef,useEffect } from 'react';
+
+import { gsap } from 'gsap';
 
 // 导入图片
 import Settings from '../../../assets/icon/setting.svg';
@@ -31,8 +33,41 @@ function HomeheaderCom({styles}: HomeheaderComProps) {
     // 创建React变量
     const [visible, setVisible] = useState(false); // 控制弹出菜单的显示隐藏
     const iconSider = useRef<HTMLImageElement | null>(null);
-
+    const headerRef = useRef<HTMLDivElement | null>(null);
     const { Header } = Layout;
+
+    useEffect(() => {
+        let lastScrollTop = 0; // 上一次滚动位置
+
+        const handleScroll = () => {
+            const currentScroll = window.scrollY;
+
+            if (!headerRef.current) return;
+
+            if (currentScroll > lastScrollTop) {
+                // 向下滚动 => 隐藏
+                gsap.to(headerRef.current, {
+                    y: -80, // 向上移动 header (隐藏)
+                    opacity: 0,
+                    duration: 0.4,
+                    ease: "power2.out",
+                });
+            } else {
+                // 向上滚动 => 显示
+                gsap.to(headerRef.current, {
+                    y: 0,
+                    opacity: 1,
+                    duration: 0.4,
+                    ease: "power2.out",
+                });
+            }
+
+            lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // 防止负数
+        };
+
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
 
     // 菜单元素
     const menuItem = [
@@ -52,7 +87,7 @@ function HomeheaderCom({styles}: HomeheaderComProps) {
 
     return (
         <>
-            <Header className={styles.header}>
+            <Header ref={headerRef} className={styles.header}>
                 <div className={styles.left}>
                     <img className={styles.avater} loading="lazy" src={avater} alt="avater" />
                     <h1 className={styles.title}>南秋SouthAki的个人主页</h1>
