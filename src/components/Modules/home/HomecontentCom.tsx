@@ -30,7 +30,7 @@ function HomecontentCom({ styles, userAgentWidth, userAgent }: HomecontentComPro
                 </Suspense>
                 {/* 个人资料 */}
                 <Suspense fallback={<Spin />}>
-                    <PersonalProfile />
+                    <PersonalProfile userAgent={userAgent} userAgentWidth={userAgentWidth} />
                 </Suspense>
                 {/* 个人喜欢的书库 */}
                 <Suspense fallback={<Spin />}>

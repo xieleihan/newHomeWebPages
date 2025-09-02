@@ -20,7 +20,6 @@ import WallpaperGallery from '../../../../hook/WallpaperGallery';
 
 // 导入Antd
 import { message, Segmented } from 'antd';
-import { get } from 'http';
 
 interface MovieItem {
     id: number;

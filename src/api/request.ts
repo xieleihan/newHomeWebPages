@@ -97,3 +97,10 @@ export const getNetEaseMusicLyric = function (params: any) {
 export const getNetEaseMusicUrl = function (params: any) {
     return getOut(`${netEaseMusicApiBaseUrl}/song/url`, params);
 }
+
+/**
+ * 验证是否是认识的人
+ */
+export const verifyIsFriend = function (data: any) {
+    return post('/verifyFriend', data);
+}

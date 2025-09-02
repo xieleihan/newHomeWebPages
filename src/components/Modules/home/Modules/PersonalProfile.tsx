@@ -12,13 +12,20 @@ import avater from "../../../../assets/images/avater.png";
 import master_wechat from "../../../../assets/images/master_wechat.jpg";
 
 // 导入Antd design组件
-import { Button, ButtonProps, message, Spin, Skeleton,Modal } from "antd";
+import { Button, ButtonProps, message, Spin, Skeleton, Modal, Drawer } from "antd";
 import { GithubOutlined, AntDesignOutlined, WechatOutlined } from "@ant-design/icons";
 
 // 导入技术栈接口
-import { getTechnologyStack } from "../../../../api/request";
+import { getTechnologyStack, verifyIsFriend } from "../../../../api/request";
 
-function PersonalProfile() {
+import PasswordInput from '../../../../hook/PasswordInput';
+
+interface HomecontentComProps {
+    userAgentWidth: number;
+    userAgent: string;
+}
+
+function PersonalProfile({ userAgentWidth, userAgent }: HomecontentComProps) {
     // 读取canvas
     const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
@@ -28,6 +35,11 @@ function PersonalProfile() {
     // 创建消息提示
     const [messageApi, contextHolder] = message.useMessage();
     const [isWechatModalOpen, setIsWechatModalOpen] = useState(false);
+    const [isWechatDrawer, setIsWechatDrawer] = useState(false);
+    const [width, setWidth] = useState<number>(0);
+    const [agentName, setAgentName] = useState<string>('');
+    const [isMaster, setIsMaster] = useState<boolean>(false);
+    const [imgUrl, setImgUrl] = useState<string>('');
 
     const error = (content: string) => {
         messageApi.open({
@@ -35,6 +47,23 @@ function PersonalProfile() {
             content,
         });
     };
+
+    useEffect(() => {
+        const handleResize = () => {
+            setWidth(userAgentWidth);
+            setAgentName(userAgent);
+        };
+
+        window.addEventListener('resize', handleResize);
+
+        // 初始化
+        setWidth(userAgentWidth);
+        setAgentName(userAgent);
+
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        }
+    }, [userAgentWidth, userAgent])
 
     // 创建技术栈接口
     interface TechnologyStackItem {
@@ -63,6 +92,17 @@ function PersonalProfile() {
 
     const handleCancel = () => {
         setIsWechatModalOpen(false);
+        if (!isMaster) {
+            showDrawer();
+        }
+    };
+
+    const showDrawer = () => {
+        setIsWechatDrawer(true);
+    };
+
+    const onClose = () => {
+        setIsWechatDrawer(false);
     };
 
     function getButtonSize(): ButtonProps['size'] {
@@ -99,6 +139,28 @@ function PersonalProfile() {
                 error('图片加载错误');
             })
     }, []);
+
+    const verify = (val:number | string) => {
+        verifyIsFriend({ password: val }).then((res) => {
+            const str = JSON.stringify(res);
+            const obj = JSON.parse(str);
+            console.log(obj);
+            if (obj.code === 200) {
+                messageApi.open({
+                    type: 'success',
+                    content: '验证成功,欢迎认识的朋友~',
+                });
+                setIsWechatDrawer(false);
+                setIsMaster(true);
+                setImgUrl(import.meta.env.VITE_BASE_API + obj.imgUrl);
+                setIsWechatModalOpen(true);
+            } else {
+                error(obj.message || '验证失败,请重新输入');
+            }
+        }).catch(() => {
+            error('验证失败,请重新输入');
+        });
+    }
 
     return (
         <>
@@ -202,10 +264,22 @@ function PersonalProfile() {
                 onOk={handleOk}
                 onCancel={handleCancel}
                 okText='一键添加'
-                cancelText='还有一个微信'
+                cancelText={isMaster ? '关闭' : '还有一个微信'}
             >
-                <img style={{width:'100%'}} loading='lazy' src={master_wechat} alt="微信二维码" />
+                <img style={{width:'100%'}} loading='lazy' src={isMaster ? imgUrl : master_wechat} alt="微信二维码" />
             </Modal>
+            <Drawer
+                title="我的WeChat"
+                placement={agentName === 'pc' && width > 768 ? 'right' : 'bottom'}
+                onClose={onClose}
+                open={isWechatDrawer}
+                height={agentName === 'pc' && width > 768 ? '100%' : 450}
+            >
+                <PasswordInput isOpenSafeKeyword length={6} onComplete={(val) => {
+                    console.log('输入完成:', val)
+                    verify(val);
+                }} includeNumbers width={width} userAgent={agentName} />
+            </Drawer>
         </>
     );
 }

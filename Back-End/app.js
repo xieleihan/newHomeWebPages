@@ -143,6 +143,24 @@ router.post('/proxy', async (ctx) => {
     }
 });
 
+router.post('/verifyFriend', async (ctx) => {
+    const { password } = ctx.request.body; // 前端传递过来的密码
+    console.log('收到的密码:', password);
+    const FRIEND_PASSWORD = process.env.FRIEND_PASSWORD; // 预设的密码，存储在环境变量中
+    if (password === null) {
+        ctx.status = 400;
+        ctx.body = { code: 400, message: '缺少密码参数' };
+        return;
+    } else {
+        if (password == FRIEND_PASSWORD) {
+            ctx.body = { code: 200, message: '验证成功',imgUrl: '/static/wechat.jpg' };
+        } else {
+            ctx.status = 401;
+            ctx.body = { code: 401, message: '密码错误' };
+        }
+    }
+})
+
 // 使用路由
 app.use(router.routes());
 app.use(router.allowedMethods());
