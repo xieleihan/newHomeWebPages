@@ -2,9 +2,6 @@ import { useRef, useEffect,useState } from 'react';
 import { proxyRequest } from '../api/request';
 import styles from './styles/WallpaperGallery.module.scss';
 
-// 导入process_quese
-import { processQueue } from '../utils/process_quese';
-
 // 导入环境变量
 const base_url = import.meta.env.VITE_BASE_API;
 

@@ -154,7 +154,10 @@ function MovieFlow({ userAgentWidth, userAgent }: HomecontentComProps) {
                                 });
                             });
                             setAnimeArray(arr as Array<MovieItem>);
-                            sessionStorage.setItem('bilibiliFollowAnime', JSON.stringify(arr));
+                            // 判断数组是否为空
+                            if (arr.length !== 0) {
+                                sessionStorage.setItem('bilibiliFollowAnime', JSON.stringify(arr));
+                            }
                         }).catch(() => {
                             console.log('请求失败');
                             error('获取追番请求失败');
@@ -181,7 +184,7 @@ function MovieFlow({ userAgentWidth, userAgent }: HomecontentComProps) {
 
                 <div className={styles.container}>
                     {
-                        segmented === '追番' ? (
+                        segmented === '追番'  ? (
                             <WallpaperGallery width={width} agentName={agentName} data={animeArray} />
                         ) : (
                             <WallpaperGallery width={width} agentName={agentName} data={movieArray} />
