@@ -1,0 +1,61 @@
+@import '../../style/base.module.scss';
+
+.LiquidglassCard {
+    height: 4rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.6rem;
+    margin: .2rem 0;
+    border-radius: $radius;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+
+    &:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2);
+    }
+
+    &.reverse {
+        flex-direction: row-reverse;
+    }
+
+    .image {
+        flex: 1;
+        max-width: 40%;
+        height: 100%;
+
+        img {
+            width: 100%;
+            height: 100%;
+            border-radius: $radius;
+            object-fit: cover;
+        }
+    }
+
+    .content {
+        flex: 1;
+        padding: 0 .2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        h3 {
+            font-size: .5rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            color: #fff;
+        }
+
+        p {
+            font-size: .3rem;
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.6;
+        }
+    }
+}
