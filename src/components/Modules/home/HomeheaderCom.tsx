@@ -11,6 +11,7 @@ import Settings from '../../../assets/icon/setting.svg';
 import Sider from '../../../assets/icon/sider.svg';
 import Translate from '../../../assets/icon/translate.svg';
 import avater from '../../../assets/images/avater.png';
+import {Link} from "react-router-dom";
 
 interface HomeheaderComProps {
     styles: {
@@ -81,7 +82,8 @@ function HomeheaderCom({styles}: HomeheaderComProps) {
         },
         {
             key: 'about',
-            name: '关于'
+            name: '关于',
+            link: '/about'
         }
     ]
 
@@ -115,7 +117,9 @@ function HomeheaderCom({styles}: HomeheaderComProps) {
                                 }
                             }
                         }} ref={iconSider} loading="lazy" className={styles.icon} src={Sider} alt="侧边栏" />
-                        <img loading="lazy" className={styles.icon} src={Settings} alt="设置" />
+                        <Link to="/settings">
+                            <img loading="lazy" className={styles.icon} src={Settings} alt="设置" />
+                        </Link>
                         <img loading="lazy" className={styles.icon} src={Translate} alt="翻译" />
                     </div>
                 </nav>
