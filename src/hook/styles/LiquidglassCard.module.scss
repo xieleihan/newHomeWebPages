@@ -3,22 +3,48 @@
 .LiquidglassCard {
     height: 4rem;
     width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
     padding: 0.6rem;
     margin: .2rem 0;
     border-radius: $radius;
-    background: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(20px) saturate(180%);
-    -webkit-backdrop-filter: blur(20px) saturate(180%);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    isolation: isolate;
+    box-shadow: 0px 6px 24px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: none;
+    background: none;
+    text-decoration: none;
     cursor: pointer;
 
+    &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        border-radius: inherit;
+        box-shadow: inset 0 0 15px -5px #000000;
+        background-color: rgba(255, 255, 255, 0);
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        border-radius: inherit;
+        backdrop-filter: blur(0px);
+        -webkit-backdrop-filter: blur(0px);
+        filter: url(#glass-distortion);
+        -webkit-filter: url(#glass-distortion);
+    }
+
     &:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2);
+        transform: translateY(-4px) scale(1.02);
+        box-shadow:
+            inset 0 0 25px rgba(255, 255, 255, 0.3),
+            inset 0 0 50px rgba(255, 255, 255, 0.1),
+            0 12px 40px rgba(0, 0, 0, 0.25);
     }
 
     &.reverse {
@@ -29,6 +55,7 @@
         flex: 1;
         max-width: 40%;
         height: 100%;
+        z-index: 1;
 
         img {
             width: 100%;
@@ -44,18 +71,22 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
+        z-index: 1;
 
-        h3 {
+        h2 {
             font-size: .5rem;
             font-weight: 600;
-            margin-bottom: 0.8rem;
             color: #fff;
+            text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+            opacity: 0.81;
         }
 
         p {
             font-size: .3rem;
             color: rgba(255, 255, 255, 0.85);
             line-height: 1.6;
+            text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+            opacity: 0.81;
         }
     }
 }

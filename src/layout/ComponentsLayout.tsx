@@ -20,13 +20,15 @@ interface Props {
     isOpenPagination?: boolean;
     container: React.ReactNode;
     backgroundImage?: string;
+    enableGsap?: boolean;
 }
 
-function ComponentsLayout({ title, titleColor, titleSize, isOpenPagination, container, backgroundImage }: Props) {
+function ComponentsLayout({ title, titleColor, titleSize, isOpenPagination, container, backgroundImage, enableGsap = true }: Props) {
     const sectionRef = useRef<HTMLDivElement>(null);
     const timelinesRef = useRef<gsap.core.Timeline[]>([]);
 
     useEffect(() => {
+        if (!enableGsap) return; // 如果不启用GSAP动画，直接返回
         if (!sectionRef.current) return;
 
         const elements = sectionRef.current.querySelectorAll(`.${styles.layoutContainer} > *`);
