@@ -1,6 +1,8 @@
 import styles from './styles/LiquidglassCard.module.scss';
+// 导入react-router
+import { Link } from 'react-router-dom';
 
-interface LiquidglassCardProps { 
+interface LiquidglassCardProps {
     index: number; // 用于判断奇偶索引
     title?: string; // 标题
     content?: string; // 内容
@@ -11,16 +13,13 @@ interface LiquidglassCardProps {
     children?: React.ReactNode; // 子组件
 }
 
-function LiquidglassCard({ index, title, content, imageUrl, linkUrl, altText, clickHandler, children }: LiquidglassCardProps) { 
+function LiquidglassCard({ index, title, content, imageUrl, linkUrl, altText, clickHandler, children }: LiquidglassCardProps) {
     const defaultImage = `https://picsum.photos/3840/2160?random=${Math.floor(Math.random() * 1000)}`; // 默认图片地址
     const isEven = index % 2 === 0;
 
     const handleClick = () => {
         if (clickHandler) {
             clickHandler();
-        }
-        if (linkUrl) {
-            window.location.href = linkUrl;
         }
     };
     return (
@@ -30,27 +29,31 @@ function LiquidglassCard({ index, title, content, imageUrl, linkUrl, altText, cl
                 onClick={handleClick}
             >
                 {isEven ? (
-                    <>
-                        <div className={styles.image}>
-                            <img src={imageUrl || defaultImage} alt={altText || 'preview'} />
-                        </div>
-                        <div className={styles.content}>
-                            <h2>{title}</h2>
-                            <p>{content}</p>
-                            {children}
-                        </div>
-                    </>
+                    <Link to={linkUrl || '#'} className={styles.cardLink}  rel="noopener noreferrer">
+                        <>
+                            <div className={styles.image}>
+                                <img src={imageUrl || defaultImage} alt={altText || 'preview'} />
+                            </div>
+                            <div className={styles.content}>
+                                <h2>{title}</h2>
+                                <p>{content}</p>
+                                {children}
+                            </div>
+                        </>
+                    </Link>
                 ) : (
-                    <>
-                        <div className={styles.content}>
-                            <h2>{title}</h2>
-                            <p>{content}</p>
-                            {children}
-                        </div>
-                        <div className={styles.image}>
-                            <img src={imageUrl || defaultImage} alt={altText || 'preview'} />
-                        </div>
-                    </>
+                    <Link to={linkUrl || '#'} className={styles.cardLink} target="_blank" rel="noopener noreferrer">
+                        <>
+                            <div className={styles.content}>
+                                <h2>{title}</h2>
+                                <p>{content}</p>
+                                {children}
+                            </div>
+                            <div className={styles.image}>
+                                <img src={imageUrl || defaultImage} alt={altText || 'preview'} />
+                            </div>
+                        </>
+                    </Link>
                 )}
             </section>
         </>

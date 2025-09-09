@@ -1,0 +1,10 @@
+@import './base.module.scss';
+
+.documentreaderPages{
+    width: 100%;
+    height: 100dvh;
+    .contentBox{
+        width: 100%;
+        height: 100%;
+    }
+}

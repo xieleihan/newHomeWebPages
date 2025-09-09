@@ -14,6 +14,7 @@ const ContactPages = lazy(() => import('../pages/ContactPages')); // 联系页
 const SettingsPages = lazy(() => import('../pages/SettingsPages')); // 设置页
 const BookstorePages = lazy(() => import('../pages/secondLevelPage/BookstorePages')); // 书店页
 const BookreaderPages = lazy(() => import('../pages/secondLevelPage/BookreaderPages')); // 书籍阅读页
+const DocumentreaderPages = lazy(() => import('../pages/secondLevelPage/DocumentreaderPages')); // 文档阅读页
 
 // 路由配置
 const routes = [
@@ -82,6 +83,14 @@ const routes = [
                 ),
             },
         ],
+    },
+    {
+        path: '/document',
+        element: (
+            <Suspense fallback={<Spin size="large" />}>
+                <DocumentreaderPages />
+            </Suspense>
+        )
     },
     {
         path: '*',

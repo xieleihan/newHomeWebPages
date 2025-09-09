@@ -51,6 +51,13 @@
         flex-direction: row-reverse;
     }
 
+    .cardLink{
+        display: flex;
+        flex: 1;
+        height: 100%;
+        z-index: 1;
+    }
+
     .image {
         flex: 1;
         max-width: 40%;

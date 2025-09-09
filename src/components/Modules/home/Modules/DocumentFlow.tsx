@@ -35,7 +35,7 @@ function DocumnetFlow({ userAgentWidth, userAgent }: HomecontentComProps) {
             title: '项目文档',
             content: '包含前端、后端、数据库等项目的设计文档、技术文档和使用文档。',
             imageUrl: 'https://picsum.photos/3840/2160?random=1',
-            linkUrl: 'https://example.com/doc1',
+            linkUrl: '/document?id=1',
             altText: 'Document 1'
         },
         {
@@ -43,7 +43,7 @@ function DocumnetFlow({ userAgentWidth, userAgent }: HomecontentComProps) {
             title: '学习笔记',
             content: '涵盖各种技术栈、编程语言和工具的学习笔记和教程。',
             imageUrl: 'https://picsum.photos/3840/2160?random=2',
-            linkUrl: 'https://example.com/doc2',
+            linkUrl: '/document?id=2',
             altText: 'Document 2'
         },
         {
@@ -51,7 +51,7 @@ function DocumnetFlow({ userAgentWidth, userAgent }: HomecontentComProps) {
             title: '个人随笔',
             content: '记录个人的思考、见解和生活点滴的随笔文章。',
             imageUrl: 'https://picsum.photos/3840/2160?random=3',
-            linkUrl: 'https://example.com/doc3',
+            linkUrl: '/document?id=3',
             altText: 'Document 3'
         },
         {
@@ -112,7 +112,7 @@ function DocumnetFlow({ userAgentWidth, userAgent }: HomecontentComProps) {
                             trigger: card,
                             start: 'top 80%',
                             end: 'bottom 20%',
-                            toggleActions: 'play none none reset'
+                            toggleActions: 'play none none none'
                         }
                     }
                 );
