@@ -35,10 +35,12 @@
     .container {
         width: 70%;
         height: 60%;
-        background-color: rgba($color: #fff, $alpha: .8);
+        background-color: rgba($color: #fff, $alpha: .3);
+        backdrop-filter: blur(10px);
         border-radius: $radius;
         position: relative;
         overflow: hidden;
+        padding: 0 .3rem;
 
         .hello {
             width: 20%;
@@ -46,6 +48,78 @@
             bottom: -1%;
             right: -5%;
             transform: rotate(-45deg);
+        }
+
+        .title{
+            text-align: center;
+            color: rgba(0, 0, 0, 0.3);
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5),
+                0 0 10px rgba(255, 255, 255, 0.3);
+        }
+
+        .textarea{
+            font-size: .5rem;
+            display: flex;
+            span{
+                white-space: nowrap;
+            }
+            textarea{
+                background-color: transparent;
+                border-radius: $radius;
+                box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+                outline: none;
+                resize: none;
+                min-height: 3rem;
+                height: 3rem;
+                width: 100%;
+                font-size: .5rem;
+            }
+        }
+
+        .label{
+            font-size: .5rem;
+            margin-bottom: .3rem;
+            position: relative;
+            &:last-child{
+                margin-bottom: 0;
+            }
+            .box{
+                display: flex;
+            }
+            .email{
+                flex: 1;
+                box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+                border-radius: 999px 0 0 999px;
+                outline: none;
+                position: relative;
+                padding: 0 .3rem;
+                overflow: auto;
+                max-height: .8rem;
+                white-space: wrap;
+            }
+            .select{
+                color: #999;
+                box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+                border-radius: 0 999px 999px 0;
+                padding: 0 .3rem;
+            }
+            .selectBox{
+                z-index: 12;
+                position: absolute;
+                top: 105%;
+                right: 0;
+                background-color: rgba($color: #fff, $alpha: .3);
+                opacity: 0;
+                border-radius: $radius;
+                color: #999;
+                padding: .1rem .2rem;
+                transition: all .3s ease;
+                li{
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+            }
         }
     }
 

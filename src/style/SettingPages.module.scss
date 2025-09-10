@@ -3,4 +3,53 @@
 .settings{
     width: 100dvw;
     height: 100dvh;
+    .mobile_container{
+        width: 100%;
+        height: 100%;
+        .mobile_settingsList{
+            width: 100%;
+            border-top: 1px solid #ccc;
+            height: calc(100% - 1.2rem);
+            overflow-y: auto;
+            .mobile_settingsListItem{
+                height: 2rem;
+                width: 100%;
+                box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+                padding: .2rem .5rem;
+                display: flex;
+                justify-content: space-between;
+                a{
+                    width: 100%;
+                    height: 100%;
+                    display: flex;
+                }
+                .left,
+                .right{
+                    height: 100%;
+                }
+                .left{
+                    max-width: 70%;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-around;
+                    .title{
+                        font-size: .5rem;
+                    }
+                    .desc{
+                        font-size: .3rem;
+                        color: #ccc;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                    }
+                }
+                .right{
+                    max-width: calc(100% - 70%);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+            }
+        }
+    }
 }
