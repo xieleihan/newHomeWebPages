@@ -263,6 +263,16 @@ function PersonalProfile({ userAgentWidth, userAgent }: HomecontentComProps) {
                 open={isWechatModalOpen}
                 onOk={handleOk}
                 onCancel={handleCancel}
+                closeIcon={
+                    <span
+                        onClick={(e) => {
+                            e.stopPropagation(); // 阻止冒泡
+                            setIsWechatModalOpen(false);
+                        }}
+                    >
+                        X
+                    </span>
+                }
                 okText='一键添加'
                 cancelText={isMaster ? '关闭' : '还有一个微信'}
             >

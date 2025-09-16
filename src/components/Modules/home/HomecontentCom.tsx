@@ -11,6 +11,7 @@ const BookFlow = lazy(() => import('./Modules/BookFlow')); // 个人喜欢的书
 const DocumnetFlow = lazy(() => import('./Modules/DocumentFlow')); // 个人文档
 const MusicFlow = lazy(() => import('./Modules/MusicFlow')); // 个人音乐
 const MovieFlow = lazy(() => import('./Modules/MovieFlow')); // 个人电影
+const ProjectFlow = lazy(() => import('./Modules/ProjectFlow')); // 个人项目
 
 interface HomecontentComProps {
     styles: { content: string };
@@ -31,6 +32,10 @@ function HomecontentCom({ styles, userAgentWidth, userAgent }: HomecontentComPro
                 {/* 个人资料 */}
                 <Suspense fallback={<Spin />}>
                     <PersonalProfile userAgent={userAgent} userAgentWidth={userAgentWidth} />
+                </Suspense>
+                {/* 个人项目 */}
+                <Suspense fallback={<Spin />}>
+                    <ProjectFlow />
                 </Suspense>
                 {/* 个人喜欢的书库 */}
                 <Suspense fallback={<Spin />}>
