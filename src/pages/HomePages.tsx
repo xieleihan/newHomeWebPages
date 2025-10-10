@@ -17,11 +17,17 @@ import subscribeUser from '../utils/pushNotification';
 
 // 导入工具
 import { judgeUserAgent } from '../utils/common';
+// 使用React Redux
+import { useDispatch } from 'react-redux';
+import { AppDispatch } from '../store/index';
+import { setUserAgentWidthStore } from '../store/Modules/WindowsSystemOptionsStore';
 
 function HomePages() {
     // 创建React变量
     const [userAgent, setUserAgent] = useState<string>('pc');
     const [userAgentWidth, setUserAgentWidth] = useState<number>(0);
+    // 初始化Redux
+  const dispatch = useDispatch<AppDispatch>();
     // 创建生命周期
     useEffect(() => {
         // 订阅推送通知
@@ -33,6 +39,7 @@ function HomePages() {
         // 定义窗口大小更新函数
         const handleResize = () => {
             setUserAgentWidth(window.innerWidth);
+            dispatch(setUserAgentWidthStore(window.innerWidth));
         };
 
         // 初始化 userAgentWidth

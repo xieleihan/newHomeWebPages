@@ -42,12 +42,16 @@
         // 移动端
         @media (max-width: 768px) {
             .title {
-                font-size: .1rem;
-                margin-bottom: 0;
+                font-size: .24rem;
+                margin-bottom: .15rem;
             }
 
             .aLink {
-                height: .3rem;
+                height: .6rem;
+                margin-right: .2rem;
+                &:last-child{
+                    margin-right: 0rem;
+                }
             }
         }
     }
@@ -55,6 +59,10 @@
     // 移动端
     @media (max-width: 768px) {
         .container {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
             .top {
                 line-height: .3rem;
             }

@@ -53,8 +53,12 @@ function CopyrightCom() {
             <div className={styles.copyright}>
                 <div className={styles.top}>{copyright_string}</div>
                 <div className={styles.bottom}>
-                    <p>开始逐光之旅的第：{days}天{hours}时{minutes}分{seconds}秒，愿在年少时期，你能路过我生命</p>
-                    <p>现在旅行者一号距离地球{t}千米，约为{a}个天文单位🚀</p>
+                    <p style={{
+                        whiteSpace: 'nowrap'
+                    }}>开始逐光之旅的第：{days}天{hours}时{minutes}分{seconds}秒，愿在年少时期，你能路过我生命</p>
+                    <p style={{
+                        whiteSpace: 'nowrap'
+                    }}>现在旅行者一号距离地球{t}千米，约为{a}个天文单位🚀</p>
                 </div>
             </div>
         </>
