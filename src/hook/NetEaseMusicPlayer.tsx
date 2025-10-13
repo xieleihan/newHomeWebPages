@@ -292,6 +292,7 @@ function NetEaseMusicPlayer({ width, agentName, musicArray }: NetEaseMusicPlayer
                 <audio ref={audioElement} src={audioSrc} ></audio>
                 <div className={styles.bottomRight}>
                     <List
+                        className={styles.musicList}
                         dataSource={musicDetailArray}
                         renderItem={(item, index) => { 
                             return (

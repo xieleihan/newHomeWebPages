@@ -26,6 +26,19 @@
                 }
                 .audioContainer{
                     position: relative;
+                    margin-top: .1rem;
+                    .playBox{
+                        border: .01rem solid #fff;
+                        border-radius: 50%;
+                        display: flex;
+                        align-items: center;
+                        aspect-ratio: 1/1;
+                        justify-content: center;
+                        img {
+                                width: 80%;
+                                aspect-ratio: 1/1;
+                            }
+                    }
                 }
             }
             .right{
@@ -41,6 +54,24 @@
     .bottomRight{
         width: calc(100% - 50%);
         height: 100%;
+        padding: .2rem;
+        overflow: auto;
+        .listItemContainer{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            width: 100%;
+            .left{
+                span{
+                    &:first-child{
+                        margin-right: .1rem;
+                    }
+                }
+            }
+        }
+        &::-webkit-scrollbar {
+            display: none;
+        }
     }
 }
 
