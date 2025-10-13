@@ -11,7 +11,15 @@ import Settings from '../../../assets/icon/setting.svg';
 import Sider from '../../../assets/icon/sider.svg';
 import Translate from '../../../assets/icon/translate.svg';
 import avater from '../../../assets/images/avater.png';
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
+
+import { Popover } from "antd";
+
+import { setUserLanguage } from '../../../store/Modules/WindowsSystemOptionsStore';
+
+// 引入i18n
+import '../../../lang/index';
+import { useTranslation } from 'react-i18next';
 
 interface HomeheaderComProps {
     styles: {
@@ -35,7 +43,16 @@ function HomeheaderCom({styles}: HomeheaderComProps) {
     const [visible, setVisible] = useState(false); // 控制弹出菜单的显示隐藏
     const iconSider = useRef<HTMLImageElement | null>(null);
     const headerRef = useRef<HTMLDivElement | null>(null);
+    const [open, setOpen] = useState(false);
     const { Header } = Layout;
+
+    // 创建i18n变量
+    const { t,i18n } = useTranslation();
+
+    // 语言切换函数
+    const changeLanguage = (lng: string) => {
+        i18n.changeLanguage(lng);
+    };
 
     useEffect(() => {
         let lastScrollTop = 0; // 上一次滚动位置
@@ -74,25 +91,60 @@ function HomeheaderCom({styles}: HomeheaderComProps) {
     const menuItem = [
         {
             key: 'home',
-            name: '首页'
+            name: t('homeHeaderCom.menuItem.home'),
         },
         {
             key: 'project',
-            name: '项目'
+            name: t('homeHeaderCom.menuItem.project'),
         },
         {
             key: 'about',
-            name: '关于',
+            name: t('homeHeaderCom.menuItem.about'),
             link: '/about'
         }
     ]
+
+    const items = [
+        {
+          key: 'zh',
+          label: '中文',
+            onClick: () => {
+              setOpen(false)
+            changeLanguage('zh');
+            setUserLanguage('zh');
+          }
+        },
+        {
+          key: 'en',
+          label: 'English',
+            onClick: () => {
+                setOpen(false)
+            changeLanguage('en');
+            setUserLanguage('en');
+          }
+        }
+    ];
+
+    const handleOpenChange = (newOpen: boolean) => {
+        setOpen(newOpen);
+    };
+    
+    const content = (
+        <div>
+            {items.map((item, index) => {
+                return (
+                    <div key={index} style={{ padding: '2px 5px', cursor: 'pointer' }} onClick={item.onClick}>{item.label}</div>
+                )
+            })}
+        </div>
+    );
 
     return (
         <>
             <Header ref={headerRef} className={styles.header}>
                 <div className={styles.left}>
                     <img className={styles.avater} loading="lazy" src={avater} alt="avater" />
-                    <h1 className={styles.title}>南秋SouthAki的个人主页</h1>
+                    <h1 className={styles.title}>{t('homeHeaderCom.title')}</h1>
                 </div>
                 <nav className={styles.right}>
                     <ul className={styles.nav}>
@@ -120,7 +172,9 @@ function HomeheaderCom({styles}: HomeheaderComProps) {
                         <Link to="/settings">
                             <img loading="lazy" className={styles.icon} src={Settings} alt="设置" />
                         </Link>
-                        <img loading="lazy" className={styles.icon} src={Translate} alt="翻译" />
+                        <Popover onOpenChange={handleOpenChange} open={open} content={content} trigger="click">
+                            <img loading="lazy" className={styles.icon} src={Translate} alt="翻译" />
+                        </Popover>
                     </div>
                 </nav>
 

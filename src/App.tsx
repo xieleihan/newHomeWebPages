@@ -26,7 +26,7 @@ import { getUserIp } from "./api/request";
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from './store/index';
 import { setIpInfo, setAddressInfo } from './store/generalStore.ts';
-import { setUserAgentWidthStore } from './store/Modules/WindowsSystemOptionsStore';
+import { setUserAgentWidthStore,setUserLanguage } from './store/Modules/WindowsSystemOptionsStore';
 
 // 引入设备指纹
 import FingerprintJS from "@fingerprintjs/fingerprintjs";
@@ -60,6 +60,7 @@ function App() {
       label: '中文',
       onClick: () => {
         changeLanguage('zh');
+        setUserLanguage('zh');
       }
     },
     {
@@ -67,12 +68,24 @@ function App() {
       label: 'English',
       onClick: () => {
         changeLanguage('en');
+        setUserLanguage('en');
       }
     }
   ];
 
   // 生命周期创建
   useEffect(() => {
+    const userLang = navigator.language;
+    console.log("当前浏览器语言:", userLang);
+    
+    if (userLang.includes('zh')) {
+      i18n.changeLanguage('zh');
+      dispatch(setUserLanguage('zh'));
+    } else {
+      i18n.changeLanguage('en');
+      dispatch(setUserLanguage('en'));
+    }
+
     // 获取用户IP地址
     getUserIp({}).then(async res => {
       let str = JSON.stringify(res);
@@ -136,7 +149,15 @@ function App() {
               <div className={styles.start}>
                 <div className={styles.translate}>
                   <Dropdown menu={{ items }}>
-                    <img draggable="false" onClick={(e) => { e.preventDefault() }} src={translate} alt="" />
+                    <img
+                      draggable="false"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                      }}
+                      src={translate}
+                      alt=""
+                    />
                   </Dropdown>
                 </div>
                 <div className={styles.operate}>
@@ -156,7 +177,7 @@ function App() {
                   </Button>
                 </div>
                 <footer className={styles.footer}>
-                  <p>你的设备ID是:{ visitorId }</p>
+                  <p>你的设备ID是:{visitorId}</p>
                   <p>Copyright© 2025 SouthAki,All rights reserved.</p>
                 </footer>
               </div>

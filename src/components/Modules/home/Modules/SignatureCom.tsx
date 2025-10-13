@@ -19,21 +19,33 @@ import { Popover } from 'antd';
 // 导入React Router
 import { useNavigate } from 'react-router-dom';
 
+import '../../../../lang/index';
+import { useTranslation } from 'react-i18next';
+
 function SignatureCom() {
+    const { t,i18n } = useTranslation();
     // 生命周期创建
     useEffect(() => {
         // 创建Typewriter实例
-        new Typewriter('#typewriter', {
+        const tw = new Typewriter('#typewriter', {
             loop: true,
-            strings: ['写写代码', '发个呆', '看看小说', '做个好梦','','前往新世界伊始'],
+            strings: [
+                t("signatureCom.code"),
+                t("signatureCom.idle"),
+                t("signatureCom.read"),
+                t("signatureCom.dream"),
+                "",
+                t("signatureCom.new_world"),
+            ],
             autoStart: true,
         });
-    }, [])
+        return () => tw.stop();
+    }, [i18n.language])
     
     // 创建一个Popover元素
     const popoverContent = (
         <>
-            <span>点击联系我</span>
+            <span>{t('signatureCom.click_contact')}</span>
         </>
     )
 
@@ -46,15 +58,15 @@ function SignatureCom() {
                 {/* 左边文字 */}
                 <div className={styles.topLeft}>
                     <p className={styles.welcome}>
-                        你好,我是<span className={styles.linear}>南秋SouthAki</span>
+                        {t('signatureCom.welcomeText')}<span className={styles.linear}>{t('signatureCom.name')}</span>
                         <br />
-                        一个前端工程师
+                        {t('signatureCom.job')}
                         <br />
-                        正在虚拟世界创世中
+                        {t('signatureCom.working')}
                         <br />
-                        偶尔<span id='typewriter'></span>
+                        {t('signatureCom.Occasionally')}<span id='typewriter'></span>
                         <br />
-                        期待与你相遇!
+                        {t('signatureCom.meeting_you')}
                     </p>
                 </div>
 
