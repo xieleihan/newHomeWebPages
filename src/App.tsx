@@ -28,9 +28,16 @@ import { AppDispatch } from './store/index';
 import { setIpInfo, setAddressInfo } from './store/generalStore.ts';
 import { setUserAgentWidthStore } from './store/Modules/WindowsSystemOptionsStore';
 
+// 引入设备指纹
+import FingerprintJS from "@fingerprintjs/fingerprintjs";
+import { setStorage } from './utils/common.ts';
+
 function App() {
   // 创建React变量
   const [isStartPages, setIsStartPages] = useState(true);
+
+  // 指纹ID
+  const [visitorId, setVisitorId] = useState<string>("");
 
   // 初始化Redux
   const dispatch = useDispatch<AppDispatch>();
@@ -100,6 +107,19 @@ function App() {
     };
   }, []);
 
+  useEffect(() => {
+    // 初始化 FPJS
+    const loadFingerprint = async () => {
+      const fp = await FingerprintJS.load();
+      const result = await fp.get();
+      setVisitorId(result.visitorId);
+      console.log("设备指纹ID:", result.visitorId);
+      setStorage("visitorId", visitorId);
+    };
+
+    loadFingerprint();
+  }, []);
+
   // 订阅Service Worker 
   if ("serviceWorker" in navigator) {
     navigator.serviceWorker.register("/sw.js")
@@ -136,7 +156,8 @@ function App() {
                   </Button>
                 </div>
                 <footer className={styles.footer}>
-                  Copyright© 2025 SouthAki,All rights reserved.
+                  <p>你的设备ID是:{ visitorId }</p>
+                  <p>Copyright© 2025 SouthAki,All rights reserved.</p>
                 </footer>
               </div>
             </>

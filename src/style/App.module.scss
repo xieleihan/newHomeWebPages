@@ -81,6 +81,9 @@
             transform: translateX(-50%);
             white-space: nowrap;
             font-size: .3rem;
+            p{
+                text-align: center;
+            }
         }
 
         @media (min-width: 768px) {
