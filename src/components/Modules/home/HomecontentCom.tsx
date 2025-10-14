@@ -4,6 +4,8 @@ import { lazy, Suspense } from 'react';
 // 导入Antd
 import { Layout, Spin } from 'antd';
 
+import LazyLoadWrapper from '../../../layout/LazyLoadWrapper';
+
 // 导入组件
 const SignatureCom = lazy(() => import('./Modules/SignatureCom'));
 const PersonalProfile = lazy(() => import('./Modules/PersonalProfile')); // 个人资料
@@ -31,27 +33,39 @@ function HomecontentCom({ styles, userAgentWidth, userAgent }: HomecontentComPro
                 </Suspense>
                 {/* 个人资料 */}
                 <Suspense fallback={<Spin />}>
-                    <PersonalProfile userAgent={userAgent} userAgentWidth={userAgentWidth} />
+                    <LazyLoadWrapper>
+                        <PersonalProfile userAgent={userAgent} userAgentWidth={userAgentWidth} />
+                    </LazyLoadWrapper>
                 </Suspense>
                 {/* 个人项目 */}
-                <Suspense fallback={<Spin />}>
-                    <ProjectFlow />
-                </Suspense>
+                {/* <Suspense fallback={<Spin />}>
+                    <LazyLoadWrapper>
+                        <ProjectFlow />
+                    </LazyLoadWrapper>
+                </Suspense> */}
                 {/* 个人喜欢的书库 */}
                 <Suspense fallback={<Spin />}>
-                    <BookFlow userAgent={userAgent} userAgentWidth={userAgentWidth} />
+                    <LazyLoadWrapper>
+                        <BookFlow userAgent={userAgent} userAgentWidth={userAgentWidth} />
+                    </LazyLoadWrapper>
                 </Suspense>
                 {/* 个人电影 */}
                 <Suspense fallback={<Spin />}>
-                    <MovieFlow userAgent={userAgent} userAgentWidth={userAgentWidth} />
+                    <LazyLoadWrapper>
+                        <MovieFlow userAgent={userAgent} userAgentWidth={userAgentWidth} />
+                    </LazyLoadWrapper>
                 </Suspense>
                 {/* 个人文档 */}
-                <Suspense fallback={<Spin />}>
-                    {/* <DocumnetFlow userAgent={userAgent} userAgentWidth={userAgentWidth} /> */}
-                </Suspense>
+                {/* <Suspense fallback={<Spin />}>
+                    <LazyLoadWrapper>
+                        <DocumnetFlow userAgent={userAgent} userAgentWidth={userAgentWidth} />
+                    </LazyLoadWrapper>
+                </Suspense> */}
                 {/* 个人音乐 */}
                 <Suspense fallback={<Spin />}>
-                    <MusicFlow userAgent={userAgent} userAgentWidth={userAgentWidth} />
+                    <LazyLoadWrapper>
+                        <MusicFlow userAgent={userAgent} userAgentWidth={userAgentWidth} />
+                    </LazyLoadWrapper>
                 </Suspense>
             </Content>
         </>

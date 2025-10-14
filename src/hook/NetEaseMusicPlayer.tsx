@@ -246,9 +246,27 @@ function NetEaseMusicPlayer({ width, agentName, musicArray }: NetEaseMusicPlayer
                         <div className={styles.left}>
                             <div ref={audioLayoutRef} onClick={clickAudioLayout} className={styles.audioLayout}>
                                 <div className={styles.audioContainer}>
+                                    {
+                                        width > 768 && agentName == 'pc' && (
+                                            <>
+                                                <div className={styles.iconBox}>
+                                                    <img className={styles.lastMusic} src={NextMusic} alt="下一首" loading='lazy' />
+                                                </div>
+                                            </>
+                                        )
+                                    }
                                     <div className={!isPlaying ? styles.playBox : styles.pauseBox}>
                                         <img src={!isPlaying ? PlayIcon : PauseIcon} alt="播放" loading='lazy' />
                                     </div>
+                                    {
+                                        width > 768 && agentName == 'pc' && (
+                                            <>
+                                                <div className={styles.iconBox}>
+                                                    <img className={styles.nextMusic} src={NextMusic} alt="下一首" loading='lazy' />
+                                                </div>
+                                            </>
+                                        )
+                                    }
                                 </div>
                             </div>
                             <img className={styles.imgBox} loading='lazy' src={musicDetailArray.length > 0 ? musicDetailArray[activatedIndex]?.al?.picUrl : ''} alt="音乐封面" />
