@@ -11,6 +11,7 @@ import { List } from "antd";
 
 import PlayIcon from '../assets/icon/play.svg';
 import PauseIcon from '../assets/icon/pause.svg';
+import NextMusic from '../assets/icon/nextMusic.svg';
 
 function NetEaseMusicPlayer({ width, agentName, musicArray }: NetEaseMusicPlayerProps) { 
     const [musicDetailArray, setMusicDetailArray] = useState<Array<any>>([]);
