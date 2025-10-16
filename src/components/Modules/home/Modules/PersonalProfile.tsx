@@ -2,7 +2,7 @@
 import styles from '../../../../style/home/PersonalProfile.module.scss';
 
 // 导入React
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 // 导入waterCode
 import waterCode from "../../../../utils/waterCode";
@@ -140,7 +140,7 @@ function PersonalProfile({ userAgentWidth, userAgent }: HomecontentComProps) {
             })
     }, []);
 
-    const verify = (val:number | string) => {
+    const verify = (val: number | string) => {
         verifyIsFriend({ password: val }).then((res) => {
             const str = JSON.stringify(res);
             const obj = JSON.parse(str);
@@ -194,60 +194,29 @@ function PersonalProfile({ userAgentWidth, userAgent }: HomecontentComProps) {
                         <p className={styles.title}>技术栈:</p>
                         <Spin spinning={technologyStack.data.length === 0} tip="Loading...">
                             <div className={styles.technologyStackBox}>
-                                <>
-                                    <div className={styles.technologyStackBoxContainer}>
-                                        {
-                                            technologyStack.data.map((item, index) => {
+                                <div className={styles.technologyStackBoxContainer}>
+                                    {[...technologyStack.data, ...technologyStack.data].map((item, index) => {
 
-                                                const icon1 = `/src/assets/icon/svg/${item.label1.fileName}.svg`;
-                                                const icon2 = `/src/assets/icon/svg/${item.label2.fileName}.svg`;
+                                        const icon1 = `/src/assets/icon/svg/${item.label1.fileName}.svg`;
+                                        const icon2 = `/src/assets/icon/svg/${item.label2.fileName}.svg`;
 
-                                                return (
-                                                    <React.Fragment key={`${item.label1.fileName}`}>
-                                                        <div key={index} className={styles.technologyStackItem}>
-                                                            {icon1 && <img loading='lazy' style={
-                                                                {
-                                                                    backgroundColor: item.label1.bgColor,
-                                                                }
-                                                            } className={styles.icon} src={icon1} alt={item.label1.fileName} />}
-                                                            {icon2 && <img loading='lazy' style={
-                                                                {
-                                                                    backgroundColor: item.label2.bgColor,
-                                                                }
-                                                            } className={styles.icon} src={icon2} alt={item.label2.fileName} />}
-                                                        </div>
-                                                    </React.Fragment>
-                                                );
-                                            }
-                                            )
-                                        }
-                                        {
-                                            technologyStack.data.map((item, index) => {
-
-                                                const icon1 = `/src/assets/icon/svg/${item.label1.fileName}.svg`;
-                                                const icon2 = `/src/assets/icon/svg/${item.label2.fileName}.svg`;
-
-                                                return (
-                                                    <React.Fragment key={`${item.label2.fileName}`}>
-                                                        <div key={index} className={styles.technologyStackItem}>
-                                                            {icon1 && <img loading='lazy' style={
-                                                                {
-                                                                    backgroundColor: item.label1.bgColor,
-                                                                }
-                                                            } className={styles.icon} src={icon1} alt={item.label1.fileName} />}
-                                                            {icon2 && <img loading='lazy' style={
-                                                                {
-                                                                    backgroundColor: item.label2.bgColor,
-                                                                }
-                                                            } className={styles.icon} src={icon2} alt={item.label2.fileName} />}
-                                                        </div>
-                                                    </React.Fragment>
-                                                );
-                                            }
-                                            )
-                                        }
-                                    </div>
-                                </>
+                                        return (
+                                            <div key={index} className={styles.technologyStackItem}>
+                                                {icon1 && <img loading='lazy' style={
+                                                    {
+                                                        backgroundColor: item.label1.bgColor,
+                                                    }
+                                                } className={styles.icon} src={icon1} alt={item.label1.fileName} />}
+                                                {icon2 && <img loading='lazy' style={
+                                                    {
+                                                        backgroundColor: item.label2.bgColor,
+                                                    }
+                                                } className={styles.icon} src={icon2} alt={item.label2.fileName} />}
+                                            </div>
+                                        );
+                                    }
+                                    )}
+                                </div>
                             </div>
                         </Spin>
                         <p className={styles.title}>探索我的世界:</p>
@@ -276,7 +245,7 @@ function PersonalProfile({ userAgentWidth, userAgent }: HomecontentComProps) {
                 okText='一键添加'
                 cancelText={isMaster ? '关闭' : '还有一个微信'}
             >
-                <img style={{width:'100%'}} loading='lazy' src={isMaster ? imgUrl : master_wechat} alt="微信二维码" />
+                <img style={{ width: '100%' }} loading='lazy' src={isMaster ? imgUrl : master_wechat} alt="微信二维码" />
             </Modal>
             <Drawer
                 title="我的WeChat"

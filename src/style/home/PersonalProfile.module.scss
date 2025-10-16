@@ -1,17 +1,19 @@
 @import '../base.module.scss';
 
-.personalProfile{
+.personalProfile {
     width: 100dvw;
     min-width: 100%;
     height: 100dvh;
     position: relative;
-    .canvas{
+
+    .canvas {
         width: 100%;
         height: 100%;
         position: relative;
         z-index: 0;
     }
-    .container{
+
+    .container {
         width: 80%;
         height: 80%;
         background-color: white;
@@ -19,11 +21,12 @@
         top: 50%;
         left: 50%;
         border-radius: $radius;
-        transform: translate(-50%,-50%);
+        transform: translate(-50%, -50%);
         padding: .6rem .5rem;
         display: flex;
         flex-direction: column;
-        .leftTop{
+
+        .leftTop {
             width: 100%;
             height: 40%;
             // background-color: skyblue;
@@ -33,112 +36,139 @@
             align-items: center;
             justify-content: space-evenly;
             padding: .1rem;
-            .avaterBox{
+
+            .avaterBox {
                 width: 1.5rem;
                 aspect-ratio: 1/1;
                 border-radius: 50%;
                 overflow: hidden;
-                .avater{
+
+                .avater {
                     width: 100%;
                     height: 100%;
                 }
             }
-            .username{
+
+            .username {
                 font-size: .5rem;
                 background: linear-gradient(315deg, #42d392 25%, #647eff);
                 background-clip: text;
                 -webkit-text-fill-color: transparent;
             }
-            .signature{
+
+            .signature {
                 font-size: .3rem;
                 color: #ccc;
             }
-            .btnBox{
+
+            .btnBox {
                 width: 100%;
                 display: flex;
                 flex-direction: row;
                 justify-content: space-around;
-                span{
-                    font-family: 'zk','PingFang SC';
+
+                span {
+                    font-family: 'zk', 'PingFang SC';
                 }
             }
         }
-        .rightBottom{
+
+        .rightBottom {
             width: 100%;
             height: 60%;
             padding: .1rem;
 
-            .title{
+            .title {
                 font-size: .3rem;
                 margin-bottom: .1rem;
             }
 
             // 电脑端
             @media (min-width: 768px) {
-                .title{
+                .title {
                     font-size: .2rem;
                 }
 
-                .technologyStackBox{
+                .technologyStackBox {
                     margin-bottom: .2rem;
                 }
             }
 
-            @media (max-width: 768px){
+            @media (max-width: 768px) {
                 .technologyStackBox {
-                        margin-bottom: .4rem;
-                    }
+                    margin-bottom: .4rem;
+                }
             }
 
-            .technologyStackBox{
+            .technologyStackBox {
                 width: 100%;
                 height: 40%;
-                // min-height: 2rem;
-                // border: .01rem solid #ccc;
                 overflow: hidden;
                 display: flex;
-                .technologyStackBoxContainer{
+                position: relative;
+
+                .technologyStackBoxContainer {
                     display: flex;
-                    width: 20rem;
                     height: 100%;
-                    
-                    .technologyStackItem{
+                    animation: scroll linear infinite;
+                    animation-duration: 20s; // 控制速度
+
+                    // 创建无限滚动效果：当动画到达容器宽度时立即重置
+                    &::after {
+                        content: '';
+                        position: absolute;
+                    }
+
+                    .technologyStackItem {
                         display: flex;
                         height: 100%;
                         margin: 0 .1rem;
                         width: 1rem;
                         flex-direction: column;
                         justify-content: space-around;
-                        animation: slideInFromRight 30s linear infinite;
-                        .icon{
+                        flex-shrink: 0;
+
+                        // 关键：复制效果，通过伪元素实现
+                        &::after {
+                            content: '';
+                            display: none;
+                        }
+
+                        .icon {
                             width: 100%;
                             max-height: 50%;
                             aspect-ratio: 1/1;
                             border: 1px solid #ccc;
                             padding: .1rem;
-                            &:nth-child(1){
+                            transition: transform 0.2s ease;
+
+                            &:nth-child(1) {
                                 transform: translateX(-50%);
                             }
 
+                            // &:hover {
+                            //     transform: scale(1.05);
+                            // }
+
                             // 电脑端
-                            @media (min-width: 768px){
+                            @media (min-width: 768px) {
                                 width: .75rem;
                             }
 
                             // 超大屏幕
-                            @media (min-width: 1200px){
+                            @media (min-width: 1200px) {
                                 width: .5rem;
                             }
                         }
-                        
+
                         // 电脑端
-                        @media (min-width: 768px){
+                        @media (min-width: 768px) {
                             margin: 0 .05rem;
                             width: .8rem;
                         }
 
                         // 超大屏幕
-                        @media (min-width: 1200px){
+                        @media (min-width: 1200px) {
                             margin: 0 .001rem;
                             width: .6rem;
                         }
@@ -147,97 +177,93 @@
             }
 
             // 电脑端
-            @media (min-width: 768px){
-                .technologyStackBox{
+            @media (min-width: 768px) {
+                .technologyStackBox {
                     border: 0;
                 }
             }
         }
 
         // 电脑端
-        @media (min-width: 500px){
+        @media (min-width: 500px) {
             padding: .3rem .5rem;
             flex-direction: row;
-            .leftTop{
+
+            .leftTop {
                 height: 100%;
                 width: 45%;
                 border-bottom: 0;
                 justify-content: center;
                 border-right: 1px dotted #ccc;
-                .avaterBox{
+
+                .avaterBox {
                     width: 1.5rem;
                     border-radius: $radius;
                     aspect-ratio: 1/1;
                 }
-                .username{
+
+                .username {
                     font-size: .3rem;
                     margin: .2rem 0 .1rem 0;
                 }
-                .signature{
+
+                .signature {
                     font-size: .2rem;
                     margin-bottom: .3rem;
                 }
-                .btnBox{
+
+                .btnBox {
                     flex-direction: column;
                     width: 70%;
                     height: 30%;
                 }
             }
-            .rightBottom{
+
+            .rightBottom {
                 width: 55%;
                 height: 100%;
             }
         }
 
         // 大于1200px
-        @media (min-width: 1200px){
+        @media (min-width: 1200px) {
             padding: .1rem .5rem;
-            .leftTop{
+
+            .leftTop {
                 border-right: .01px solid #ccc;
+
                 .avaterBox {
-                        width: .8rem;
-                        border-radius: .1rem;
-                        aspect-ratio: 1/1;
-                    }
-                
-                    .username {
-                        font-size: .2rem;
-                        margin: .1rem 0 .05rem 0;
-                    }
-                
-                    .signature {
-                        font-size: .15rem;
-                        margin-bottom: .3rem;
-                    }
-                
-                    .btnBox {
-                        flex-direction: column;
-                        width: 70%;
-                        height: 30%;
-                    }
+                    width: .8rem;
+                    border-radius: .1rem;
+                    aspect-ratio: 1/1;
+                }
+
+                .username {
+                    font-size: .2rem;
+                    margin: .1rem 0 .05rem 0;
+                }
+
+                .signature {
+                    font-size: .15rem;
+                    margin-bottom: .3rem;
+                }
+
+                .btnBox {
+                    flex-direction: column;
+                    width: 70%;
+                    height: 30%;
+                }
             }
         }
     }
 }
 
-@keyframes slideInFromRight {
-    from {
+@keyframes scroll {
+    0% {
         transform: translateX(0);
     }
 
-    to {
-        transform: translateX(-10rem);
+    100% {
+        transform: translateX(-50%);
     }
-}
-
-@media (min-width: 768px) {
-    @keyframes slideInFromRight {
-            from {
-                transform: translateX(0);
-            }
-    
-            to {
-                transform: translateX(-7rem);
-            }
-        }
 }
