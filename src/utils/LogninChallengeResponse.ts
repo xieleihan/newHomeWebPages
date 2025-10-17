@@ -258,7 +258,7 @@ function constantTimeEquals(a: string, b: string): boolean {
 
 export {
     generateClientEphemeral,
-    computeClientSessionKey,
-    computeM1,
-    verifyM2
+    computeClientSessionKey, // 计算会话密钥
+    computeM1, // 计算M1
+    verifyM2, // 验证M2
 }
