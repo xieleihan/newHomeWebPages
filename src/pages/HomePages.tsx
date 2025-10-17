@@ -9,6 +9,8 @@ import HomeheaderCom from '../components/Modules/home/HomeheaderCom';
 import HomecontentCom from '../components/Modules/home/HomecontentCom';
 import HomefooterCom from '../components/Modules/home/HomefooterCom';
 
+import LazyLoadWrapper from '../layout/LazyLoadWrapper';
+
 // 导入React
 import { useEffect, useState } from 'react';
 
@@ -64,8 +66,10 @@ function HomePages() {
                 {/* @ts-expect-error: : HomecontentCom does not have type definitions */}
                 <HomecontentCom userAgentWidth={userAgentWidth} userAgent={userAgent} styles={styles} />
                 {/* 底部栏 */}
-                { /* @ts-expect-error: HomefooterCom does not have type definitions */}
-                <HomefooterCom styles={styles} />
+                <LazyLoadWrapper minHeight='fit-content'>
+                    { /* @ts-expect-error: HomefooterCom does not have type definitions */}
+                    <HomefooterCom styles={styles} />
+                </LazyLoadWrapper>
             </Layout>
         </>
     );
