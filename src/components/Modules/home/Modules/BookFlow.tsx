@@ -109,7 +109,7 @@ function BookFlow({ userAgentWidth, userAgent }: HomecontentComProps) {
                                 <Spin size="large" spinning={bookArray.length === 0}>
                                 </Spin>
                                 <>
-                                        <div className={styles.swiperBox}>
+                                    {bookArray.length > 0 ? <div className={styles.swiperBox}>
                                             {
                                                 // 判断是否电脑端和宽度是否高于768
                                                 agentName === 'pc' || width > 768 ? 
@@ -153,7 +153,7 @@ function BookFlow({ userAgentWidth, userAgent }: HomecontentComProps) {
                                                         }
                                                     </>
                                             }
-                                        </div>
+                                        </div> : <></>}
                                 </>
                             </div>
                             <div className={styles.btnBox}>

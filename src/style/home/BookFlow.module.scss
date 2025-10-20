@@ -12,9 +12,20 @@
         line-height: .3rem;
         padding: 0 .3rem;
     }
+
+    @media(min-width:768px){
+        .content{
+            height: calc(100% - .3rem);
+        }
+    }
+    @media (max-width:768px) {
+        .content{
+            height: calc(100% - 1rem);;
+        }
+    }
+
     .content{
         width: 100%;
-        height: calc(100% - 1rem);
         display: flex;
         justify-content: center;
         align-items: center;
@@ -76,10 +87,28 @@
         display: flex;
         justify-content: flex-end;
         align-items: center;
+        .lookMore{
+            font-family: 'zk','PingFang SC';
+        }
+    }
+}
+
+// 移动端
+@media(max-width:768px){
+    .btnBox{
         padding: 0 .3rem;
         .lookMore{
             height: .8rem;
-            font-family: 'zk','PingFang SC';
         }
+    }
+}
+
+// 电脑端
+@media(min-width:768px){
+    .btnBox{
+        padding: 0 .3rem;
+        .lookMore {
+                height: .3rem;
+            }
     }
 }
