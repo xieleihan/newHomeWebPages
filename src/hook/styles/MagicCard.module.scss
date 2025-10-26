@@ -1,0 +1,145 @@
+@import '../../style/base.module.scss';
+
+.magicCardBox {
+    width: 50%;
+    height: 100%;
+    position: relative;
+    perspective: 1000px; // 添加3D透视
+    display: flex;
+    align-items: flex-end; // 让卡片底部对齐到容器底部
+    justify-content: center;
+
+    .magicItem {
+        height: 100%;
+        aspect-ratio: 9/16;
+        position: absolute;
+        bottom: 0; // 固定在容器底部
+        transform-origin: center bottom; // 旋转中心在卡片底部中心
+        transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); // 平滑过渡
+        cursor: pointer;
+        will-change: transform; // 优化性能
+
+        // 扇形效果：使用nth-child选择器定位每张卡片
+        &:nth-child(1) {
+            transform: rotateZ(-30deg);
+            z-index: 10;
+
+            &:hover {
+                transform: rotateZ(-30deg) translateY(-20px) scale(1.05);
+                z-index: 15;
+            }
+        }
+
+        &:nth-child(2) {
+            transform: rotateZ(-20deg);
+            z-index: 9;
+
+            &:hover {
+                transform: rotateZ(-20deg) translateY(-20px) scale(1.05);
+                z-index: 15;
+            }
+        }
+
+        &:nth-child(3) {
+            transform: rotateZ(-10deg);
+            z-index: 8;
+
+            &:hover {
+                transform: rotateZ(-10deg) translateY(-20px) scale(1.05);
+                z-index: 15;
+            }
+        }
+
+        &:nth-child(4) {
+            transform: rotateZ(0deg);
+            z-index: 7;
+
+            &:hover {
+                transform: rotateZ(0deg) translateY(-20px) scale(1.05);
+                z-index: 15;
+            }
+        }
+
+        &:nth-child(5) {
+            transform: rotateZ(10deg);
+            z-index: 6;
+
+            &:hover {
+                transform: rotateZ(10deg) translateY(-20px) scale(1.05);
+                z-index: 15;
+            }
+        }
+
+        &:nth-child(6) {
+            transform: rotateZ(20deg);
+            z-index: 5;
+
+            &:hover {
+                transform: rotateZ(20deg) translateY(-20px) scale(1.05);
+                z-index: 15;
+            }
+        }
+
+        &:nth-child(7) {
+            transform: rotateZ(30deg);
+            z-index: 4;
+
+            &:hover {
+                transform: rotateZ(30deg) translateY(-20px) scale(1.05);
+                z-index: 15;
+            }
+        }
+
+        &:nth-child(n + 8) {
+            // 超过7张卡片时，隐藏在后面
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .magicCardPic {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 0.1rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            user-select: none; // 防止选中图片
+        }
+    }
+}
+
+// 响应式设计
+@media (max-width: 768px) {
+    .magicCardBox {
+        .magicItem {
+
+            // 移动端减小旋转角度
+            &:nth-child(1) {
+                transform: rotateZ(-15deg);
+            }
+
+            &:nth-child(2) {
+                transform: rotateZ(-10deg);
+            }
+
+            &:nth-child(3) {
+                transform: rotateZ(-5deg);
+            }
+
+            &:nth-child(4) {
+                transform: rotateZ(0deg);
+            }
+
+            &:nth-child(5) {
+                transform: rotateZ(5deg);
+            }
+
+            &:nth-child(6) {
+                transform: rotateZ(10deg);
+            }
+
+            &:nth-child(7) {
+                transform: rotateZ(15deg);
+            }
+        }
+    }
+}

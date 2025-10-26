@@ -35,7 +35,7 @@ export const getTechnologyStack = function (params: any) {
  * @returns res.data
  */
 export const getBookFlowInfo = function (params: any) {
-    return getOut('https://localhost:5173/json/book.json', params);
+    return getOut('https://192.168.2.35:5173/json/book.json', params);
 }
 
 /**

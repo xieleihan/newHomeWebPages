@@ -11,6 +11,12 @@ import waterCode from "../../../../utils/waterCode";
 import avater from "../../../../assets/images/avater.png";
 import master_wechat from "../../../../assets/images/master_wechat.jpg";
 
+import photo_pocket_1 from '../../../../assets/images/photo-pocket-1.webp';
+import photo_pocket_2 from '../../../../assets/images/photo-pocket-2.webp';
+import photo_pocket_3 from '../../../../assets/images/photo-pocket-3.webp';
+import photo_pocket_4 from '../../../../assets/images/photo-pocket-4.webp';
+import photo_pocket_5 from '../../../../assets/images/photo-pocket-5.webp';
+
 // 导入Antd design组件
 import { Button, ButtonProps, message, Spin, Skeleton, Modal, Drawer } from "antd";
 import { GithubOutlined, AntDesignOutlined, WechatOutlined } from "@ant-design/icons";
@@ -18,11 +24,19 @@ import { GithubOutlined, AntDesignOutlined, WechatOutlined } from "@ant-design/i
 // 导入技术栈接口
 import { getTechnologyStack, verifyIsFriend } from "../../../../api/request";
 
+// 引入自定义组件
 import PasswordInput from '../../../../hook/PasswordInput';
+import MagicCard from '../../../../hook/MagicCard';
 
 interface HomecontentComProps {
     userAgentWidth: number;
     userAgent: string;
+}
+
+interface MagicCardProps { 
+    picUrl: string;
+    picScr: string;
+    alt: string;
 }
 
 function PersonalProfile({ userAgentWidth, userAgent }: HomecontentComProps) {
@@ -40,6 +54,7 @@ function PersonalProfile({ userAgentWidth, userAgent }: HomecontentComProps) {
     const [agentName, setAgentName] = useState<string>('');
     const [isMaster, setIsMaster] = useState<boolean>(false);
     const [imgUrl, setImgUrl] = useState<string>('');
+    const [magicCardPic, setMagicCardPic] = useState<Array<MagicCardProps>>([{picScr: photo_pocket_1, picUrl: photo_pocket_1, alt: 'photo-pocket-1'}, {picScr: photo_pocket_2, picUrl: photo_pocket_2, alt: 'photo-pocket-2'}, {picScr: photo_pocket_3, picUrl: photo_pocket_3, alt: 'photo-pocket-3'}, {picScr: photo_pocket_4, picUrl: photo_pocket_4, alt: 'photo-pocket-4'}, {picScr: photo_pocket_5, picUrl: photo_pocket_5, alt: 'photo-pocket-5'}]);
 
     const error = (content: string) => {
         messageApi.open({
@@ -221,7 +236,8 @@ function PersonalProfile({ userAgentWidth, userAgent }: HomecontentComProps) {
                         </Spin>
                         <p className={styles.title}>探索我的世界:</p>
                         <div className={styles.desc}>
-                            <Skeleton active title={false}></Skeleton>
+                            {/* <Skeleton active title={false}></Skeleton> */}
+                            <MagicCard pic={magicCardPic} />
                         </div>
                     </div>
                 </div>
