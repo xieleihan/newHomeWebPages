@@ -3,6 +3,7 @@
 .imgWrapper {
     position: relative;
     width: 100%;
-    height: auto;
-    min-height: 200px;
+    height: 100%;
+    // min-height: 200px;
+    max-height: 100%;
 }

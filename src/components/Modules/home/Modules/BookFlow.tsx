@@ -53,6 +53,7 @@ function BookFlow({ userAgentWidth, userAgent }: HomecontentComProps) {
     useEffect(() => {
         getBookFlowInfo({})
             .then((res) => {
+                console.log("这是book区域的数组:",res.data);
                 setBookArray(res.data);
             }).catch(() => {
                 error('请求失败');
@@ -76,6 +77,8 @@ function BookFlow({ userAgentWidth, userAgent }: HomecontentComProps) {
             setCountItem(4);
         } else if (width > 500 && width <= 768) { 
             setCountItem(6);
+        } else {
+            setCountItem(12);
         }
 
         // 清除事件监听
@@ -114,7 +117,40 @@ function BookFlow({ userAgentWidth, userAgent }: HomecontentComProps) {
                                                 // 判断是否电脑端和宽度是否高于768
                                                 agentName === 'pc' || width > 768 ? 
                                                 <>
-                                                
+                                                    {
+                                                        bookArray.length >= 7 && bookArray.length > 0
+                                                            ?
+                                                            <div className={styles.pc}>
+                                                                {
+                                                                    getRandomItems(bookArray, countItem).map((item, index) => {
+                                                                        return (
+                                                                            <React.Fragment key={index}>
+                                                                                <a className={styles.swiperItemLink} href={item.linkHtml} target="_blank" rel="noreferrer">
+                                                                                    <div className={styles.swiperItem}>
+                                                                                        {/* <img className={styles.bookImg} loading="lazy" src={item.imgUrl} alt="图书照片" /> */}
+                                                                                        <LazyImage className={styles.bookImg} src={item.imgUrl} alt="图书照片" />
+                                                                                        <div className={styles.bookInfo}>
+                                                                                            {/* 书名 */}
+                                                                                            <p className={styles.bookName}>
+                                                                                                {item.bookName}
+                                                                                            </p>
+                                                                                            {/* 作者和描述 */}
+                                                                                            <p className={styles.bookAuthorAndDesc}>
+                                                                                                {item.author}
+                                                                                            </p>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </a>
+                                                                            </React.Fragment>
+                                                                        );
+                                                                    })
+                                                                }
+                                                            </div>
+                                                            :
+                                                            <>
+                                                                <p className={styles.bookArrayNull}>书库为空</p>
+                                                            </>
+                                                    }
                                                 </> :
                                                     <>
                                                         {

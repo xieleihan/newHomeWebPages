@@ -6,8 +6,6 @@ import * as path from 'path';
 import { visualizer } from 'rollup-plugin-visualizer';
 import ViteRestart from 'vite-plugin-restart';
 import legacyPlugin from '@vitejs/plugin-legacy';
-import fs from 'fs';
-import basicSsl from '@vitejs/plugin-basic-ssl';
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -65,8 +63,6 @@ export default defineConfig({
       targets: ['chrome 52', 'Android > 39', 'iOS >= 10.3'], // 需要兼容的目标列表,可以设置多个
       additionalLegacyPolyfills: ['regenerator-runtime/runtime'] // 面向IE11的时候需要用到此插件
     }),
-    // HTTPS 证书插件
-    basicSsl(),
   ],
   css: {
     modules: {
@@ -75,9 +71,5 @@ export default defineConfig({
   },
   server: {
     host: '0.0.0.0',
-    https: {
-      key: fs.readFileSync('./localhost-key.pem'),
-      cert: fs.readFileSync('./localhost.pem'),
-    }
   },
 })

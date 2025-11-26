@@ -113,6 +113,13 @@
                     height: calc(100% - .6rem);
                     overflow: auto;
 
+                    .lyricLine{
+                        font-family: 'zk';
+                    }
+                    .activeLyric{
+                        color: $googleBlue;
+                    }
+
                     &::-webkit-scrollbar {
                         display: none;
                     }
